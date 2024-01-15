@@ -7,22 +7,22 @@ This function creates a simple raincloud of a single categorial variable on a me
 \usage{
 create_raincloud_facet(
   df,
-  groupvar,
   metricvar,
+  groupvar,
   facetvar
   )
 }
 \arguments{
   \item{df}{Data frame}
-  \item{groupvar}{Categorical variable}
   \item{metricvar}{Metric variable}
+  \item{groupvar}{Categorical variable}
   \item{facetvar}{A second categorical variable for facets}
 }
 \examples{
 #create_raincloud_facet(
 #  df,
-#  groupvar,
 #  metricvar,
+#  groupvar,
 #  facetvar
 #  )
 }

@@ -1,7 +1,7 @@
 create_raincloud_facet <- function(
   df,
-  groupvar,
   metricvar,
+  groupvar,
   facetvar
   ){
   if(!requireNamespace("ggdist")) install.packages("ggdist")
@@ -10,10 +10,10 @@ create_raincloud_facet <- function(
   ggplot2::ggplot(
     df,
     ggplot2::aes(
-      x = groupvar,
-      y = metricvar,
-      color = groupvar,
-      fill = groupvar
+      x = {{groupvar}},
+      y = {{metricvar}},
+      color = {{groupvar}},
+      fill = {{groupvar}}
     )
   ) +
     ggdist::stat_halfeye(

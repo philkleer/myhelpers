@@ -8,7 +8,7 @@ create_raincloud <- function(
   ggplot2::ggplot(
     df,
     ggplot2::aes(
-      y = metricvar
+      y = {{metricvar}}
     )
   ) +
     ggdist::stat_halfeye(
