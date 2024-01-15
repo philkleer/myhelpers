@@ -4,6 +4,7 @@ create_raincloud <- function(
   ){
   if(!requireNamespace("ggdist")) install.packages("ggdist")
   if(!requireNamespace("gghalves")) install.packages("gghalves")
+  if(!requireNamespace("colorspace")) install.packages("colorspace")
 
   ggplot2::ggplot(
     df,
@@ -12,11 +13,15 @@ create_raincloud <- function(
     )
   ) +
     ggdist::stat_halfeye(
-      point_interval = ggdist::mean_qi,
       adjust = 5,
-      width = 0.25,
-      .width = c(.5, .95)
+      width = 0.5,
+      .width = c(.5, .95),
+      justification = -.2
     ) +
+    ggplot2::geom_boxplot(
+      width = .12,
+      outlier.shape = NA
+    )
     gghalves::geom_half_point(
       side = "l",
       range_scale = 0.25,
