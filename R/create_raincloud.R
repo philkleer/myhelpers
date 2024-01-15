@@ -1,25 +1,20 @@
 create_raincloud <- function(
   df,
-  groupvar,
   metricvar
   ){
   if(!requireNamespace("ggdist")) install.packages("ggdist")
   if(!requireNamespace("gghalves")) install.packages("gghalves")
-  if(!requireNamespace("beyonce")) devtools::install_github("dill/beyonce")
 
   ggplot2::ggplot(
     df,
     ggplot2::aes(
-      x = groupvar,
-      y = metricvar,
-      color = groupvar,
-      fill = groupvar
+      y = metricvar
     )
   ) +
     ggdist::stat_halfeye(
       point_interval = ggdist::mean_qi,
-      adjust = 1.25,
-      width = 0.5,
+      adjust = 5,
+      width = 0.25,
       .width = c(.5, .95)
     ) +
     gghalves::geom_half_point(
@@ -28,23 +23,11 @@ create_raincloud <- function(
       size = 1.25,
       alpha = .4
     ) +
-    ggplot2::scale_color_manual(
-      values = c(
-        beyonce::beyonce_palette(39)[1],
-        beyonce::beyonce_palette(32)[1]
-      )
-    ) +
-    ggplot2::scale_fill_manual(
-      values =
-        scales::alpha(
-          c(
-            beyonce::beyonce_palette(39)[1],
-            beyonce::beyonce_palette(32)[1]
-          ),
-          0.5
-        )
-    ) +
     ggplot2::theme(
-      legend.position = "none"
+      legend.position = "none",
+      axis.ticks.x = ggplot2::element_blank(),
+      axis.text.x = ggplot2::element_blank(),
+      axis.title.x = ggplot2::element_blank(),
+      panel.grid.major.x = ggplot2::element_blank()
     )
 }

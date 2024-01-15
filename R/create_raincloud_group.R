@@ -1,8 +1,7 @@
-create_raincloud_facet <- function(
+create_raincloud_group <- function(
   df,
-  groupvar,
   metricvar,
-  facetvar
+  groupvar
   ){
   if(!requireNamespace("ggdist")) install.packages("ggdist")
   if(!requireNamespace("gghalves")) install.packages("gghalves")
@@ -30,6 +29,5 @@ create_raincloud_facet <- function(
     ) +
     ggplot2::theme(
       legend.position = "none"
-    ) +
-    ggplot2::facet_wrap(. ~ facetvar)
+    )
 }
