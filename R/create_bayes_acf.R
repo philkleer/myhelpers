@@ -1,5 +1,5 @@
 create_bayes_acf <- function(
-    postdf,
+    modelfit,
     nottoplot = 5,
     neachplot = 4,
     folder,
@@ -8,6 +8,11 @@ create_bayes_acf <- function(
   if(!requireNamespace("brms")) install.packages("brms")
   if(!requireNamespace("cowplot")) install.packages("cowplot")
   if(!requireNamespace("bayesplot")) install.packages("bayesplot")
+
+  postdf <- brms::as_draws_df(
+    modelfit,
+    add_chain = T
+  )
 
   total <- dim(postdf)[2] - nottoplot
 
