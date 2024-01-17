@@ -8,7 +8,10 @@ load_beyonce_bayes <- function(
     legendtext = 1
 ) {
   # check for packages that are needed
-  if(!requireNamespace("beyonce")) devtools::install_github("dill/beyonce")
+  if(!requireNamespace("devtools")) install.packages("devtools")
+  if(!"beyonce"%in%installed.packages()){
+    devtools::install_github("dill/beyonce")
+  }
   if(!requireNamespace("bayesplot")) install.packages("bayesplot")
 
   # ggplot settings for bayesian analysis
