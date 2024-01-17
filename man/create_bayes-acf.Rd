@@ -21,7 +21,7 @@ create_bayes_acf(
   \item{model}{Indicate a model name to easier identify the png-file later}
 }
 \examples{
-#create_bayes_acf <- function(
+#create_bayes_acf(
 #    postdf,
 #    nottoplot = 5,
 #    neachplot = 4,

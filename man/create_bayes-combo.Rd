@@ -21,7 +21,7 @@ create_bayes_combo(
   \item{model}{Indicate a model name to easier identify the png-file later}
 }
 \examples{
-#create_bayes_combo <- function(
+#create_bayes_combo(
 #    postdf,
 #    nottoplot = 5,
 #    neachplot = 4,

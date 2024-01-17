@@ -17,11 +17,9 @@ plot_loo(
   \item{what}{indicatin model under inspection.}
 }
 \examples{
-# create_corr(
-#    corrmat,
-#    pmat,
-#    sizer = 5,
-#    fontsize = 8,
-#    sizevar = 12
+# plot_loo(
+#  loo,
+#  folder,
+#  what
 #)
 }

@@ -8,5 +8,5 @@ This function creates and loads a colorblind-friendly palette into the environme
 load_colorblind()
 }
 \examples{
-# colorblind_palette <- load_colorblind()
+# colorblind_palette()
 }
