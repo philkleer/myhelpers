@@ -6,7 +6,7 @@ Creates diagnostic of bayesian estimation (\code{brms} object) of posterior dens
 }
 \usage{
 create_bayes_combo(
-    postdf,
+    modelfit,
     nottoplot = 5,
     neachplot = 4,
     folder,
@@ -14,7 +14,7 @@ create_bayes_combo(
 )
 }
 \arguments{
-  \item{postdf}{Object as result of \code{as_draws_df()} from \code{brms}.}
+  \item{modelfit}{Object as result of fit from \code{brms}.}
   \item{nottoplot}{Indicate if last diagnostic parameters should not be printed by putting in an integer.}
   \item{neachplot}{Indiate sequence in variables (plotted are \code{neachplot} + 1}
   \item{folder}{Indicate folder where to save the plot (from working directory)}
@@ -22,10 +22,10 @@ create_bayes_combo(
 }
 \examples{
 #create_bayes_combo(
-#    postdf,
+#    modelfit,
 #    nottoplot = 5,
 #    neachplot = 4,
-#    folder,
-#    model,
+#    "./output/",
+#    "fitm1",
 #)
 }
