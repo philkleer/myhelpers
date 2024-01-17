@@ -7,7 +7,7 @@ Maintainer: Philipp Kleer <philipp.kleer@posteo.com>
 Description: This package loads helper functions for several analyses processes.
     Therefore, the helper functions does not be declared singulary in each script.
 Depends: tidyverse  
-License: CC0
+License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 URL: https://gitlab.com/bpkleer/myhelpers
