@@ -16,6 +16,9 @@ create_bayes_combo <- function(
 
   total <- dim(postdf)[2] - nottoplot
 
+  i <- 1
+  j <- 1
+
   for (i in seq(1, total, neachplot)) {
     if (i + neachplot >= total) {
       plot <- bayesplot::mcmc_combo(
@@ -41,7 +44,7 @@ create_bayes_combo <- function(
         paste0(
           folder,
           model,
-          "-",
+          "-combo-",
           j,
           ".png"
         ),
@@ -71,7 +74,7 @@ create_bayes_combo <- function(
         paste0(
           folder,
           model,
-          "-",
+          "-combo-",
           j,
           ".png"
         ),

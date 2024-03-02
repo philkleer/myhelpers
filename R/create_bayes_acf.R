@@ -16,7 +16,11 @@ create_bayes_acf <- function(
 
   total <- dim(postdf)[2] - nottoplot
 
+  i <- 1
+  j <- 1
+
   for (i in seq(1, total, neachplot)) {
+
     if (i+neachplot >= total) {
       plot <- bayesplot::mcmc_acf(
         postdf,
@@ -38,7 +42,7 @@ create_bayes_acf <- function(
         paste0(
           folder,
           model,
-          "-",
+          "-acf-",
           j,
           ".png"
         ),
@@ -65,7 +69,7 @@ create_bayes_acf <- function(
         paste0(
           folder,
           model,
-          "-",
+          "-acf-",
           j,
           ".png"
         ),
