@@ -1,8 +1,8 @@
 Package: myhelpers
 Type: Package
 Title: Loading individual functions into the environment
-Version: 0.1.0
-Author: Philipp Kleer
+Version: 0.3.0
+Author: Philipp Kleer [aut, cre] (<https://orcid.org/0000-0003-1935-387X>)
 Maintainer: Philipp Kleer <philipp.kleer@posteo.com>
 Description: This package loads helper functions for several analyses processes.
     Therefore, the helper functions does not be declared singulary in each script.
