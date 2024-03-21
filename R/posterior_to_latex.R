@@ -52,8 +52,8 @@ posterior_to_latex <- function(
   # sorting rope
   for (k in seq(1, dim(dfobject)[1], 1)) {
     interval <- c(
-      dfobject$ROPE_low[k],
-      dfobject$ROPE_high[k]
+      round(dfobject$ROPE_low[k], 3),
+      round(dfobject$ROPE_high[k], 3)
     )
 
     dfobject$ROPE[k] <- paste0(
@@ -70,15 +70,15 @@ posterior_to_latex <- function(
   dfobject$ROPE_low <- NULL
   dfobject$ROPE_CI <- NULL
 
-  # dfobject <- dfobject %>%
-  #   relocate(
-  #     any_of(c(match1, match2)),
-  #     .after = Median
-  #   ) %>%
-  #   relocate(
-  #     ROPE,
-  #     .after = ps
-  #   )
+  dfobject <- dfobject  |>
+    dplyr::relocate(
+      tidyselect::any_of(c(match1, match2)),
+      .after = Median
+    )  |>
+    dplyr::relocate(
+      ROPE,
+      .after = ps
+    )
 
   keep <- seq(1, dim(dfobject)[1], 2)
 
