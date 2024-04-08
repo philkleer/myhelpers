@@ -6,6 +6,8 @@ institute: "Department of Political Science | Justus-Liebig-University Giessen"
 date: 2023-05-12
 categories: ["cat1", "cat2", "cat3", "cat4"]
 summary: "Write a short description"
+bibliography: assets/lit.bib
+csl: assets/apa.csl
 # Settings
 format:
   html:

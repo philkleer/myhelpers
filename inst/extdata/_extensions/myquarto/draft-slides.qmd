@@ -17,6 +17,8 @@ contactsite: "https://bpkleer.github.io/en"
 # Settings
 date: "Report Last Run: `r Sys.time()`"
 date-format: long
+bibliography: assets/lit.bib
+csl: assets/apa.csl
 format:  
   revealjs: 
     width: 1600
