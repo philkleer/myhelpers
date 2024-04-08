@@ -1,0 +1,53 @@
+<section id="$idprefix$title-slide"$for(title-slide-attributes/pairs)$ $it.keys$="$it.values$"$endfor$ data-background-image="./assets/title-slide.png" data-state="hide-menubar">
+  <div style="text-align: center;">
+<h1 class="title">$title$</h1>
+$if(subtitle)$
+  <p class="subtitle">$subtitle$</p>
+$endif$
+$for(author)$
+  <p class="author">$author$</p>
+$endfor$
+$for(institute)$
+  <p class="institute">$institute$</p>
+$endfor$
+$if(date)$
+  <p class="date">$date$</p>
+$endif$
+</div>
+<div class="social">
+<p><span color="#F4F4F4">Contact:</span></p>
+<p>
+  $if(mastodon)$
+    <a href="$mastodonurl$$mastodon$"  class="mastodon"><i class="fa-brands fa-mastodon" aria-label="mastodon"></i></a> <a href="$mastodonurl$$mastodon$" ><span class="citation" data-cites="philk">@$mastodon$</span></a> |
+  $endif$
+  $if(bluesky)$
+  <a href="https://bsky.app/profile/$bluesky$.bsky.social"  class="bluesky"><i class="fa-solid fa-square" aria-label="bluesky"></i></a> <a href="https://bsky.app/profile/$bluesky$.bsky.social" ><span class="citation" data-cites="phil-k">@$bluesky$</span></a> |
+  $endif$
+  $if(twitterx)$
+  <a href="https://twitter.com/$twitterx$" class="twitter"><i class="fa-brands fa-x-twitter" aria-label="twitter"></i></a> <a href="https://twitter.com/$twitterx$" ><span class="citation" data-cites="_philk">@$twitterx$</span></a>
+  $endif$
+  $if(git)$<a href="https://gitlab.com/$git$" class="gitlab"><iconify-icon inline="" icon="simple-icons:gitlab"></iconify-icon></a> <a href="https://github.com/$git$" class="github"><i class="fa-brands fa-github" aria-label="github"></i></a> <a href="https://gitlab.com/$git$">$git$</a>
+  $endif$
+</p>
+<p>
+  $if(orcid)$ <a href="https://orcid.org/$orcid$" class="orcid"><i class="ai  ai-orcid" style="color:black"></i></a> <a href="https://orcid.org/$orcid$">$orcid$</a> |
+  $endif$
+  $if(lattes)$
+  <a href="http://lattes.cnpq.br/$lattes$" class="lattes"><i class="ai  ai-lattes" style="color:black"></i></a> <a href="http://lattes.cnpq.br/$lattes$">$lattes$</a> |
+  $endif$
+  $if(researchgate)$
+    <a href="https://www.researchgate.net/profile/$researchgate$" class="researchgate"><i class="ai  ai-researchgate-square" style="color:black"></i></a> <a href="https://www.researchgate.net/profile/$researchgate$">$researchgate$</a>
+  $endif$
+</p>
+<p>
+  $if(contactemail)$ <a href="mailto:$contactemail$" class="email"><i class="fa-solid fa-envelope" aria-label="envelope"></i></a><a href="mailto:$contactemail$">&nbsp;$contactemail$</a> |
+  $endif$
+  $if(contactsite)$
+    <a href="$contactsite$" class="website"><i class="fa-solid fa-id-card" aria-label="id-card"></i></a><a href="$contactsite$">&nbsp;$contactsite$</a>
+  $endif$
+</p>
+</div>
+<div class="footer">
+<p> </p>
+</div>
+</section>

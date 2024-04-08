@@ -15,6 +15,7 @@ BugReports: https://gitlab.com/bpkleer/myhelpers/issues
 Imports: 
     devtools,
     utils,
+    rstudioapi,
     bayesplot, 
     cowplot,
     BayesPostEst,

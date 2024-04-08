@@ -1,0 +1,95 @@
+---
+title: "Your title"
+subtitle: "Conference / Panel name"
+author: "Philipp Kleer"
+institute: "Department of Political Science | Justus-Liebig-University Giessen" 
+# User socials
+mastodon: "philk"
+mastodonurl: "https://polsci.social/@"
+bluesky: "phil-k"
+#twitterx: "_philk"
+git: "bpkleer"
+orcid: "0000-0003-1935-387X"
+lattes: "4785970328498860"
+researchgate: "Philipp-Kleer"
+contactemail: "philipp.kleer@sowi.uni-giessen.de"
+contactsite: "https://bpkleer.github.io/en"
+# Settings
+date: "Report Last Run: `r Sys.time()`"
+date-format: long
+format:  
+  revealjs: 
+    width: 1600
+    height: 900
+    template-partials: 
+      - ./assets/title-slide.html
+    theme: [default, "./assets/bpk.scss"]
+    footer: "<a href='https://gitlab.com/bpkleer/' class='icon-corner'><svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'><path fill='currentColor' d='m21.663 9.987l-.028-.072l-2.719-7.094a.71.71 0 0 0-.706-.449a.711.711 0 0 0-.654.522L15.72 8.52H8.282L6.443 2.895a.711.711 0 0 0-.652-.524a.72.72 0 0 0-.707.45L2.362 9.925l-.028.07a5.057 5.057 0 0 0 1.674 5.838l.01.007l.024.019l4.147 3.104l2.05 1.553l1.247.944a.843.843 0 0 0 1.016 0l1.247-.944l2.05-1.553l4.172-3.123l.01-.008a5.055 5.055 0 0 0 1.682-5.845Z'></path></svg></a>"
+    navigation-mode: vertical
+    controls-layout: bottom-right
+    controls-tutorial: true
+    touch: true
+    menu: false
+    preview-links: auto
+    transition: slide
+    background-transition: fade
+    code-fold: false
+    code-summary: "Click here for Code"  
+    code-link: true
+    code-overflow: wrap
+    highlight-style: atom-one 
+    execute:
+      echo: true
+      eval: false
+      warning: false
+    chalkboard:
+      src: "./assets/drawings.json"
+      buttons: false
+    title-slide-attributes:
+      data-state: "hide-menubar"
+    simplemenu:
+        barhtml:
+            header: "<div class='menubar'><a href='#'></a><ul class='menu'></ul><div>"
+        scale: 0.8
+revealjs-plugins:
+  - simplemenu
+editor: source
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+library(RColorBrewer)
+library(scales)
+library(beyonce)
+```
+
+# Quarto {data-stack-name="Start"}
+
+Remember this is the first level!
+
+## Second level slide
+
+This is the content level.
+
+# Goodbye{.goodbye data-state="hide-menubar"}
+
+[Please, shoot questions at me. {{< iconify ph person-simple-throw-fill >}}]{.greetings}
+[If you use citations, put \ before @ in usernames]{.greetings}
+
+::: {.social}
+**Contact:**
+
+[{{< fa brands mastodon >}}](https://polsci.social/@philk){.mastodon} [@philk](https://polsci.social/@philk) | [{{< fa solid square >}}](https://bsky.app/profile/phil-k.bsky.social){.bluesky} [@phil-k](https://bsky.app/profile/phil-k.bsky.social) | [{{< iconify simple-icons gitlab >}}](https://gitlab.com/bpkleer){.gitlab} [{{< fa brands github >}}](https://github.com/bpkleer){.github} [bpkleer](https://gitlab.com/bpkleer)
+
+[{{< ai orcid >}}](https://orcid.org/0000-0003-1935-387X){.orcid} [0000-0003-1935-387X](https://orcid.org/0000-0003-1935-387X) | [{{< ai lattes >}}](http://lattes.cnpq.br/4785970328498860){.lattes} [4785970328498860](http://lattes.cnpq.br/4785970328498860) | [{{< ai researchgate-square >}}](https://www.researchgate.net/profile/Philipp-Kleer){.researchgate} [Philipp-Kleer](https://www.researchgate.net/profile/Philipp-Kleer)
+
+[{{< fa envelope >}}](mailto:philipp.kleer@sowi.uni-giessen.de){.email}[ philipp.kleer@sowi.uni-gessen.de](mailto:philipp.kleer@sowi.uni-giessen.de) | [{{< fa id-card >}} ](https://www.bpkleer.de){.website}[ bpkleer.de](https://www.bpkleer.de)
+:::
+
+::: {.footer}
+ 
+:::
+

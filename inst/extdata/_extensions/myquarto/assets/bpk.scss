@@ -1,0 +1,832 @@
+/*-- scss:defaults --*/
+
+// fonts
+@import "https://fonts.googleapis.com/css?family=Fira+Sans";
+@import "https://fonts.googleapis.com/css?family=Fira+Code";
+@import "https://fonts.googleapis.com/css?family=Montserrat";
+
+$font-family-sans-serif: "Fira Sans", serif;
+$presentation-heading-font: "Montserrat", sans-serif;
+$font-weight: 350;
+
+// colors
+$style1: #579D90;
+$style2: #55AB6B;
+$style3: #558CAB;
+$white: #F7F7F7;
+$gray: #F4F4F4;
+$gray2: #C4C4C4;
+$gray3: #ebebeb;
+$darkgray: #5A5A5A;
+$darkgray2: #1C1C1C;
+$black: #272822;
+$blue: #5563AB;
+$red: #D15E65;
+$purple: #EB98EB;
+$yellow: #EBB46A;
+
+// definitions of slides
+$primary: $style1;
+$body-color: $gray;
+$body-bg: $style1;
+$background-color: $style1;
+$presentation-heading-color: $gray;
+$link-color: $darkgray;
+$main-color: $darkgray;
+$quarto-hl-fu-color: $red;
+$code-block-border-color: $darkgray;
+$code-bg: $white !important;
+$code-color: $darkgray;
+$btn-code-copy-color: $blue;
+
+/*-- scss:rules --*/
+/*********
+
+Slide Styles
+
+**********/
+
+/* Rescaling for simplemenu, otherwise slide-header crashes into menu */
+
+/* for all slides */
+.slides {
+  inset: 55% auto auto 50% !important;
+  transform: translate(-50%, -50%) scale(0.95);
+}
+
+.reveal .footer {
+  color: $darkgray2;
+  text-align: left !important;
+  margin-left: 1rem !important;
+}
+
+.reveal .progress {
+  height: 6px;
+}
+
+.reveal ::selection {
+  color: $gray;
+  background: $darkgray;
+  text-shadow: none;
+}
+
+/* style for vertical slides */
+.reveal .slide.level2 {
+  background-color: $gray3 !important;
+}
+
+.reveal .slide.level2 a {
+  color: $style3;
+}
+
+.reveal .slide.level2 .citation a{
+  color: #222!important;
+}
+
+.reveal .slide.level2 .references a{
+  color: #222!important;
+}
+
+/* special goodbye slide */
+.reveal .slide.goodbye {
+  color: $background-color !important;
+  background-color: $style1 !important;
+}
+
+/* Color settings for Panels on all slides */
+.panel-tabset {
+  background-color: $gray;
+  border-bottom: 0px solid $darkgray;
+  border-left: 0px solid $darkgray;
+  border-right: 0px solid $darkgray;
+  padding: 0.75rem;
+}
+
+.panel-tabset-tabby {
+  border-bottom: 0px solid $darkgray;
+  border-left: 0px solid $darkgray;
+  border-right: 0px solid $darkgray;
+}
+
+.panel-tabset-tabby a {
+  color:  $gray2 !important;
+  border-top: 4px solid  $gray2 !important;
+  border-bottom: 4px solid  $gray2 !important;
+}
+
+.panel-tabset [role=tablist] {
+  border: none!important;
+}
+
+.panel-tabset [role=tab][aria-selected=true] {
+  color: $blue !important;
+  border-top: 4px solid $blue !important;
+  border-bottom: 4px solid $blue !important;
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.panel-tabset-tabby a:hover {
+  color: $yellow !important;
+  border-top: 4px solid $yellow !important;
+  border-bottom: 4px solid $yellow !important;
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.panel-tabset-tabby a:focus {
+  color: $blue;
+  border-top: 4px solid $blue !important;
+  border-bottom: 4px solid $blue !important;
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.tab-content {
+  min-height: 640px;
+}
+
+.tab-content p {
+  color: $darkgray;
+}
+
+/**** Simplemenu ****/
+.menubar {
+  color: $darkgray2 !important;
+}
+
+.menubar:before, .menubar:after {
+  border-bottom: 3px solid !important;
+}
+
+/**********
+
+Headers & Font sizes
+
+***********/
+
+.reveal .slides h1 {
+  font-weight: 800 !important;
+  color: $yellow;
+  font-size: 6rem;
+}
+
+.reveal .slides h2, h3, h4 {
+  color: $darkgray;
+  text-shadow: none;
+  font-weight: 800!important;
+  font-size: 5.5rem;
+  margin-top: -1rem;
+}
+
+.slide h1 {
+  color: $darkgray;
+}
+
+.slide h2 {
+  color: $darkgray;
+}
+
+.slide h3 {
+  color: $blue;
+}
+
+.slide.goodbye h1{
+  color:  $gray !important;
+  margin-top: 12.5rem !important;
+  text-align: left!important;
+  font-size: 10rem!important;
+}
+
+.slide #references h2, h3, h4 {
+  color: $darkgray;
+  text-shadow: none;
+  font-weight: 800!important;
+  font-size: 5.5rem;
+  margin-top: -1rem!important;
+}
+
+#title-slide h1  {
+color:  $gray !important;
+font-size: 5rem !important;
+text-shadow: none;
+font-weight: 400;
+margin-bottom: -1rem;
+margin-top: 2.5rem;
+margin-right: 11rem;
+margin-left: 11rem;
+}
+
+#title-slide .subtitle, div.reveal div.slides section.quarto-title-block .subtitle {
+color:  $gray;
+text-shadow: none;
+text-align: center;
+font-weight: 350;
+font-size: 3rem;
+margin-bottom: 0.5rem;
+margin-top: 1.5rem;
+margin-right: 11rem;
+margin-left: 11rem;
+}
+
+#title-slide p.author {
+color:  $gray;
+text-shadow: none;
+text-align: center;
+font-weight: 350;
+font-size: 1.75rem;
+margin-top: 1.5rem;
+margin-bottom: 0.5rem;
+margin-right: 11rem;
+margin-left: 11rem;
+}
+
+#title-slide p.institute {
+color:  $gray;
+text-shadow: none;
+text-align: center;
+font-weight: 350;
+font-size: 1.75rem !important;
+margin-bottom: -0.25rem;
+margin-right: 11rem;
+margin-left: 11rem;
+}
+
+#title-slide p.date {
+color:  $gray;
+text-shadow: none;
+text-align: center;
+font-weight: 350;
+font-size: 1.25rem;
+margin-bottom: 3rem;
+margin-right: 11rem;
+margin-left: 11rem;
+}
+
+#title-slide p {
+color:  $gray;
+text-shadow: none;
+text-align: left;
+font-weight: 350;
+font-size: 1.25rem;
+margin-right: 11rem;
+margin-left: 11rem;
+}
+
+section.has-light-background .controls button {
+  color: $style1 !important;
+}
+
+section.has-light-background h1, section.has-light-background h2, section.has-light-background h3, section.has-light-background h4, section.has-light-background h5, section.has-light-background h6 {
+  color: $style1 !important;
+}
+
+section.has-dark-background, section.has-dark-background h1, section.has-dark-background h2, section.has-dark-background h3, section.has-dark-background h4, section.has-dark-background h5, section.has-dark-background h6 {
+  color: $darkgray !important;
+}
+
+.slide.inverse h2, .slide.inverse h3{
+  color: $background-color;
+}
+
+.reveal dt {
+  color: $style3;
+}
+
+.reveal dd {
+  color: $darkgray;
+}
+
+
+.reveal .slide figure>figcaption {
+  text-align: center;
+}
+
+/*******
+
+Font size
+
+**********/
+/* LaTeX style */
+.Large { font-size: 144%; }
+.large { font-size: 120%; }
+.small { font-size: 90%; }
+.footnotesize { font-size: 80%; }
+.scriptsize { font-size: 70%; }
+.tiny { font-size: 60%; }
+
+/* Font / Code sizes */
+.font10 { font-size: 10%; }
+.font20 { font-size: 20%; }
+.font30 { font-size: 30%; }
+.font40 { font-size: 40%; }
+.font50 { font-size: 50%; }
+.font60 { font-size: 60%; }
+.font70 { font-size: 70%; }
+.font75 { font-size: 75%; }
+.font80 { font-size: 80%; }
+.font90 { font-size: 90%; }
+.font100 { font-size: 100%; }
+.font110 { font-size: 110%; }
+.font120 { font-size: 120%; }
+.font130 { font-size: 130%; }
+.font140 { font-size: 140%; }
+.font150 { font-size: 150%; }
+.font160 { font-size: 160%; }
+.font170 { font-size: 170%; }
+.font175 { font-size: 175%; }
+.font180 { font-size: 180%; }
+.font190 { font-size: 190%; }
+.font200 { font-size: 200%; }
+
+
+/**************
+
+Highlight Styles
+
+***************/
+
+.highlight1{
+  color: $blue;
+  font-weight: bold;
+}
+
+.highlight2{
+  color: $yellow;
+  font-weight: bold;
+}
+
+.highlight3{
+  color: $red;
+  font-weight: bold;
+}
+
+.highlight4{
+  color: $purple;
+  font-weight: bold;
+}
+.warning{
+  color: $red;
+  font-weight: bold;
+}
+
+.contrast{
+  color: $yellow;
+  font-weight: bold;
+}
+
+.blue{
+  color: $blue;
+}
+
+.red{
+  color: $red;
+}
+
+.purple{
+  color: $purple;
+}
+
+/**********
+
+Code chunks
+
+**********/
+
+/**** General setting for all codes ****/
+.reveal .sourceCode {
+  padding: 0.0rem;
+  background-color: $gray3 !important;
+  border: none!important;
+  margin-bottom: 1rem !important;
+}
+
+.reveal .column .fragment pre code {
+  margin-bottom: 1rem!important;
+}
+
+.reveal pre {
+  padding: 0rem !important;
+  background-color: $gray3 !important;
+}
+
+.reveal .sourceCode pre code {
+  padding: 1.5rem;
+  background-color: $white !important;
+  border: 4px solid $darkgray !important;
+  border-radius: 25px !important;
+}
+
+.reveal pre code {
+  color: $code-color!important;
+  padding: 1.5rem;
+  background-color: $white !important;
+  border: 4px solid $darkgray !important;
+  border-radius: 25px !important;
+}
+
+.reveal code {
+	font-family: "Fira Code", sans-serif;
+	text-transform: none;
+	tab-size: 2;
+	margin-bottom: 1rem!important;
+}
+
+/* Inline Code */
+.reveal p code {
+  color: $blue;
+  font-size: 0.75em;
+  border-radius: 0.5rem;
+  border: 2px solid $darkgray !important;
+  padding: 0rem 0.2rem;
+  vertical-align: middle!important;
+  line-height: 130%;
+}
+
+/**** code in headline ****/
+.reveal h2 code {
+  color: $blue;
+  border-radius: 1.5rem;
+  border: 2px solid $darkgray !important;
+  padding: 0.25rem 1.5rem;
+}
+
+/***** code hidden in summary ****/
+.reveal summary {
+  color: $style1 !important;
+}
+
+.reveal details {
+  background-color: $white!important;
+  border-radius: 1.5rem;
+  border: 4px solid $style1 !important;
+  padding: 0.25rem 1.5rem;
+}
+
+.reveal details .sourceCode pre code {
+  color: $code-color!important;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: $white !important;
+  border: 2px solid $code-color!important;
+}
+
+.reveal details .sourceCode {
+  background-color: $white!important;
+}
+
+.code-copy-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 10;
+  margin-top: 1.5rem;
+  margin-right: 1.5rem;
+  background-color: $code-bg;
+  z-index: 3;
+  scale: 2;
+  color: $style3;
+}
+
+/******* Footnotes and aside ********/
+.reveal aside p, .reveal aside li {
+  color: $style3!important;
+  font-size: 1.25rem;
+  line-height: 100%!important;
+}
+
+/*******
+
+Social media class
+
+********/
+
+.reveal .ai {
+  color: inherit !important;
+}
+
+.reveal .social a {
+  color: #558CAB;
+}
+
+.reveal .social a.email {
+  color: #558CAB !important;
+  background-color: $white !important;
+  border-color: #558CAB !important;
+  border-radius: 25px;
+  padding: 0.15rem 0.4rem;
+  background: white;
+  border: 2px solid transparent;
+  transition: background ease 0.3s, color ease 0.3s;
+  margin-bottom: 0em;
+  text-decoration: none;
+}
+
+.reveal .social a.email:hover {
+  background: #558CAB !important;
+  color: white !important;
+}
+
+.reveal .social a.website {
+  color: #558CAB !important;
+  background-color: $white !important;
+  border-color: #558CAB !important;
+  border-radius: 25px;
+  padding: 0.15rem 0.4rem;
+  background: white;
+  border: 2px solid transparent;
+  transition: background ease 0.3s, color ease 0.3s;
+  margin-bottom: 0em;
+  text-decoration: none;
+}
+
+.reveal .social a.website:hover {
+  background: #558CAB !important;
+  color: white !important;
+}
+
+.reveal .social a.twitter-old {
+  color: #1DA1F2 !important;
+  background-color: $white !important;
+  border-color: #1DA1F2 !important;
+  border-radius: 25px;
+  padding: 0.15rem 0.4rem;
+  background: white;
+  border: 2px solid transparent;
+  transition: background ease 0.3s, color ease 0.3s;
+  margin-bottom: 0em;
+  text-decoration: none;
+}
+
+.reveal .social a.twitter-old:hover {
+  background: #1DA1F2 !important;
+  color: white !important;
+}
+
+.reveal .social a.twitter {
+  color: #000000 !important;
+  background-color: $white !important;
+  border-color: #000000 !important;
+  border-radius: 25px;
+  padding: 0.15rem 0.4rem;
+  background: white;
+  border: 2px solid transparent;
+  transition: background ease 0.3s, color ease 0.3s;
+  margin-bottom: 0em;
+  text-decoration: none;
+}
+
+.reveal .social a.twitter:hover {
+  background: #000000 !important;
+  color: white !important;
+}
+
+.reveal .social a.mastodon {
+  color: #6364FF !important;
+  background-color: $white !important;
+  border-color: #6364FF !important;
+  border-radius: 25px;
+  padding: 0.15rem 0.4rem;
+  background: white;
+  border: 2px solid transparent;
+  transition: background ease 0.3s, color ease 0.3s;
+  margin-bottom: 0em;
+  text-decoration: none;
+}
+
+.reveal .social a.mastodon:hover {
+  background: #6364FF !important;
+  color: white !important;
+}
+
+.reveal .social a.bluesky {
+  color: #4985CE !important;
+  background-color: $white !important;
+  border-color: #4985CE !important;
+  border-radius: 25px;
+  padding: 0.15rem 0.4rem;
+  background: white;
+  border: 2px solid transparent;
+  transition: background ease 0.3s, color ease 0.3s;
+  margin-bottom: 0em;
+  text-decoration: none;
+}
+
+.reveal .social a.bluesky:hover {
+  background: #4985CE !important;
+  color: white !important;
+}
+
+.reveal .social a.researchgate {
+  color: #00CCBB !important;
+  background-color: $white !important;
+  border-color: #00CCBB !important;
+  border-radius: 25px;
+  padding: 0.15rem 0.4rem;
+  background: white;
+  border: 2px solid transparent;
+  transition: background ease 0.3s, color ease 0.3s;
+  margin-bottom: 0em;
+  text-decoration: none;
+}
+
+.reveal .social a.researchgate:hover {
+  background: #00CCBB !important;
+  color: white !important;
+}
+
+.reveal .social a.lattes {
+  color: #538cc6 !important;
+  background-color: $white !important;
+  border-color: #538cc6 !important;
+  border-radius: 25px;
+  padding: 0.15rem 0.4rem;
+  background: white;
+  border: 2px solid transparent;
+  transition: background ease 0.3s, color ease 0.3s;
+  margin-bottom: 0em;
+  text-decoration: none;
+}
+
+.reveal .social a.lattes:hover {
+  background: #538cc6 !important;
+  color: white !important;
+}
+
+
+.reveal .social a.orcid {
+  color: #A6CE39 !important;
+  background-color: $white !important;
+  border-color: #A6CE39 !important;
+  border-radius: 25px;
+  padding: 0.15rem 0.4rem;
+  background: white;
+  border: 2px solid transparent;
+  transition: background ease 0.3s, color ease 0.3s;
+  margin-bottom: 0em;
+  text-decoration: none;
+}
+
+.reveal .social a.orcid:hover {
+  background: #A6CE39 !important;
+  color: white !important;
+}
+
+.reveal .social a.gitlab {
+  color: #fc6d27 !important;;
+  background-color: $white !important;
+  border-color: #fc6d27 !important;
+  border-radius: 25px;
+  padding: 0.15rem 0.4rem;
+  background: white;
+  border: 2px solid transparent;
+  transition: background ease 0.3s, color ease 0.3s;
+  margin-bottom: 0em;
+  text-decoration: none;
+}
+
+.reveal .social a.gitlab:hover {
+  background: #fc6d27 !important;
+  color: white !important;
+}
+
+.reveal .social a.github {
+  color: black !important;
+  background-color: $white !important;
+  border-color: black !important;
+  border-radius: 25px;
+  padding: 0.15rem 0.4rem;
+  background: white;
+  border: 2px solid transparent;
+  transition: background ease 0.3s, color ease 0.3s;
+  margin-bottom: 0em;
+  text-decoration: none;
+}
+
+.reveal .social a.github:hover {
+  background: black !important;
+  color: white !important;
+}
+
+/*******
+
+Social media class
+
+Custom title and goodbye
+
+********/
+
+
+#title-slide .social p {
+color: $gray!important;
+font-size: 1.5rem!important;
+text-align: center;
+}
+
+#title-slide .social p a {
+  color: $gray
+}
+
+/**** social media class (goodbye slide) ***/
+.slide.goodbye .greetings {
+  font-size: 3.5rem;
+  color: $gray !important;
+}
+
+.slide.goodbye .social {
+  margin-top: 10rem !important;
+  line-height: 100%;
+}
+
+.slide.goodbye .social p {
+  color:  $gray !important;
+  font-size: 2.5rem !important;
+  text-align: left;
+  margin-top: 0.2rem;
+}
+
+.slide.goodbye .social p a {
+  color: $gray;
+}
+
+/******************
+
+Gitlab icon
+
+bottom left
+
+********************/
+
+a.icon-corner {
+  line-height: 0;
+  color: $darkgray !important;
+  border-color: $darkgray !important;
+  border-radius: 25px;
+  padding-top: 0.45rem;
+  padding-bottom: 0.15rem;
+  padding-left: 0.45rem;
+  padding-right: 0.45rem;
+  background: rgba(235, 235, 235, 0.7);
+  border: 2px solid transparent;
+  transition: background ease 0.3s, color ease 0.3s;
+  text-decoration: none;
+  vertical-align: middle;
+
+}
+
+a.icon-corner:hover {
+  color: rgba(235, 235, 235, 0.7) !important;
+  background: $darkgray;
+}
+
+/*******************
+
+Scrolling on Slides
+
+(inherent does not work)
+
+
+******************/
+/* for whole slide */
+.scroll{
+  height: 25em;
+  overflow-y: auto;
+}
+
+/* special sizes for code-chunks */
+.scroll-box-8 {
+  height:8em;
+  overflow-y: scroll;
+}
+.scroll-box-10 {
+  height:10em;
+  overflow-y: scroll;
+}
+.scroll-box-12 {
+  height:12em;
+  overflow-y: scroll;
+}
+.scroll-box-14 {
+  height:14em;
+  overflow-y: scroll;
+}
+.scroll-box-16 {
+  height:16em;
+  overflow-y: scroll;
+}
+.scroll-box-18 {
+  height:18em;
+  overflow-y: scroll;
+}
+.scroll-box-20 {
+  height:20em;
+  overflow-y: scroll;
+}
+.scroll-box-22 {
+  height:22em;
+  overflow-y: scroll;
+}
+.scroll-box-24 {
+  height:24em;
+  overflow-y: scroll;
+}
