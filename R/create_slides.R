@@ -13,7 +13,8 @@
 create_slides <- function(
     filename = NULL,
     draftname = "_extensions/myquarto/draft-slides.qmd",
-    ext_name = "myquarto"
+    ext_name = "myquarto",
+    path_to_chrome = "/Users/phil/.cache/puppeteer/chrome/mac_arm-119.0.6045.105/"
 ) {
 
   if (is.null(filename)) {
@@ -166,7 +167,13 @@ create_slides <- function(
 
     dir.create("./.cache/puppeteer/chrome/mac_arm-119.0.6045.105/")
 
-    install7 <- rstudioapi::terminalExecute("cp -rv /Users/phil/.cache/puppeteer/chrome/mac_arm-119.0.6045.105/ $(pwd)/.cache/puppeteer/chrome/mac_arm-119.0.6045.105/")
+    string <- paste0(
+      "cp -rv ",
+      path_to_chrome,
+      " $(pwd)/.cache/puppeteer/chrome/mac_arm-119.0.6045.105/"
+    )
+
+    install7 <- rstudioapi::terminalExecute(string)
 
     message("Puppeteer Chrome installation has been copied.")
   } else {
