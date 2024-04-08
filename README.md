@@ -32,4 +32,4 @@ devtools::install_github("bpkleer/myhelpers")
 | `posterior_to_latex()` | transfers output of `bayestestR::describe_posterior()` to LaTeX | 
 | `create_report()` | template for html-report | 
 | `create_slides()` | template for html-slides |
-| `create_slides_pdf()` | creating pdf files from html-slides |
+| `create_slides_pdf()` | creating pdf files from html-slides (you will need to adjust the file-argument in this function; you will need to install `decktape` and `puppeteer` (see `README-print.md` (once you created slides with the above function) |
