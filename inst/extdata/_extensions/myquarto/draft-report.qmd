@@ -16,7 +16,7 @@ format:
     toc-title: Contents
     toc-location: left
     toc_depth: 3
-    css: [default, "assets/bpk.css"]
+    css: [default, "assets/report.css"]
     fontsize: 1.1em
     code-link: true
     anchor-sections: true
