@@ -171,12 +171,25 @@ Headers & Font sizes
   font-size: 6rem;
 }
 
-.reveal .slides h2, h3, h4 {
-  color: $darkgray;
+.reveal .slides h2 {
   text-shadow: none;
   font-weight: 800!important;
   font-size: 5.5rem;
   margin-top: -1rem;
+}
+
+.reveal .slides h3 {
+  text-shadow: none;
+  font-weight: 800!important;
+  font-size: 4.5rem!important;
+  margin-top: 5rem;
+}
+
+.reveal .slides  h4 {
+  text-shadow: none;
+  font-weight: 800!important;
+  font-size: 3rem!important;
+  margin-top: 5rem;
 }
 
 .slide h1 {
