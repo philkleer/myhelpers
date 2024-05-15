@@ -66,9 +66,7 @@ create_slides <- function(
       con = paste0(filename, ".qmd", collapse = "")
     )
 
-  # open the new file in the editor
-  # file.edit(paste0(filename, ".qmd", collapse = ""))
-
+  # Copying extensions and puppeteer
   if (!dir.exists("./_extensions/jmbuhr/qrcode")) {
     install <- rstudioapi::terminalExecute("quarto install extension jmbuhr/quarto-qrcode")
 
@@ -179,4 +177,7 @@ create_slides <- function(
   } else {
     message("There is already a .cache-Folder. Please check if you have a puppeteer/chrome/mac_arm-119.0.6045.105/ folder. If not, copy it manually from /Users/phil/.cache/ !")
   }
+
+  # open the new file in the editor
+  # file.edit(paste0(filename, ".qmd", collapse = ""))
 }

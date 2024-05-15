@@ -13,7 +13,8 @@
 create_report <- function(
     filename = NULL,
     draftname = "_extensions/myhelpers/draft-report.qmd",
-    ext_name = "myhelpers"
+    ext_name = "myhelpers",
+    path_to_chrome = "/Users/phil/.cache/puppeteer/chrome/mac_arm-119.0.6045.105/"
 ) {
 
   if (is.null(filename)) {
@@ -46,11 +47,10 @@ create_report <- function(
   # Create folder for recursive copying into ahead of time
   if (draftname == "_extensions/myhelpers/draft-report.qmd") {
     file.copy(
-      from = "inst/extdata/_extensions/myhelpers/assets/",
+      from = "_extensions/myhelpers/assets/",
       to = "./",
       recursive = TRUE
     )
-
   }
 
   # create new qmd report based on skeleton
@@ -60,9 +60,7 @@ create_report <- function(
       con = paste0(filename, ".qmd", collapse = "")
     )
 
-  # open the new file in the editor
-  # file.edit(paste0(filename, ".qmd", collapse = ""))
-
+  # Copying extensions and puppeteer
   if (!dir.exists("./_extensions/jmbuhr/qrcode")) {
     install <- rstudioapi::terminalExecute("quarto install extension jmbuhr/quarto-qrcode")
 
@@ -148,6 +146,32 @@ create_report <- function(
   } else {
     message("Extension 'social-embeds' already exists.")
   }
-}
 
-create_report('documentation')
+  # Kopieren von puppeteer, damit decktape funktioniert für PDF Ausgabe
+  # Chrome version ist die, die decktape braucht (evtl. anpassen mit Neuerungen von Decktape)
+  if (!dir.exists("./.cache/puppeteer/chrome/mac_arm-119.0.6045.105/")) {
+
+    dir.create("./.cache/")
+
+    dir.create("./.cache/puppeteer/")
+
+    dir.create("./.cache/puppeteer/chrome/")
+
+    dir.create("./.cache/puppeteer/chrome/mac_arm-119.0.6045.105/")
+
+    string <- paste0(
+      "cp -rv ",
+      path_to_chrome,
+      " $(pwd)/.cache/puppeteer/chrome/mac_arm-119.0.6045.105/"
+    )
+
+    install7 <- rstudioapi::terminalExecute(string)
+
+    message("Puppeteer Chrome installation has been copied.")
+  } else {
+    message("There is already a .cache-Folder. Please check if you have a puppeteer/chrome/mac_arm-119.0.6045.105/ folder. If not, copy it manually from /Users/phil/.cache/ !")
+  }
+
+  # open the new file in the editor
+  # file.edit(paste0(filename, ".qmd"))
+}
