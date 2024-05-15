@@ -12,8 +12,8 @@
 # Main function (and so far only function)
 create_report <- function(
     filename = NULL,
-    draftname = "_extensions/myquarto/draft-report.qmd",
-    ext_name = "myquarto"
+    draftname = "_extensions/myhelpers/draft-report.qmd",
+    ext_name = "myhelpers"
 ) {
 
   if (is.null(filename)) {
@@ -23,7 +23,7 @@ create_report <- function(
   out_dir <- getwd()
 
   # check for available extensions
-  stopifnot("Extension not in package" = ext_name %in% c("myquarto"))
+  stopifnot("Extension not in package" = ext_name %in% c("myhelpers"))
 
   # check for existing _extensions directory
   if(!file.exists("_extensions")) dir.create("_extensions")
@@ -31,12 +31,12 @@ create_report <- function(
 
   # Create folder for recursive copying into ahead of time
   if(!file.exists(paste0("_extensions/", ext_name))) dir.create(paste0("_extensions/", ext_name))
-  message("Created '_extensions/myquarto' folder")
+  message("Created '_extensions/myhelpers' folder")
 
   # copy from internals
   # copy my template
   file.copy(
-    from = system.file(paste0("extdata/_extensions/", ext_name), package = "myquarto"),
+    from = system.file(paste0("extdata/_extensions/", ext_name), package = "myhelpers"),
     to = paste0("_extensions/"),
     overwrite = TRUE,
     recursive = TRUE,
@@ -44,11 +44,13 @@ create_report <- function(
   )
 
   # Create folder for recursive copying into ahead of time
-  if (draftname == "_extensions/myquarto/draft-report.qmd") {
-    if (!dir.exists(paste0("assets/"))) dir.create(paste0("assets/"))
-    message("Created 'assets' folder")
+  if (draftname == "_extensions/myhelpers/draft-report.qmd") {
+    file.copy(
+      from = "inst/extdata/_extensions/myhelpers/assets/",
+      to = "./",
+      recursive = TRUE
+    )
 
-    file.copy("_extensions/myquarto/assets/", "./", recursive = TRUE)
   }
 
   # create new qmd report based on skeleton
@@ -147,3 +149,5 @@ create_report <- function(
     message("Extension 'social-embeds' already exists.")
   }
 }
+
+create_report('documentation')

@@ -12,8 +12,8 @@
 # Main function (and so far only function)
 create_slides <- function(
     filename = NULL,
-    draftname = "_extensions/myquarto/draft-slides.qmd",
-    ext_name = "myquarto",
+    draftname = "_extensions/myhelpers/draft-slides.qmd",
+    ext_name = "myhelpers",
     path_to_chrome = "/Users/phil/.cache/puppeteer/chrome/mac_arm-119.0.6045.105/"
 ) {
 
@@ -24,7 +24,7 @@ create_slides <- function(
   out_dir <- getwd()
 
   # check for available extensions
-  stopifnot("Extension not in package" = ext_name %in% c("myquarto"))
+  stopifnot("Extension not in package" = ext_name %in% c("myhelpers"))
 
   # check for existing _extensions directory
   if(!file.exists("_extensions")) dir.create("_extensions")
@@ -32,12 +32,12 @@ create_slides <- function(
 
   # Create folder for recursive copying into ahead of time
   if(!file.exists(paste0("_extensions/", ext_name))) dir.create(paste0("_extensions/", ext_name))
-  message("Created '_extensions/myquarto' folder")
+  message("Created '_extensions/myhelpers' folder")
 
   # copy from internals
   # copy my template
   file.copy(
-    from = system.file(paste0("extdata/_extensions/", ext_name), package = "myquarto"),
+    from = system.file(paste0("extdata/_extensions/", ext_name), package = "myhelpers"),
     to = paste0("_extensions/"),
     overwrite = TRUE,
     recursive = TRUE,
@@ -45,18 +45,18 @@ create_slides <- function(
   )
 
   # Create folder for recursive copying into ahead of time
-  if (draftname == "_extensions/myquarto/draft-slides.qmd") {
+  if (draftname == "_extensions/myhelpers/draft-slides.qmd") {
     if (!dir.exists(paste0("assets/"))) dir.create(paste0("assets/"))
     message("Created 'assets' folder")
 
-    file.copy("_extensions/myquarto/assets/", "./", recursive = TRUE)
+    file.copy("_extensions/myhelpers/assets/", "./", recursive = TRUE)
 
     # # Copying puppeteer cache for decktape to print PDF
     # not needed anymore
-    # file.copy("_extensions/myquarto/.puppeteerrc.cjs/", "./")
+    # file.copy("_extensions/myhelpers/.puppeteerrc.cjs/", "./")
 
     # Copying guide for using decktape
-    file.copy("_extensions/myquarto/README-print.md", "./")
+    file.copy("_extensions/myhelpers/README-print.md", "./")
   }
 
   # create new qmd report based on skeleton
