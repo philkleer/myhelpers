@@ -33,5 +33,6 @@ Imports:
     scales,
     stringr,
     tibble,
+    tidybayes,
     colorspace,
     tidyselect
