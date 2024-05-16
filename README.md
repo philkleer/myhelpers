@@ -18,6 +18,7 @@ devtools::install_github("bpkleer/myhelpers")
 | `create_bayes_combo()` | creates density and and trace diagnostics for `brms`-output automatically across all variables and saves single png-files |
 | `create_bayesreg_table()` | creates a standard regression table from `bayesPostEst::mcmcReg()` to LaTeX | 
 | `create_corr()` | creates a standardized correlation plot from correlation matrix |
+| `create_corr_bayes()` | creates a standardized correlation plot from correlation matrix; transforms output directly from `brms` output |
 | `create_raincloud()` | creates a standardized raincloud for a single metric variable|
 | `create_raincloud_group()` | creates a standardized raincloud for a single metric variable on a categorical variable|
 | `create_raincloud_facet()` | creates a standardized raincloud sorted by third variable |
