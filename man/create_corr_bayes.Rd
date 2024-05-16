@@ -8,7 +8,6 @@ This function just utilize \code{ggcorrplot} function to create a standardized c
 create_corr_bayes(
     cor,
     varlist,
-    pmat,
     sizer = 5,
     fontsize = 8,
     sizevar = 12
@@ -17,7 +16,6 @@ create_corr_bayes(
 \arguments{
   \item{cor}{Output of brms correlation calculation.}
   \item{varlist}{Vector of variable names. Be aware: \code{brms} sometimes change variable names, and therefore be sure that you formatted this vector correctly. Otherwise nothing will be shown in the plot.}
-  \item{pmat}{Object of \code{corr.test} from \code{psych}. It is only the correlation values (\code{p}). Default is \code{NULL}, to work with Bayesian simple correlation matrizes.}
   \item{sizer}{Font size of correlation values in plot.}
   \item{fontsize}{General font size adjustion via \code{theme()}.}
   \item{sizevar}{Font size of variable name in plot.}
@@ -26,7 +24,6 @@ create_corr_bayes(
 # create_corr_bayes(
 #    cor,
 #    varlist,
-#    pmat,
 #    sizer = 5,
 #    fontsize = 8,
 #    sizevar = 12

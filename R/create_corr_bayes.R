@@ -1,5 +1,5 @@
 create_corr_bayes <- function(
-    cor, varlist, pmat = NULL, sizer = 5, fontsize = 8, sizevar = 12
+    cor, varlist, sizer = 5, fontsize = 8, sizevar = 12
 ){
   if(!requireNamespace("ggcorrplot")) install.packages("ggcorrplot")
 
@@ -67,7 +67,6 @@ create_corr_bayes <- function(
 
   ggcorrplot::ggcorrplot(
     cormat,
-    p.mat = pmat,
     type = "upper",
     tl.cex = sizevar,
     insig = "blank",
