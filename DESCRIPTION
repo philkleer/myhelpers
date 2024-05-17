@@ -35,4 +35,5 @@ Imports:
     tibble,
     tidybayes,
     colorspace,
-    tidyselect
+    tidyselect,
+    psych
