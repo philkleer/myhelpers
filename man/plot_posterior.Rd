@@ -10,16 +10,16 @@ plot_posterior(
     ndraws = 150,
     type = "ecdf_overlay",
     font = "Fira Sans",
-    model,
+    model = NULL,
     folder = "./"
     )
 }
 \arguments{
   \item{fit}{\code{brms} fit to plot.}
   \item{ndraws}{Set the draws for plotting. \code{default} is 150.}
-  \item{type}{Choose the type for plotting, for help check \code{??pp_check}.}
+  \item{type}{Choose the type for plotting, for help check \code{??pp_check}. Example \code{bars} or \code{dens_overlay}.}
   \item{font}{Set the font for text in the plot.}
-  \item{model}{Indicate the model for identification later.}
+  \item{model}{Indicate the model for identification later. Default is \code{NULL}
   \item{folder}{Indicate a different folder than working directory for saving.}
 }
 \examples{
@@ -27,6 +27,8 @@ plot_posterior(
 #    fit,
 #    ndraws = 150,
 #    type = "ecdf_overlay",
-#    font = "Fira Sans"
+#    font = "Fira Sans",
+#    model = NULL,
+#    folder = "./"
 #    )
 }

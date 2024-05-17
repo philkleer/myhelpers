@@ -3,7 +3,7 @@ plot_posterior <- function(
     ndraws = 150,
     type = "ecdf_overlay",
     font = "Fira Sans",
-    model,
+    model = NULL,
     folder = "./"
     ) {
 
@@ -13,9 +13,9 @@ plot_posterior <- function(
   plot <- bayesplot::pp_check(
     type = type,
     fit,
-    ndraws = 150
+    ndraws = ndraws
   ) +
-    ggplot2::labs(caption = "150 draws.") +
+    ggplot2::labs(caption = paste0(ndraws, " draws.")) +
     ggplot2::theme(
       text = ggplot2::element_text(
         family = font,
