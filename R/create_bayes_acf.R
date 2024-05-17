@@ -52,25 +52,29 @@ create_bayes_acf <- function(
 
     if (i + neachplot >= total) {
       howmany <- (total - i + 1)
+      width.cal <-  22.4 / 5 * howmany
+      height.cal  <-  14 / 5 * howmany
+      size1 <- 0.7142857 * width.cal
+      size2 <- 0.3125 * width.cal
+      size3 <- 1.160714 * width.cal
 
       plot <- bayesplot::mcmc_acf(
         postdf,
         pars = dplyr::vars(i:total),
       ) +
         ggplot2::theme(
-          strip.text.x = ggplot2::element_text(size = 3.5),
-          strip.text.y = ggplot2::element_text(size = 3.5),
+          strip.text.x = ggplot2::element_text(size = size2),
+          strip.text.y = ggplot2::element_text(size = size2),
           axis.text.x = ggplot2::element_text(
             angle = 45,
             vjust = 1,
             hjust = 1,
-            size = 8
+            size = size1
           ),
-          axis.text.y = ggplot2::element_text(size = 8)
-        )
+          axis.text.y = ggplot2::element_text(size = size1),
+          axis.title = ggplot2::element_text(size = size3)
 
-      width.cal <-  11.2 / 5 * howmany
-      height.cal  <-  7 / 5 * howmany
+        )
 
       ggplot2::ggsave(
         paste0(
@@ -86,24 +90,28 @@ create_bayes_acf <- function(
         units = 'cm'
       )
     } else {
+      width.cal <-  (22.4 / 5) * neachplot
+      height.cal  <-  (14 / 5) * neachplot
+      size1 <- 0.7142857 * width.cal
+      size2 <- 0.3125 * width.cal
+      size3 <- 1.160714 * width.cal
+
       plot <- bayesplot::mcmc_acf(
         postdf,
         pars = dplyr::vars(i:(i + neachplot - 1)),
       ) +
         ggplot2::theme(
-          strip.text.x = ggplot2::element_text(size = 3.5),
-          strip.text.y = ggplot2::element_text(size = 3.5),
+          strip.text.x = ggplot2::element_text(size = size2),
+          strip.text.y = ggplot2::element_text(size = size2),
           axis.text.x = ggplot2::element_text(
             angle = 45,
             vjust = 1,
             hjust = 1,
-            size = 8
+            size = size1
           ),
-          axis.text.y = ggplot2::element_text(size = 8)
+          axis.text.y = ggplot2::element_text(size = size1),
+          axis.title = ggplot2::element_text(size = size3)
         )
-
-      width.cal <-  (11.2 / 5) * neachplot
-      height.cal  <-  (7 / 5) * neachplot
 
       ggplot2::ggsave(
         paste0(

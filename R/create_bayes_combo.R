@@ -50,6 +50,11 @@ create_bayes_combo <- function(
 
     if (i + neachplot >= total) {
       howmany <- (total - i + 1)
+      width.cal <-  22.4 / 5 * howmany
+      height.cal  <-  22.4 / 5 * howmany
+      size1 <- width.cal * 0.3571429
+      size2 <- width.cal * 0.4464286
+      size3 <- width.cal * 0.5803571
 
       plot <- bayesplot::mcmc_combo(
         postdf,
@@ -58,20 +63,18 @@ create_bayes_combo <- function(
         lwd = 3,
         widths = c(2, 3),
         gg_theme = ggplot2::theme(
-          strip.text.x = ggplot2::element_text(size = 10),
+          strip.text.x = ggplot2::element_text(size = size2),
           legend.position = 'right',
           axis.text.x = ggplot2::element_text(
             angle = 45,
             vjust = 1,
             hjust = 1,
-            size = 12
+            size = size1
           ),
-          axis.text.y = ggplot2::element_text(size = 8)
+          axis.text.y = ggplot2::element_text(size = size1),
+          axis.title = ggplot2::element_text(size = size3)
         ) + bayesplot::legend_none()
       )
-
-      width.cal <-  22.4 / 5 * howmany
-      height.cal  <-  22.4 / 5 * howmany
 
       cowplot::ggsave2(
         paste0(
@@ -88,26 +91,30 @@ create_bayes_combo <- function(
         units = 'cm'
       )
     } else {
+      width.cal <-  22.4 / 5 * neachplot
+      height.cal  <-  22.4 / 5 * neachplot
+      size1 <- width.cal * 0.3571429
+      size2 <- width.cal * 0.4464286
+      size3 <- width.cal * 0.5803571
+
       plot <- bayesplot::mcmc_combo(
         postdf,
         combo = c('dens_overlay', 'trace'),
         pars = vars(i:(i + neachplot - 1)),
         lwd = 3,
         gg_theme = ggplot2::theme(
-          strip.text.x = ggplot2::element_text(size = 10),
+          strip.text.x = ggplot2::element_text(size = size2),
           legend.position = 'right',
           axis.text.x = ggplot2::element_text(
             angle = 45,
             vjust = 1,
             hjust = 1,
-            size = 12
+            size = size1
           ),
-          axis.text.y = ggplot2::element_text(size = 8)
+          axis.text.y = ggplot2::element_text(size = size1),
+          axis.title = ggplot2::element_text(size = size3)
         ) + bayesplot::legend_none()
       )
-
-      width.cal <-  22.4 / 5 * neachplot
-      height.cal  <-  22.4 / 5 * neachplot
 
       cowplot::ggsave2(
         paste0(
