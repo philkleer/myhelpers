@@ -1,13 +1,13 @@
 create_bayes_acf <- function(
     modelfit,
     nottoplot = 3,
-    neachplot = 4,
+    neachplot = 5,
     folder,
     model
 ){
-  if(!requireNamespace("brms")) install.packages("brms")
-  if(!requireNamespace("cowplot")) install.packages("cowplot")
-  if(!requireNamespace("bayesplot")) install.packages("bayesplot")
+  if(!requireNamespace('brms')) install.packages('brms')
+  if(!requireNamespace('cowplot')) install.packages('cowplot')
+  if(!requireNamespace('bayesplot')) install.packages('bayesplot')
 
   stopifnot(
     '`nottoplot` must be at least 3 (`.chain`, `.iteration`, `.draw` are not plotted).' = nottoplot < 3
@@ -52,20 +52,25 @@ create_bayes_acf <- function(
           axis.text.y = ggplot2::element_text(size = 8)
         )
 
+      width.cal <-  11.2 / 5 * (total - i + 1)
+      height.cal  <-  7 / 5 * (total - i + 1)
+
       ggplot2::ggsave(
         paste0(
           folder,
           model,
-          "-acf-",
+          '-acf-',
           j,
-          ".png"
+          '.png'
         ),
+        width = width.cal,
+        height = width.cal,
         dpi = 300
       )
     } else {
       plot <- bayesplot::mcmc_acf(
         postdf,
-        pars = dplyr::vars(i:(i+neachplot)),
+        pars = dplyr::vars(i:neachplot),
       ) +
         ggplot2::theme(
           strip.text.x = ggplot2::element_text(size = 4),
@@ -79,18 +84,21 @@ create_bayes_acf <- function(
           axis.text.y = ggplot2::element_text(size = 8)
         )
 
+      width.cal <-  11.2 / 5 * neachplot
+      height.cal  <-  7 / 5 * neachplot
+
       ggplot2::ggsave(
         paste0(
           folder,
           model,
-          "-acf-",
+          '-acf-',
           j,
-          ".png"
+          '.png'
         ),
         dpi = 300,
-        width = 11.2,
-        height = 7,
-        units = "cm"
+        width = width.cal,
+        height = height.cal,
+        units = 'cm'
       )
     }
     j <- j + 1

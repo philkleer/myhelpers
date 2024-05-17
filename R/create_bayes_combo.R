@@ -1,13 +1,13 @@
 create_bayes_combo <- function(
     modelfit,
     nottoplot = 3,
-    neachplot = 4,
+    neachplot = 5,
     folder,
     model
 ){
-  if(!requireNamespace("brms")) install.packages("brms")
-  if(!requireNamespace("cowplot")) install.packages("cowplot")
-  if(!requireNamespace("bayesplot")) install.packages("bayesplot")
+  if(!requireNamespace('brms')) install.packages('brms')
+  if(!requireNamespace('cowplot')) install.packages('cowplot')
+  if(!requireNamespace('bayesplot')) install.packages('bayesplot')
 
   stopifnot(
     '`nottoplot` must be at least 3 (`.chain`, `.iteration`, `.draw` are not plotted).' = nottoplot < 3
@@ -37,13 +37,13 @@ create_bayes_combo <- function(
     if (i + neachplot >= total) {
       plot <- bayesplot::mcmc_combo(
         postdf,
-        combo = c("dens_overlay", "trace"),
+        combo = c('dens_overlay', 'trace'),
         pars = vars(i:total),
         lwd = 3,
         widths = c(2, 3),
         gg_theme = ggplot2::theme(
           strip.text.x = ggplot2::element_text(size = 14),
-          legend.position = "right",
+          legend.position = 'right',
           axis.text.x = ggplot2::element_text(
             angle = 45,
             vjust = 1,
@@ -54,26 +54,31 @@ create_bayes_combo <- function(
         ) + bayesplot::legend_none()
       )
 
+      width.cal <-  11.2 / 5 * (total - i + 1)
+      height.cal  <-  7 / 5 * (total - i + 1)
+
       cowplot::ggsave2(
         paste0(
           folder,
           model,
-          "-combo-",
+          '-combo-',
           j,
-          ".png"
+          '.png'
         ),
+        width = width.cal,
+        height = height.cal,
         plot = plot,
         dpi = 300
       )
     } else {
       plot <- bayesplot::mcmc_combo(
         postdf,
-        combo = c("dens_overlay", "trace"),
-        pars = vars(i:(i+neachplot)),
+        combo = c('dens_overlay', 'trace'),
+        pars = vars(i:neachplot),
         lwd = 3,
         gg_theme = ggplot2::theme(
           strip.text.x = ggplot2::element_text(size = 14),
-          legend.position = "right",
+          legend.position = 'right',
           axis.text.x = ggplot2::element_text(
             angle = 45,
             vjust = 1,
@@ -84,19 +89,22 @@ create_bayes_combo <- function(
         ) + bayesplot::legend_none()
       )
 
+      width.cal <-  22.4 / 5 * neachplot
+      height.cal  <-  22.4 / 5 * neachplot
+
       cowplot::ggsave2(
         paste0(
           folder,
           model,
-          "-combo-",
+          '-combo-',
           j,
-          ".png"
+          '.png'
         ),
         plot = plot,
         dpi = 300,
-        width = 22.4,
-        height = 22.4,
-        units = "cm"
+        width = width.cal,
+        height = height.cal,
+        units = 'cm'
       )
     }
     j <- j + 1
