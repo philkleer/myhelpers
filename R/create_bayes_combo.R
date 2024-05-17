@@ -10,7 +10,7 @@ create_bayes_combo <- function(
   if(!requireNamespace('bayesplot')) install.packages('bayesplot')
 
   stopifnot(
-    '`nottoplot` must be at least 3 (`.chain`, `.iteration`, `.draw` are not plotted).' = nottoplot < 3
+    '`nottoplot` must be at least 3 (`.chain`, `.iteration`, `.draw` are not plotted).' = nottoplot >= 3
   )
 
   postdf <- brms::as_draws_df(
