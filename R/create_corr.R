@@ -1,9 +1,9 @@
 create_corr <- function(
-    df, varlist = colnames(df), pmat = cordf$p, sizer = 5, fontsize = 8, sizevar = 12
+    df, varlist = colnames(df), pmat = NULL, sizer = 5, fontsize = 8, sizevar = 12
 ){
   if(!requireNamespace("ggcorrplot")) install.packages("ggcorrplot")
 
-  corrmat <- corr.test(
+  corrmat <- psych::corr.test(
     df[, varlist],
     method = "pearson",
     use = "complete.obs"
