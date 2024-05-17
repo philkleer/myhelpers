@@ -7,7 +7,7 @@ Creates diagnostic of bayesian estimation (\code{brms} object) of autocorrelatio
 \usage{
 create_bayes_acf(
     modelfit,
-    nottoplot = 5,
+    nottoplot = 3,
     neachplot = 4,
     folder,
     model

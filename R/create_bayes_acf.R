@@ -1,6 +1,6 @@
 create_bayes_acf <- function(
     modelfit,
-    nottoplot = 5,
+    nottoplot = 3,
     neachplot = 4,
     folder,
     model
@@ -9,9 +9,23 @@ create_bayes_acf <- function(
   if(!requireNamespace("cowplot")) install.packages("cowplot")
   if(!requireNamespace("bayesplot")) install.packages("bayesplot")
 
+  stopifnot(
+    '`nottoplot` must be at least 3 (`.chain`, `.iteration`, `.draw` are not plotted).' = nottoplot < 3
+  )
+
   postdf <- brms::as_draws_df(
     modelfit,
     add_chain = T
+  )
+
+  print(
+    paste0(
+      'The draws of the brms object has ',
+      dim(postdf[2]),
+      ' dimensions. ',
+      'Last three are .chain, .iteration, and .draw (never plot)!',
+      'The following variables exist: ', colnames(postdf)
+    )
   )
 
   total <- dim(postdf)[2] - nottoplot

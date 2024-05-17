@@ -7,7 +7,7 @@ Creates diagnostic of bayesian estimation (\code{brms} object) of posterior dens
 \usage{
 create_bayes_combo(
     modelfit,
-    nottoplot = 5,
+    nottoplot = 3,
     neachplot = 4,
     folder,
     model
