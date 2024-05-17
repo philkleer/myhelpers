@@ -48,10 +48,15 @@ create_bayes_combo <- function(
   for (i in seq(1, total, neachplot)) {
     pb$tick()
 
-    if (i + neachplot >= total) {
+    if (i + neachplot > total) {
       howmany <- (total - i + 1)
-      width.cal <-  22.4 / 5 * howmany
-      height.cal  <-  22.4 / 5 * howmany
+      if (howmany < 3) {
+        width.cal <- 22.4 / 5 * 3
+        height.cal <- 22.4 / 5 * 3
+      } else {
+        width.cal <-  22.4 / 5 * howmany
+        height.cal  <-  22.4 / 5 * howmany
+      }
       size1 <- width.cal * 0.3571429
       size2 <- width.cal * 0.4464286
       size3 <- width.cal * 0.5803571
@@ -76,6 +81,8 @@ create_bayes_combo <- function(
         ) + bayesplot::legend_none()
       )
 
+      plot
+
       cowplot::ggsave2(
         paste0(
           folder,
@@ -91,8 +98,13 @@ create_bayes_combo <- function(
         units = 'cm'
       )
     } else {
-      width.cal <-  22.4 / 5 * neachplot
-      height.cal  <-  22.4 / 5 * neachplot
+      if (neachplot < 3) {
+        width.cal <- 22.4 / 5 * 3
+        height.cal <- 22.4 / 5 * 3
+      } else {
+        width.cal <-  22.4 / 5 * neachplot
+        height.cal  <-  22.4 / 5 * neachplot
+      }
       size1 <- width.cal * 0.3571429
       size2 <- width.cal * 0.4464286
       size3 <- width.cal * 0.5803571
@@ -115,6 +127,8 @@ create_bayes_combo <- function(
           axis.title = ggplot2::element_text(size = size3)
         ) + bayesplot::legend_none()
       )
+
+      plot
 
       cowplot::ggsave2(
         paste0(

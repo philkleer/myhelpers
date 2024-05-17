@@ -50,10 +50,15 @@ create_bayes_acf <- function(
 
     pb$tick()
 
-    if (i + neachplot >= total) {
+    if (i + neachplot > total) {
       howmany <- (total - i + 1)
-      width.cal <-  22.4 / 5 * howmany
-      height.cal  <-  14 / 5 * howmany
+      if (howmany < 3) {
+        width.cal <- 22.4 / 5 * 3
+        height.cal <- 14 / 5 * 3
+      } else {
+        width.cal <-  22.4 / 5 * howmany
+        height.cal  <-  14 / 5 * howmany
+      }
       size1 <- 0.7142857 * width.cal
       size2 <- 0.3125 * width.cal
       size3 <- 1.160714 * width.cal
@@ -76,6 +81,8 @@ create_bayes_acf <- function(
 
         )
 
+      plot
+
       ggplot2::ggsave(
         paste0(
           folder,
@@ -90,8 +97,13 @@ create_bayes_acf <- function(
         units = 'cm'
       )
     } else {
-      width.cal <-  (22.4 / 5) * neachplot
-      height.cal  <-  (14 / 5) * neachplot
+      if (neachplot < 3) {
+        width.cal <- 22.4 / 5 * 3
+        height.cal <- 14 / 5 * 3
+      } else {
+        width.cal <-  22.4 / 5 * neachplot
+        height.cal  <-  14 / 5 * neachplot
+      }
       size1 <- 0.7142857 * width.cal
       size2 <- 0.3125 * width.cal
       size3 <- 1.160714 * width.cal
@@ -112,6 +124,8 @@ create_bayes_acf <- function(
           axis.text.y = ggplot2::element_text(size = size1),
           axis.title = ggplot2::element_text(size = size3)
         )
+
+      plot
 
       ggplot2::ggsave(
         paste0(
