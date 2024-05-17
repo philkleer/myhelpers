@@ -8,6 +8,7 @@ create_bayes_combo <- function(
   if(!requireNamespace('brms')) install.packages('brms')
   if(!requireNamespace('cowplot')) install.packages('cowplot')
   if(!requireNamespace('bayesplot')) install.packages('bayesplot')
+  if(!requireNamespace('progress')) install.packages('progress')
 
   stopifnot(
     '`nottoplot` must be at least 3 (`.chain`, `.iteration`, `.draw` are not plotted).' = nottoplot >= 3
@@ -20,21 +21,36 @@ create_bayes_combo <- function(
 
   print(
     paste0(
-      'The draws of the brms object has ',
-      dim(postdf[2]),
-      ' dimensions. ',
-      'Last three are .chain, .iteration, and .draw (never plot)!',
-      'The following variables exist: ', colnames(postdf)
+      c(
+        'The draws of the brms object has',
+        dim(postdf)[2],
+        'dimensions.',
+        'Last three are .chain, .iteration, and .draw (never plot)!',
+        'The following variables exist: ', colnames(postdf)
+      ),
+      collapse = " "
     )
   )
-
   total <- dim(postdf)[2] - nottoplot
 
   i <- 1
   j <- 1
 
+  pb <- progress::progress_bar$new(
+    format = "  creating plots [:bar] :percent",
+    total = length(seq(1, total, neachplot)),
+    clear = FALSE,
+    width = 60
+  )
+
+  pb$tick(0)
+
   for (i in seq(1, total, neachplot)) {
+    pb$tick()
+
     if (i + neachplot >= total) {
+      howmany <- (total - i + 1)
+
       plot <- bayesplot::mcmc_combo(
         postdf,
         combo = c('dens_overlay', 'trace'),
@@ -42,7 +58,7 @@ create_bayes_combo <- function(
         lwd = 3,
         widths = c(2, 3),
         gg_theme = ggplot2::theme(
-          strip.text.x = ggplot2::element_text(size = 14),
+          strip.text.x = ggplot2::element_text(size = 10),
           legend.position = 'right',
           axis.text.x = ggplot2::element_text(
             angle = 45,
@@ -50,12 +66,12 @@ create_bayes_combo <- function(
             hjust = 1,
             size = 12
           ),
-          axis.text.y = ggplot2::element_text(size = 12)
+          axis.text.y = ggplot2::element_text(size = 8)
         ) + bayesplot::legend_none()
       )
 
-      width.cal <-  11.2 / 5 * (total - i + 1)
-      height.cal  <-  7 / 5 * (total - i + 1)
+      width.cal <-  22.4 / 5 * howmany
+      height.cal  <-  22.4 / 5 * howmany
 
       cowplot::ggsave2(
         paste0(
@@ -65,19 +81,20 @@ create_bayes_combo <- function(
           j,
           '.png'
         ),
+        plot = plot,
+        dpi = 300,
         width = width.cal,
         height = height.cal,
-        plot = plot,
-        dpi = 300
+        units = 'cm'
       )
     } else {
       plot <- bayesplot::mcmc_combo(
         postdf,
         combo = c('dens_overlay', 'trace'),
-        pars = vars(i:neachplot),
+        pars = vars(i:(i + neachplot - 1)),
         lwd = 3,
         gg_theme = ggplot2::theme(
-          strip.text.x = ggplot2::element_text(size = 14),
+          strip.text.x = ggplot2::element_text(size = 10),
           legend.position = 'right',
           axis.text.x = ggplot2::element_text(
             angle = 45,
@@ -85,7 +102,7 @@ create_bayes_combo <- function(
             hjust = 1,
             size = 12
           ),
-          axis.text.y = ggplot2::element_text(size = 12)
+          axis.text.y = ggplot2::element_text(size = 8)
         ) + bayesplot::legend_none()
       )
 

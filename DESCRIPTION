@@ -36,4 +36,5 @@ Imports:
     tidybayes,
     colorspace,
     tidyselect,
-    psych
+    psych,
+    progress

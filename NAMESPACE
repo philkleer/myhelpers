@@ -37,4 +37,5 @@ import('brms')
 import('loo')
 import('bayestestR')
 import('beyonce')
+import('progress')
 
