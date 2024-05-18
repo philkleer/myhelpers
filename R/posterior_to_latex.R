@@ -1,6 +1,7 @@
 posterior_to_latex <- function(
     dfobject,
-    digits = 3
+    digits = 3,
+    minimal = TRUE
 ) {
   if(!requireNamespace("xtable")) install.packages("xtable")
   if(!requireNamespace("bayestestR")) install.packages("bayestestR")
@@ -83,6 +84,11 @@ posterior_to_latex <- function(
   keep <- seq(1, dim(dfobject)[1], 2)
 
   dfobject <- dfobject[keep, ]
+
+  if (minimal == TRUE) {
+    dfobject <- dfobject |>
+      dplyr::select(-c(ps, ROPE, ROPE_Equivalence, Rhat))
+  }
 
   return(
     print(
