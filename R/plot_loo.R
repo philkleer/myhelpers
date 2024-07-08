@@ -18,8 +18,8 @@ plot_loo <- function(
   plot <- ggplot2::ggplot(
     df,
     ggplot2::aes(
-      x = df$case,
-      y = df$influence_pareto_k
+      x = .data$case,
+      y = .data$influence_pareto_k
     )
   ) +
     ggplot2::geom_point(
