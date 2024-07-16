@@ -18,6 +18,8 @@
 #' @importFrom ggplot2 theme_set theme_grey theme element_text element_blank
 #' @importFrom cli cli_alert_success
 #' @importFrom utils install.packages
+#'
+#' @export
 
 load_grey_nogrid <- function(
     font = 'Fira Sans',
@@ -39,3 +41,6 @@ load_grey_nogrid <- function(
 
   cli::cli_alert_success('Theme has been set.')
 }
+
+#' @rdname load_grey_nogrid
+load_gray_nogrid <- load_grey_nogrid
