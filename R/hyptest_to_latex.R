@@ -4,23 +4,33 @@
 #'
 #' @param object Object as result of \code{hypothesis()} from \code{brms}.
 #' @param caption Set the caption for the output. Default is \code{NULL}.
+#' @param savedir Define path and filename, e.g., './output/overview.tex'.
+#'  Default is \code{'./hypothesis.tex'}.
 #'
 #' @returns Prints result of \code{brms::hypothesis()} to LaTeX in console.
 #'
 #' @examples
 #' # hyptest_to_latex(
 #' #   object,
+#' #   savedir = './hypothesis.tex'
 #' #   caption = NULL
 #' # )
 #'
 #' @importFrom xtable xtable
-#' @importFrom utils install.packages
+#' @importFrom utils install.packages capture.output
+#' @importFrom cli cli_alert_success
+#'
+#' @export
 
 hyptest_to_latex <- function(
     object,
+    savedir = './hypothesis.tex',
     caption = NULL
 ) {
   if(!requireNamespace('xtable')) install.packages('xtable')
+  if(!requireNamespace('cli')) install.packages('cli')
+  if(!requireNamespace('utils')) install.packages('utils')
+
 
   # defining size of matrix by object
   rows <- length(object[[1]][[1]])
@@ -75,9 +85,19 @@ hyptest_to_latex <- function(
 
   rownames(mathyp) <- hypnam
 
-  # getting tex-output
-  xtable::xtable(
-    as.table(mathyp),
-    caption = caption
+  write(
+    paste(
+      utils::capture.output(
+        xtable::xtable(
+          as.table(mathyp),
+          caption = caption
+        )
+      ),
+      collapse = '\n'
+    ),
+    file = savedir
   )
+
+  cli::cli_alert_success('Table is exported.')
+
 }
