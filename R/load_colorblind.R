@@ -7,8 +7,13 @@
 #' @examples
 #' # load_colorblind()
 #'
+#' @importFrom cli cli_alert_success
+#'
+#' @export
 
 load_colorblind <- function() {
+
+  if(!requireNamespace('cli')) install.packages('cli')
 
   cbp <- c(
     '#009E73',
@@ -23,5 +28,10 @@ load_colorblind <- function() {
     '#AAAA00',
     '#999999'
   )
+
  return(cbp)
+
+  cli::cli_alert_success('Object `cbp` is in environment.')
+
+
 }
