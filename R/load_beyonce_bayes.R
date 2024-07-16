@@ -25,6 +25,8 @@
 #' @importFrom beyonce beyonce_palette
 #' @importFrom bayesplot color_scheme_set
 #' @importFrom utils install.packages installed.packages
+#'
+#' @export
 
 load_beyonce_bayes <- function(
     pal = 126,
@@ -38,6 +40,9 @@ load_beyonce_bayes <- function(
     devtools::install_github('dill/beyonce')
   }
   if(!requireNamespace('bayesplot')) install.packages('bayesplot')
+  if(!requireNamespace('cli')) install.packages('cli')
+
+  library(beyonce)
 
   # ggplot settings for bayesian analysis
   ggplot2::theme_set(
@@ -113,6 +118,9 @@ load_beyonce_bayes <- function(
   )
 
   bayesplot::color_scheme_set(beyonce_scheme)
+
+  cli::cli_alert_success('Theme has been set.')
+
 }
 
 

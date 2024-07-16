@@ -24,6 +24,8 @@
 #' @importFrom cli cli_alert_success
 #' @importFrom beyonce beyonce_palette
 #' @importFrom utils install.packages installed.packages
+#'
+#' @export
 
 load_beyonce <- function(
     pal = 126,
@@ -37,6 +39,8 @@ load_beyonce <- function(
     devtools::install_github('dill/beyonce')
   }
   if(!requireNamespace('cli')) install.packages('cli')
+
+  library(beyonce)
 
   # ggplot settings for bayesian analysis
   ggplot2::theme_set(
