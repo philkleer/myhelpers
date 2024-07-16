@@ -28,8 +28,7 @@
 #'  cli_alert_danger
 #' @importFrom rstudioapi terminalExecute terminalExitCode terminalKill
 #' @importFrom utils install.packages
-
-# Main function (and so far only function)
+#' @export
 create_slides_pdf <- function(
     filename = NULL,
     fragments = FALSE,

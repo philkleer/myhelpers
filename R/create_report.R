@@ -7,7 +7,7 @@
 #' @param draftname The path to the draft file. If not indicated, the package
 #'  included draft file will be used.
 #' @param ext_name The name of extension to get the files from.
-#'  Default "myhelpers".
+#'  Default 'myhelpers'.
 #' @param path_to_chrome The path to location of puppeteer chrome distribution.
 #'
 #' @returns \code{qmd}-file for a \code{html}-report based on the template.
@@ -25,9 +25,8 @@
 #'  cli_alert_danger
 #' @importFrom rstudioapi terminalExecute terminalExitCode terminalKill
 #' @importFrom utils install.packages
-
-
-# Main function (and so far only function)
+#'
+#' @export
 create_report <- function(
     filename = NULL,
     draftname = '_extensions/myhelpers/draft-report.qmd',

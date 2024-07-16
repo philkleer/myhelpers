@@ -8,7 +8,7 @@
 #' @param draftname The path to the draft file. If not indicated, the package
 #'  included draft file will be used.
 #' @param ext_name The name of extension to get the files from. Default
-#'  "myhelpers".
+#'  'myhelpers'.
 #'
 #' @returns R script based on the template.
 #'
@@ -21,8 +21,8 @@
 #'
 #' @importFrom cli cli_alert_success
 #' @importFrom utils install.packages file.edit
+#' @export
 
-# Main function (and so far only function)
 create_script <- function(
     filename = NULL,
     draftname = '_extensions/myhelpers/template.R',

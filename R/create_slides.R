@@ -19,7 +19,7 @@
 #' @param draftname The path to the draft file. If not indicated, the package
 #'  included draft file will be used.
 #' @param ext_name The name of extension to get the files from. Default
-#'  "myhelpers".
+#'  'myhelpers'.
 #' @param path_to_chrome The path to location of puppeteer chrome distribution.
 #'
 #' @returns \code{qmd}-Files for slides based on template. Installs necessary
@@ -37,8 +37,7 @@
 #'  cli_alert_danger
 #' @importFrom rstudioapi terminalExecute terminalExitCode terminalKill
 #' @importFrom utils install.packages
-
-# Main function (and so far only function)
+#' @export
 create_slides <- function(
     filename = NULL,
     draftname = '_extensions/myhelpers/draft-slides.qmd',
