@@ -1,9 +1,26 @@
+#' Transfer hypothesis' results to TeX
+#'
+#' Transfers result of \code{brms::hypothesis()} into LaTeX output.
+#'
+#' @param object Object as result of \code{hypothesis()} from \code{brms}.
+#' @param caption Set the caption for the output. Default is \code{NULL}.
+#'
+#' @returns Prints result of \code{brms::hypothesis()} to LaTeX in console.
+#'
+#' @examples
+#' # hyptest_to_latex(
+#' #   object,
+#' #   caption = NULL
+#' # )
+#'
+#' @importFrom xtable xtable
+#' @importFrom utils install.packages
+
 hyptest_to_latex <- function(
     object,
     caption = NULL
 ) {
-  if(!requireNamespace("xtable")) install.packages("xtable")
-  if(!requireNamespace("brms")) install.packages("brms")
+  if(!requireNamespace('xtable')) install.packages('xtable')
 
   # defining size of matrix by object
   rows <- length(object[[1]][[1]])
@@ -23,14 +40,14 @@ hyptest_to_latex <- function(
 
   # setting colnames on matrix
   colnames(mathyp) <- c(
-    "Hypothesis",
-    "Estimate",
-    "Est.Error",
-    "CI.Lower",
-    "CI.Upper",
-    "Evid.Ratio",
-    "Post.Prob",
-    "Star"
+    'Hypothesis',
+    'Estimate',
+    'Est.Error',
+    'CI.Lower',
+    'CI.Upper',
+    'Evid.Ratio',
+    'Post.Prob',
+    'Star'
   )
 
   # rounding numerical output
@@ -50,10 +67,10 @@ hyptest_to_latex <- function(
     1
   )
 
-  hypnam <-  ""
+  hypnam <-  ''
 
   for (m in 1:rows) {
-    hypnam[m] <- paste0("H", m)
+    hypnam[m] <- paste0('H', m)
   }
 
   rownames(mathyp) <- hypnam
@@ -63,5 +80,4 @@ hyptest_to_latex <- function(
     as.table(mathyp),
     caption = caption
   )
-
 }

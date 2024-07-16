@@ -1,11 +1,43 @@
+#' Transfer posterior description to LaTeX
+#'
+#' This function transfers results from function
+#'  \code{bayestestR::describe_posterior()} into latex output
+#'  (with \code{xtable}).
+#'
+#' @param dfobject Object as result of \code{describe_posterior()} from
+#'  \code{bayestestR}.
+#' @param digits Set the digits that should be shown in the latex output.
+#' @param minimal Shrinks output to relevant parts. Excludes ROPE definition,
+#'  PS, and Rhat. Default is \code{TRUE}.
+#'
+#' @returns Returns LaTeX output of the posterior description by
+#'  \code{bayestestR::describe_posterior()}
+#'
+#' @examples
+#' # posterior_to_latex(
+#' #   dfobject,
+#' #   digits = 3,
+#' #   minimal = TRUE
+#' # )
+#'
+#' @importFrom xtable xtable
+#' @importFrom stringr str_c
+#' @importFrom dplyr select relocate
+#' @importFrom utils install.packages
+
 posterior_to_latex <- function(
     dfobject,
     digits = 3,
     minimal = TRUE
 ) {
   if(!requireNamespace("xtable")) install.packages("xtable")
-  if(!requireNamespace("bayestestR")) install.packages("bayestestR")
-  if(!requireNamespace("brms")) install.packages("brms")
+
+  # initializing variable for use later on in functions
+  ROPE_Equivalence <- NULL
+  Rhat <- NULL
+  Median <- NULL
+  ROPE <- NULL
+  ps <- NULL
 
   dfobject <- as.data.frame(dfobject)
   dfobject$ROPE <- NA
@@ -16,8 +48,12 @@ posterior_to_latex <- function(
       var2 = NA
     )
 
-  names(dfobject)[names(dfobject) == "var1"] <- stringr::str_c("CI_", (dfobject$CI[1]*100))
-  names(dfobject)[names(dfobject) == "var2"] <- stringr::str_c("CI_", (dfobject$CI[2]*100))
+  names(dfobject)[names(dfobject) == "var1"] <- stringr::str_c(
+    "CI_", (dfobject$CI[1]*100)
+  )
+  names(dfobject)[names(dfobject) == "var2"] <- stringr::str_c(
+    "CI_", (dfobject$CI[2]*100)
+  )
   match1 <- stringr::str_c("CI_", (dfobject$CI[1]*100))
   match2 <- stringr::str_c("CI_", (dfobject$CI[2]*100))
 

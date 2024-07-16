@@ -1,10 +1,39 @@
+#' Plots \code{loo}-object after running Bayesian models.
+#'
+#' This function creates a diagnostic plot for the \code{loo} calculations
+#'  from a \code{brms} object.
+#'
+#' @param loo \code{brms} object that has been calculated leave-one-out
+#'  criteria with function \code{loo()}.
+#' @param folder Indicating folder from working directory.
+#' @param what Indicating model under inspection.
+#'
+#' @returns Saves LOO-diagnostics.
+#'
+#' @examples
+#' # plot_loo(
+#' #   loo,
+#' #   folder,
+#' #   what
+#' # )
+#'
+#' @importFrom devtools install_github
+#' @importFrom cli cli_alert_success
+#' @importFrom ggplot2 ggplot aes geom_point geom_hline scale_x_continuous
+#'   scale_y_continuous labs theme element_text ggsave
+#' @importFrom beyonce beyonce_palette
+#' @importFrom utils install.packages
+
 plot_loo <- function(
     loo,
     folder,
     what
     ){
-  if(!requireNamespace("loo")) install.packages("loo")
-  if(!requireNamespace("beyonce")) devtools::install_github("dill/beyonce")
+  if(!requireNamespace('beyonce')) devtools::install_github('dill/beyonce')
+  if(!requireNamespace('cli')) install.packages('cli')
+
+  # initializing variable for use later on in functions
+  .data <- NULL
 
   case <- seq(1, dim(loo$pointwise)[1], 1)
 
@@ -28,22 +57,22 @@ plot_loo <- function(
     ) +
     ggplot2::geom_hline(
       yintercept = -0.5,
-      lty = "dashed",
+      lty = 'dashed',
       color = beyonce::beyonce_palette(126)[6]
     ) +
     ggplot2::geom_hline(
       yintercept = 0.5,
-      lty = "dashed",
+      lty = 'dashed',
       color = beyonce::beyonce_palette(126)[6]
     ) +
     ggplot2::geom_hline(
       yintercept = -0.7,
-      lty = "dotdash",
+      lty = 'dotdash',
       color = beyonce::beyonce_palette(101)[1]
     ) +
     ggplot2::geom_hline(
       yintercept = 0.7,
-      lty = "dotdash",
+      lty = 'dotdash',
       color = beyonce::beyonce_palette(101)[1]
     ) +
     ggplot2::scale_x_continuous(
@@ -54,8 +83,8 @@ plot_loo <- function(
       breaks = seq(-1, 1, 0.1)
     ) +
     ggplot2::labs(
-      x = "Data point",
-      y = "Pareto shape k"
+      x = 'Data point',
+      y = 'Pareto shape k'
     ) + ggplot2::theme(
       axis.text.x = ggplot2::element_text(
         angle = 45,
@@ -71,15 +100,18 @@ plot_loo <- function(
     plot = plot,
     filename = paste0(
       folder,
-      "loo-paretok-",
+      'loo-paretok-',
       what,
-      ".png"
+      '.png'
     ),
     dpi = 300,
     width = 11.4,
     height = 9,
-    units = "cm"
+    units = 'cm'
   )
 
   return(plot)
+
+  cli::cli_alert_success('Plot has been exported.')
+
 }
