@@ -28,6 +28,8 @@
 #' @importFrom ggplot2 labs theme element_text ggsave
 #' @importFrom cli cli_alert_success
 #' @importFrom utils install.packages
+#'
+#' @export
 
 plot_posterior <- function(
     fit,
