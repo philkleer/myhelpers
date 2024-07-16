@@ -5,16 +5,16 @@
 #'
 #' @param loo \code{brms} object that has been calculated leave-one-out
 #'  criteria with function \code{loo()}.
-#' @param folder Indicating folder from working directory.
-#' @param what Indicating model under inspection.
+#' @param folder Indicating folder from working directory. Default is \code{./}.
+#' @param what Indicating model under inspection. Default is \code{regmodel}.
 #'
 #' @returns Saves LOO-diagnostics.
 #'
 #' @examples
 #' # plot_loo(
 #' #   loo,
-#' #   folder,
-#' #   what
+#' #   folder = './',
+#' #   what = 'regmodel'
 #' # )
 #'
 #' @importFrom devtools install_github
@@ -23,14 +23,19 @@
 #'   scale_y_continuous labs theme element_text ggsave
 #' @importFrom beyonce beyonce_palette
 #' @importFrom utils install.packages
+#'
+#' @export
 
 plot_loo <- function(
     loo,
-    folder,
-    what
+    folder = './',
+    what = 'regmodel'
     ){
+  if(!requireNamespace('devtools')) install.packages('devtools')
   if(!requireNamespace('beyonce')) devtools::install_github('dill/beyonce')
   if(!requireNamespace('cli')) install.packages('cli')
+
+  library(beyonce)
 
   # initializing variable for use later on in functions
   .data <- NULL
