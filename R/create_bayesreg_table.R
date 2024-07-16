@@ -6,7 +6,8 @@
 #' @param modellist An \code{list}-object with model objects (from \code{brms}).
 #' @param modelnames A vector indicating naming of models.
 #' @param cirange Set the range of credible intervals, \code{Default} is 0.95.
-#' @param savedir Define path and filename, e.g., "./output/overview.tex".
+#' @param savedir Define path and filename, e.g., './output/overview.tex'.
+#'  Default is \code{'./regtable.tex'}.
 #'
 #' @returns Saves a \code{.tex}-file with the regression table.
 #'
@@ -15,18 +16,19 @@
 #' #   modellist,
 #' #   modelnames,
 #' #   cirange = .95,
-#' #   savedir
+#' #   savedir = './regtable.tex'
 #' # )
 #'
 #' @importFrom BayesPostEst mcmcReg
 #' @importFrom cli cli_alert_success
 #' @importFrom utils install.packages
-
+#'
+#' @export
 create_bayesreg_table <- function(
   modellist,
   modelnames,
   cirange = .95,
-  savedir
+  savedir = './regtable.tex'
 ){
   if(!requireNamespace('BayesPostEst')) install.packages('BayesPostEst')
   if(!requireNamespace('cli')) install.packages('cli')
@@ -43,5 +45,5 @@ create_bayesreg_table <- function(
     file = savedir
   )
 
-  cli::cli_alert_success("Table is exported.")
+  cli::cli_alert_success('Table is exported.')
 }
