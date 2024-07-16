@@ -1,4 +1,36 @@
-create_bayes_acf <- function(
+#' Plots diagnostics: posterior autocorrelation.
+#'
+#' Creates diagnostic plots of bayesian estimation (\code{brms} object) of
+#'  autocorrelation. Automatically saves png-files.
+#'
+#' @param modelfit Object as result of fit from \code{brms}.
+#' @param nottoplot Indicate if last diagnostic parameters should not be
+#'  printed by putting in an integer.
+#' @param neachplot Indicate how many variables are plotted in a plot.
+#' @param folder Indicate folder where to save the plot (from working
+#'  directory).
+#' @param model Indicate a model name to easier identify the png-file later.
+#'
+#' @returns Saves plots for diagnostics (autocorrelation).
+#'
+#' @examples
+#' # plot_bayes_acf(
+#' #   modelfit,
+#' #   nottoplot = 3,
+#' #   neachplot = 5,
+#' #   folder = './output/',
+#' #   model = 'fitm1'
+#' # )
+#'
+#' @importFrom brms as_draws_df
+#' @importFrom bayesplot mcmc_acf
+#' @importFrom ggplot2 theme element_text ggsave
+#' @importFrom cli cli_progress_bar cli_progress_update cli_progress_done
+#'  cli_progress_step
+#' @importFrom dplyr vars
+#' @importFrom utils install.packages
+
+plot_bayes_acf <- function(
     modelfit,
     nottoplot = 3,
     neachplot = 5,
@@ -7,8 +39,8 @@ create_bayes_acf <- function(
 ){
 
   if(!requireNamespace('brms')) install.packages('brms')
-  if(!requireNamespace('cowplot')) install.packages('cowplot')
   if(!requireNamespace('bayesplot')) install.packages('bayesplot')
+  if(!requireNamespace('cli')) install.packages('cli')
 
   stopifnot(
     '`nottoplot` must be at least 3 (`.chain`, `.iteration`, `.draw` are not plotted).' = nottoplot >= 3
@@ -16,7 +48,7 @@ create_bayes_acf <- function(
 
   postdf <- brms::as_draws_df(
     modelfit,
-    add_chain = T
+    add_chain = TRUE
   )
 
   print(
@@ -28,7 +60,7 @@ create_bayes_acf <- function(
         'Last three are .chain, .iteration, and .draw (never plot)!',
         'The following variables exist: ', colnames(postdf)
       ),
-      collapse = " "
+      collapse = ' '
     )
   )
 
@@ -37,18 +69,14 @@ create_bayes_acf <- function(
   i <- 1
   j <- 1
 
-  pb <- progress_bar$new(
-    format = "  creating plots [:bar] :percent",
-    total = length(seq(1, total, neachplot)),
-    clear = FALSE,
-    width = 60
+  cli::cli_progress_bar(
+    'Creating plots',
+    total = length(seq(1, total, neachplot))
   )
-
-  pb$tick(0)
 
   for (i in seq(1, total, neachplot)) {
 
-    pb$tick()
+    cli::cli_progress_update()
 
     if (i + neachplot > total) {
       howmany <- (total - i + 1)
@@ -143,4 +171,11 @@ create_bayes_acf <- function(
     }
     j <- j + 1
   }
+
+  cli::cli_progress_done()
+
+  cli::cli_progress_step("Plots are created")
 }
+
+#' @rdname plot_bayes_acf
+create_bayes_acf <- plot_bayes_acf

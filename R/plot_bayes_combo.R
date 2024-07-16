@@ -1,4 +1,36 @@
-create_bayes_combo <- function(
+#' Plots diagnostics: posterior density and trace
+#'
+#' Creates diagnostic of Bayesian estimation (\code{brms} object) of
+#'  posterior density and trace.
+#'
+#' @param modelfit Object as result of fit from \code{brms}.
+#' @param nottoplot Indicate if last diagnostic parameters should not be
+#'  printed by putting in an integer.
+#' @param neachplot Indicate how many variables are plotted in a plot.
+#' @param folder Indicate folder where to save the plot (from working
+#'  directory).
+#' @param model Indicate a model name to easier identify the png-file later.
+#'
+#' @returns Saves plots for diagnostics (density and trace).
+#'
+#' @examples
+#' # plot_bayes_acf(
+#' #   modelfit,
+#' #   nottoplot = 3,
+#' #   neachplot = 5,
+#' #   folder = './output/',
+#' #   model = 'fitm1'
+#' # )
+#'
+#' @importFrom brms as_draws_df
+#' @importFrom bayesplot mcmc_combo legend_none
+#' @importFrom ggplot2 theme element_text
+#' @importFrom cowplot ggsave2
+#' @importFrom cli cli_progress_bar cli_progress_update cli_progress_done
+#'  cli_progress_step
+#' @importFrom utils install.packages
+
+plot_bayes_combo <- function(
     modelfit,
     nottoplot = 3,
     neachplot = 5,
@@ -8,15 +40,17 @@ create_bayes_combo <- function(
   if(!requireNamespace('brms')) install.packages('brms')
   if(!requireNamespace('cowplot')) install.packages('cowplot')
   if(!requireNamespace('bayesplot')) install.packages('bayesplot')
-  if(!requireNamespace('progress')) install.packages('progress')
+  if(!requireNamespace('cli')) install.packages('cli')
 
   stopifnot(
     '`nottoplot` must be at least 3 (`.chain`, `.iteration`, `.draw` are not plotted).' = nottoplot >= 3
   )
 
+  cli::cli_progress_step("Creating draws ...")
+
   postdf <- brms::as_draws_df(
     modelfit,
-    add_chain = T
+    add_chain = TRUE
   )
 
   print(
@@ -28,7 +62,7 @@ create_bayes_combo <- function(
         'Last three are .chain, .iteration, and .draw (never plot)!',
         'The following variables exist: ', colnames(postdf)
       ),
-      collapse = " "
+      collapse = ' '
     )
   )
   total <- dim(postdf)[2] - nottoplot
@@ -36,17 +70,14 @@ create_bayes_combo <- function(
   i <- 1
   j <- 1
 
-  pb <- progress::progress_bar$new(
-    format = "  creating plots [:bar] :percent",
-    total = length(seq(1, total, neachplot)),
-    clear = FALSE,
-    width = 60
+  cli::cli_progress_bar(
+    'Creating plots',
+    total = length(seq(1, total, neachplot))
   )
 
-  pb$tick(0)
-
   for (i in seq(1, total, neachplot)) {
-    pb$tick()
+
+    cli_progress_update()
 
     if (i + neachplot > total) {
       howmany <- (total - i + 1)
@@ -147,4 +178,11 @@ create_bayes_combo <- function(
     }
     j <- j + 1
   }
+
+  cli::cli_progress_done()
+
+  cli::cli_progress_step("Plots are created")
 }
+
+#' @rdname plot_bayes_combo
+create_bayes_combo <- plot_bayes_combo
