@@ -1,40 +1,38 @@
 Package: myhelpers
 Type: Package
 Title: Loading individual functions into the environment
-Version: 0.4.0
+Version: 0.5.0
 Author: Philipp Kleer [aut, cre] (<https://orcid.org/0000-0003-1935-387X>)
 Maintainer: Philipp Kleer <philipp.kleer@posteo.com>
 Description: This package loads helper functions for several analyses processes.
     Therefore, the helper functions does not be declared singulary in each script.
-Depends: tidyverse  
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
-URL: https://gitlab.com/bpkleer/myhelpers
-BugReports: https://gitlab.com/bpkleer/myhelpers/issues
+URL: https://github.com/bpkleer/myhelpers
+BugReports: https://github.com/bpkleer/myhelpers/issues
 Imports: 
-    devtools,
-    utils,
-    rstudioapi,
-    bayesplot, 
-    cowplot,
     BayesPostEst,
+    bayesplot, 
+    beyonce, 
+    brms,
+    cli,
+    colorspace,
+    cowplot,
+    devtools,
+    dplyr,
     ggcorrplot, 
     ggdist, 
     gghalves,
-    ggplot2,
-    beyonce, 
-    xtable,
-    brms,
-    loo,
-    bayestestR,
-    dplyr,
+    ggplot2, 
     grid,
-    scales,
-    stringr,
-    tibble,
-    tidybayes,
-    colorspace,
-    tidyselect,
     psych,
-    progress
+    rstudioapi,
+    scales,
+    stringr, 
+    tibble, 
+    tidybayes,
+    tidyselect,
+    utils,
+    xtable
+RoxygenNote: 7.3.2
