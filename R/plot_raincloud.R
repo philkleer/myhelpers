@@ -21,6 +21,8 @@
 #' @importFrom cli cli_alert_info
 #' @importFrom utils install.packages
 #' @importFrom scales alpha
+#'
+#' @export
 
 plot_raincloud <- function(
   df,
@@ -30,7 +32,7 @@ plot_raincloud <- function(
   if(!requireNamespace('gghalves')) install.packages('gghalves')
   if(!requireNamespace('cli')) install.packages('cli')
 
-  ggplot2::ggplot(
+  plot <- ggplot2::ggplot(
     df,
     ggplot2::aes(
       y = {{metricvar}}
@@ -45,7 +47,7 @@ plot_raincloud <- function(
     ggplot2::geom_boxplot(
       width = .12,
       outlier.shape = NA
-    )
+    ) +
     gghalves::geom_half_point(
       side = 'l',
       range_scale = 0.25,
@@ -60,8 +62,9 @@ plot_raincloud <- function(
       panel.grid.major.x = ggplot2::element_blank()
     )
 
-    cli::cli_alert_info('Plot is exported.')
+  cli::cli_alert_info('Plot is shown in pane `Plot`.')
 
+  plot
 }
 
 #' @rdname plot_raincloud

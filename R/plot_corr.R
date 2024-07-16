@@ -31,6 +31,8 @@
 #' @importFrom ggplot2 theme element_text element_blank
 #' @importFrom grid unit
 #' @importFrom utils install.packages
+#'
+#' @export
 
 plot_corr <- function(
     df, varlist = colnames(df), pmat = NULL, sizer = 5,
@@ -45,7 +47,7 @@ plot_corr <- function(
     use = 'complete.obs'
   )
 
-  ggcorrplot::ggcorrplot(
+  plot <- ggcorrplot::ggcorrplot(
     corrmat$r,
     p.mat = corrmat$p,
     type = 'upper',
@@ -70,7 +72,9 @@ plot_corr <- function(
       plot.margin = grid::unit(c(0, 0, 0, 0), 'cm')
     )
 
-  cli::cli_alert_info('Plot is exported.')
+   cli::cli_alert_info('Plot is shown in pane `Plots`!')
+
+   plot
 }
 
 #' @rdname plot_corr

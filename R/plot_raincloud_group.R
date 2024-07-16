@@ -25,6 +25,8 @@
 #' @importFrom cli cli_alert_info
 #' @importFrom utils install.packages
 #' @importFrom scales alpha
+#'
+#' @export
 
 plot_raincloud_group <- function(
   df,
@@ -40,7 +42,7 @@ plot_raincloud_group <- function(
   # initializing var objects for function below
   color <- NULL
 
-  ggplot2::ggplot(
+  plot <- ggplot2::ggplot(
     df,
     ggplot2::aes(
       x = {{groupvar}},
@@ -87,8 +89,9 @@ plot_raincloud_group <- function(
       legend.position = 'none'
     )
 
-  cli::cli_alert_info('Plot is exported.')
+  cli::cli_alert_info('Plot is shown in pane `Plot`.')
 
+  plot
 }
 
 #' @rdname plot_raincloud_group
