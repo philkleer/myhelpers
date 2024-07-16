@@ -10,6 +10,8 @@
 #' # twoSD(x)
 #'
 #' @importFrom stats sd
+#'
+#' @export
 
 twoSD <- function(
     x
