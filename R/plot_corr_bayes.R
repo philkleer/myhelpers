@@ -4,9 +4,8 @@
 #'  standardized correlation plot. Furthermore you can alter some of the values.
 #'
 #' @param cor Output of brms correlation calculation.
-#' @param varlist Vector of variable names. Be aware: \code{brms} sometimes
-#'  change variable names, and therefore be sure that you formatted this
-#'  vector correctly. Otherwise nothing will be shown in the plot.
+#' @param varlist Vector of variable names. Default is \code{NULL}, so that all
+#'   correlations are plotted.
 #' @param sizer Font size of correlation values in plot.
 #' @param fontsize General font size adjustion via \code{theme()}.
 #' @param sizevar Font size of variable name in plot.
@@ -23,15 +22,18 @@
 #' # )
 #'
 #' @importFrom ggcorrplot ggcorrplot
-#' @importFrom cli cli_alert_info cli_progress_step
+#' @importFrom cli cli_alert_success cli_progress_step
 #' @importFrom ggplot2 theme element_text element_blank
 #' @importFrom grid unit
 #' @importFrom stringr str_locate str_replace_all str_replace str_sub str_length
+#'   str_split_1
 #' @importFrom dplyr syms mutate pull
 #' @importFrom utils head install.packages
+#'
+#' @export
 
 plot_corr_bayes <- function(
-    cor, varlist, sizer = 5, fontsize = 8, sizevar = 12
+    cor, varlist = NULL, sizer = 5, fontsize = 8, sizevar = 12
 ){
   if(!requireNamespace('ggcorrplot')) install.packages('ggcorrplot')
   if(!requireNamespace('cli')) install.packages('cli')
@@ -68,18 +70,36 @@ plot_corr_bayes <- function(
     ) |>
     tidybayes::median_qi()
 
+  # setting varlist
+  if (is.null(varlist)) {
+    varlist <- cordf$.variable
+
+    newvarlist <- c()
+
+    for (i in 1:length(varlist)) {
+      newvarlist <- c(newvarlist, stringr::str_split_1(varlist[i], ' & '))
+      print(i)
+    }
+
+    varlist <- newvarlist
+
+    varlist <- unique(varlist)
+
+    cli::cli_alert_success('`varlist` created. All combinations will be plotted.')
+  }
+
   # creating blank cormat
-  cormat <- matrix(rep(0, dim(cor$data)[2]^2),
-                   nrow = dim(cor$data)[2],
-                   ncol = dim(cor$data)[2],
+  cormat <- matrix(rep(0, length(varlist)^2),
+                   nrow = length(varlist),
+                   ncol = length(varlist),
                    dimnames = list(
                      varlist,
                      varlist
                    )
   )
 
-    # diagonal with 1
-  for (i in 1:dim(cor$data)[2]) {
+  # diagonal with 1
+  for (i in 1:length(varlist)) {
     cormat[i, i] <- 1
   }
 
@@ -92,7 +112,7 @@ plot_corr_bayes <- function(
 
   # filling cells with values (adjust numbers)
   for (i in 1:dim(cordf)[1]) {
-    for (j in 1:dim(cor$data)[2]) {
+    for (j in 1:length(varlist)) {
       begin <- stringr::str_locate(cordf[[1]][i], ' & ')[1]
       end <- stringr::str_locate(cordf[[1]][i], ' & ')[2] + 1
       if (
@@ -102,7 +122,7 @@ plot_corr_bayes <- function(
           ''
         ) == rownames(cormat)[j]
       ) {
-        for (k in 1:dim(cor$data)[2]) {
+        for (k in 1:length(varlist)) {
           if (
             stringr::str_replace(
               stringr::str_sub(
@@ -126,7 +146,7 @@ plot_corr_bayes <- function(
       cormat[j, i] <- cormat[i, j]
   }
 
-  ggcorrplot::ggcorrplot(
+  plot <- ggcorrplot::ggcorrplot(
     cormat,
     type = 'upper',
     tl.cex = sizevar,
@@ -150,8 +170,9 @@ plot_corr_bayes <- function(
       plot.margin = grid::unit(c(0, 0, 0, 0), 'cm')
     )
 
-  cli::cli_alert_info('Plot is exported.')
+  cli::cli_alert_success('Plot is shown in pane `Plots`!')
 
+  plot
 }
 
 #' @rdname plot_corr_bayes
