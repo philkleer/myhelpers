@@ -5,16 +5,15 @@
 \alias{create_corr_bayes}
 \title{Creates a standard \code{ggcorrplot} with Bayesian data.}
 \usage{
-plot_corr_bayes(cor, varlist, sizer = 5, fontsize = 8, sizevar = 12)
+plot_corr_bayes(cor, varlist = NULL, sizer = 5, fontsize = 8, sizevar = 12)
 
-create_corr_bayes(cor, varlist, sizer = 5, fontsize = 8, sizevar = 12)
+create_corr_bayes(cor, varlist = NULL, sizer = 5, fontsize = 8, sizevar = 12)
 }
 \arguments{
 \item{cor}{Output of brms correlation calculation.}
 
-\item{varlist}{Vector of variable names. Be aware: \code{brms} sometimes
-change variable names, and therefore be sure that you formatted this
-vector correctly. Otherwise nothing will be shown in the plot.}
+\item{varlist}{Vector of variable names. Default is \code{NULL}, so that all
+correlations are plotted.}
 
 \item{sizer}{Font size of correlation values in plot.}
 

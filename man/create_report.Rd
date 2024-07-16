@@ -19,7 +19,7 @@ to add \code{.qmd}.}
 included draft file will be used.}
 
 \item{ext_name}{The name of extension to get the files from.
-Default "myhelpers".}
+Default 'myhelpers'.}
 
 \item{path_to_chrome}{The path to location of puppeteer chrome distribution.}
 }

@@ -2,9 +2,12 @@
 % Please edit documentation in R/load_grey.R
 \name{load_grey}
 \alias{load_grey}
+\alias{load_gray}
 \title{Colorblind-friendly palette.}
 \usage{
 load_grey(font = "Fira Sans", color = "white")
+
+load_gray(font = "Fira Sans", color = "white")
 }
 \arguments{
 \item{font}{Define the font you want resp. have installed.}

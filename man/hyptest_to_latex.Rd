@@ -4,10 +4,13 @@
 \alias{hyptest_to_latex}
 \title{Transfer hypothesis' results to TeX}
 \usage{
-hyptest_to_latex(object, caption = NULL)
+hyptest_to_latex(object, savedir = "./hypothesis.tex", caption = NULL)
 }
 \arguments{
 \item{object}{Object as result of \code{hypothesis()} from \code{brms}.}
+
+\item{savedir}{Define path and filename, e.g., './output/overview.tex'.
+Default is \code{'./hypothesis.tex'}.}
 
 \item{caption}{Set the caption for the output. Default is \code{NULL}.}
 }
@@ -20,6 +23,7 @@ Transfers result of \code{brms::hypothesis()} into LaTeX output.
 \examples{
 # hyptest_to_latex(
 #   object,
+#   savedir = './hypothesis.tex'
 #   caption = NULL
 # )
 

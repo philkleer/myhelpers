@@ -19,7 +19,7 @@ create_slides(
 included draft file will be used.}
 
 \item{ext_name}{The name of extension to get the files from. Default
-"myhelpers".}
+'myhelpers'.}
 
 \item{path_to_chrome}{The path to location of puppeteer chrome distribution.}
 }

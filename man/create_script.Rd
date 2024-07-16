@@ -18,7 +18,7 @@ add \code{.R}.}
 included draft file will be used.}
 
 \item{ext_name}{The name of extension to get the files from. Default
-"myhelpers".}
+'myhelpers'.}
 }
 \value{
 R script based on the template.

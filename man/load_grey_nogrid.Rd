@@ -2,9 +2,12 @@
 % Please edit documentation in R/load_grey_nogrid.R
 \name{load_grey_nogrid}
 \alias{load_grey_nogrid}
+\alias{load_gray_nogrid}
 \title{Colorblind-friendly palette (no grid).}
 \usage{
 load_grey_nogrid(font = "Fira Sans", color = "white")
+
+load_gray_nogrid(font = "Fira Sans", color = "white")
 }
 \arguments{
 \item{font}{Define the font you want resp. have installed.}

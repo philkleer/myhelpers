@@ -4,7 +4,12 @@
 \alias{create_bayesreg_table}
 \title{Creating regression table from \code{brms}}
 \usage{
-create_bayesreg_table(modellist, modelnames, cirange = 0.95, savedir)
+create_bayesreg_table(
+  modellist,
+  modelnames,
+  cirange = 0.95,
+  savedir = "./regtable.tex"
+)
 }
 \arguments{
 \item{modellist}{An \code{list}-object with model objects (from \code{brms}).}
@@ -13,7 +18,8 @@ create_bayesreg_table(modellist, modelnames, cirange = 0.95, savedir)
 
 \item{cirange}{Set the range of credible intervals, \code{Default} is 0.95.}
 
-\item{savedir}{Define path and filename, e.g., "./output/overview.tex".}
+\item{savedir}{Define path and filename, e.g., './output/overview.tex'.
+Default is \code{'./regtable.tex'}.}
 }
 \value{
 Saves a \code{.tex}-file with the regression table.
@@ -27,7 +33,7 @@ Creates a regression table of bayesian regression output (from \code{brms})
 #   modellist,
 #   modelnames,
 #   cirange = .95,
-#   savedir
+#   savedir = './regtable.tex'
 # )
 
 }

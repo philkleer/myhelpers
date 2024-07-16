@@ -4,15 +4,15 @@
 \alias{plot_loo}
 \title{Plots \code{loo}-object after running Bayesian models.}
 \usage{
-plot_loo(loo, folder, what)
+plot_loo(loo, folder = "./", what = "regmodel")
 }
 \arguments{
 \item{loo}{\code{brms} object that has been calculated leave-one-out
 criteria with function \code{loo()}.}
 
-\item{folder}{Indicating folder from working directory.}
+\item{folder}{Indicating folder from working directory. Default is \code{./}.}
 
-\item{what}{Indicating model under inspection.}
+\item{what}{Indicating model under inspection. Default is \code{regmodel}.}
 }
 \value{
 Saves LOO-diagnostics.
@@ -24,8 +24,8 @@ This function creates a diagnostic plot for the \code{loo} calculations
 \examples{
 # plot_loo(
 #   loo,
-#   folder,
-#   what
+#   folder = './',
+#   what = 'regmodel'
 # )
 
 }
