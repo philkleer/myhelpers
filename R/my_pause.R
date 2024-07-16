@@ -10,8 +10,10 @@
 #' @examples
 #' # mypause(time = 30)
 #'
-#' @importFrom cli cli_progress_bar cli_progress_update
+#' @importFrom cli cli_progress_bar cli_progress_update cli_alert_success
 #' @importFrom utils install.packages
+#'
+#' @export
 
 my_pause <- function(
     time = 30
@@ -29,4 +31,6 @@ my_pause <- function(
   clean()
 
   gc()
+
+  cli::cli_alert_success('Garbage is collected.')
 }
