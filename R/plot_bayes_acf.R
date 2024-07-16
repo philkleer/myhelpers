@@ -29,6 +29,8 @@
 #'  cli_progress_step
 #' @importFrom dplyr vars
 #' @importFrom utils install.packages
+#'
+#' @export
 
 plot_bayes_acf <- function(
     modelfit,
