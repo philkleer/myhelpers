@@ -29,6 +29,8 @@
 #' @importFrom cli cli_progress_bar cli_progress_update cli_progress_done
 #'  cli_progress_step
 #' @importFrom utils install.packages
+#'
+#' @export
 
 plot_bayes_combo <- function(
     modelfit,
