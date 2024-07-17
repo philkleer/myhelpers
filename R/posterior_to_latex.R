@@ -32,14 +32,16 @@
 #' @export
 
 posterior_to_latex <- function(
-    dfobject,
+    descobject,
     digits = 3,
-    minimal = TRUE
+    minimal = TRUE,
+    savedir = './posterior.tex'
 ) {
   if(!requireNamespace('xtable')) install.packages('xtable')
   if(!requireNamespace('cli')) install.packages('cli')
   if(!requireNamespace('utils')) install.packages('utils')
-  if(!requireNamespace('tidyverse')) install.packages('tidyverse')
+  if(!requireNamespace('stringr')) install.packages('stringr')
+  if(!requireNamespace('dplyr')) install.packages('dplyr')
 
   ROPE_Equivalence <- NULL
   Rhat <- NULL
@@ -51,7 +53,7 @@ posterior_to_latex <- function(
   dfobject$ROPE <- NA
 
   if (length(unique(dfobject$CI)) > 2) {
-    cli:cli_alert_warning('Function is stopped. Only two CIs possible.')
+    cli::cli_alert_warning('Function is stopped. Only two CIs possible.')
     stop()
 
   } else if (length(unique(dfobject$CI)) == 2) {
@@ -81,7 +83,7 @@ posterior_to_latex <- function(
 
     match1 <- stringr::str_c('CI_', (newobject$CI[1]*100))
   } else {
-    cli:cli_alert_warning('Function is stopped. There need to be one CI.')
+    cli::cli_alert_warning('Function is stopped. There need to be one CI.')
     stop()
   }
 
