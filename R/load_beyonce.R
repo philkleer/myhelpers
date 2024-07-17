@@ -40,8 +40,6 @@ load_beyonce <- function(
   }
   if(!requireNamespace('cli')) install.packages('cli')
 
-  library(beyonce)
-
   # ggplot settings for bayesian analysis
   ggplot2::theme_set(
     ggplot2::theme_grey() +
