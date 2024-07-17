@@ -4,16 +4,21 @@
 \alias{posterior_to_latex}
 \title{Transfer posterior description to LaTeX}
 \usage{
-posterior_to_latex(dfobject, digits = 3, minimal = TRUE)
+posterior_to_latex(
+  descobject,
+  digits = 3,
+  minimal = TRUE,
+  savedir = "./posterior.tex"
+)
 }
 \arguments{
+\item{descobject}{Object as result of \code{describe_posterior()} from
+\code{bayestestR}.}
+
 \item{digits}{Set the digits that should be shown in the latex output.}
 
 \item{minimal}{Shrinks output to relevant parts. Excludes ROPE definition,
 PS, and Rhat. Default is \code{TRUE}.}
-
-\item{descobject}{Object as result of \code{describe_posterior()} from
-\code{bayestestR}.}
 
 \item{savedir}{savedir Define path and filename, e.g., './output/overview.tex'.
 Default is \code{'./posterior.tex'}.}
