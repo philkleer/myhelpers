@@ -54,7 +54,7 @@ plot_corr <- function(
     tl.cex = sizevar,
     insig = 'blank',
     # outline.color = 'white',
-    colors = c('#543005', 'white', '#003C30'),
+    colors = c('#543005', 'gray88', '#003C30'),
     lab = TRUE,
     lab_size = sizer,
     lab_col = 'ghostwhite',
