@@ -35,8 +35,6 @@ plot_loo <- function(
   if(!requireNamespace('beyonce')) devtools::install_github('dill/beyonce')
   if(!requireNamespace('cli')) install.packages('cli')
 
-  library(beyonce)
-
   # initializing variable for use later on in functions
   .data <- NULL
 
