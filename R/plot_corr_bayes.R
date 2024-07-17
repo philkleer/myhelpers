@@ -25,8 +25,7 @@
 #' @importFrom cli cli_alert_success cli_progress_step
 #' @importFrom ggplot2 theme element_text element_blank
 #' @importFrom grid unit
-#' @importFrom stringr str_locate str_replace_all str_replace str_sub str_length
-#'   str_split_1
+#' @importFrom stringr str_replace_all str_split_i
 #' @importFrom dplyr syms mutate pull
 #' @importFrom utils head install.packages
 #'
@@ -40,62 +39,57 @@ plot_corr_bayes <- function(
 
   # initializing variable for use later on in functions
   .variable <- NULL
+  var1 <- var2 <- NULL
 
   coefnames <- cor$fit@sim$fnames_oi
 
   coefnames <- utils::head(coefnames, -2)
 
   cli::cli_progress_step(
-    'Gathering draws from brms object ...',
+    'Manipulation names of variables in data ...',
     spinner = TRUE
   )
 
   cordf <- cor |>
+    # gathering draws from brms object
     tidybayes::gather_draws(
       !!!dplyr::syms(coefnames)
     ) |>
+    # manipulation strings
     dplyr::mutate(
       .variable = stringr::str_replace_all(
         .variable,
         'rescor__',
         ''
       )
-    )  |>
-    dplyr::mutate(
-      .variable = stringr::str_replace_all(
-        .variable,
-        '__',
-        ' & '
-      )
     ) |>
-    tidybayes::median_qi()
+    # creating overview table and split .variable to two strings
+    tidybayes::median_qi() |>
+    dplyr::mutate(
+      var1 = stringr::str_split_i(string = .variable, pattern = '__', i = 1),
+      var2 = stringr::str_split_i(string = .variable, pattern = '__', i = 2)
+    ) |>
+    # relocate new variables to the front for convenience
+    dplyr::relocate(var1, var2, .after = .variable)
 
-  # setting varlist
+  # no specified varlist -> print all correlations
   if (is.null(varlist)) {
-    varlist <- cordf$.variable
-
-    newvarlist <- c()
-
-    for (i in 1:length(varlist)) {
-      newvarlist <- c(newvarlist, stringr::str_split_1(varlist[i], ' & '))
-      print(i)
-    }
-
-    varlist <- newvarlist
+    varlist <- c(cordf$var1, cordf$var2)
 
     varlist <- unique(varlist)
 
     cli::cli_alert_success('`varlist` created. All combinations will be plotted.')
   }
 
-  # creating blank cormat
-  cormat <- matrix(rep(0, length(varlist)^2),
-                   nrow = length(varlist),
-                   ncol = length(varlist),
-                   dimnames = list(
-                     varlist,
-                     varlist
-                   )
+  # setting cormat with NA's
+  cormat <- matrix(
+    rep(NA, length(varlist)^2),
+    nrow = length(varlist),
+    ncol = length(varlist),
+    dimnames = list(
+      varlist,
+      varlist
+    )
   )
 
   # diagonal with 1
@@ -103,47 +97,25 @@ plot_corr_bayes <- function(
     cormat[i, i] <- 1
   }
 
-  cormat
-
-  cli::cli_progress_step(
-    'Manipulation names of variables in correlation matrix ...',
-    spinner = TRUE
-  )
-
-  # filling cells with values (adjust numbers)
+  # loop to go through pairs of correlations
   for (i in 1:dim(cordf)[1]) {
-    for (j in 1:length(varlist)) {
-      begin <- stringr::str_locate(cordf[[1]][i], ' & ')[1]
-      end <- stringr::str_locate(cordf[[1]][i], ' & ')[2] + 1
-      if (
-        stringr::str_replace(
-          stringr::str_sub(cordf[[1]][i], 1, begin),
-          ' ',
-          ''
-        ) == rownames(cormat)[j]
-      ) {
-        for (k in 1:length(varlist)) {
-          if (
-            stringr::str_replace(
-              stringr::str_sub(
-                cordf[[1]][i],
-                end,
-                stringr::str_length(cordf[[1]][i])
-              ),
-              ' ',
-              ''
-            ) == colnames(cormat)[k]) {
-            cormat[j, k] <- dplyr::pull(cordf[i, 2])
+    for (j in 1:dim(cormat)[1]) {
+      if (cordf$var1[i] == rownames(cormat)[j]) {
+        for (k in 1:dim(cormat)[2]) {
+          if (cordf$var2[i] == colnames(cormat)[k]) {
+            cormat[j, k] <- dplyr::pull(cordf[i, 4])
           }
         }
       }
     }
   }
 
-  # filling down third
+  # loop to set corresponding fields
   for (i in 1:dim(cormat)[1]) {
     for (j in 1:dim(cormat)[2])
-      cormat[j, i] <- cormat[i, j]
+      if (is.na(cormat[j, i])) {
+        cormat[j, i] <- cormat[i, j]
+      }
   }
 
   plot <- ggcorrplot::ggcorrplot(
@@ -152,7 +124,7 @@ plot_corr_bayes <- function(
     tl.cex = sizevar,
     insig = 'blank',
     # outline.color = 'white',
-    colors = c('#543005', 'white', '#003C30'),
+    colors = c('#543005', 'gray88', '#003C30'),
     lab = TRUE,
     lab_size = sizer,
     lab_col = 'ghostwhite',
@@ -169,8 +141,6 @@ plot_corr_bayes <- function(
       legend.key.width = grid::unit(1, 'cm'),
       plot.margin = grid::unit(c(0, 0, 0, 0), 'cm')
     )
-
-  cli::cli_alert_success('Plot is shown in pane `Plots`!')
 
   plot
 }
