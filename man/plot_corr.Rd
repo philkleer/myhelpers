@@ -9,6 +9,7 @@ plot_corr(
   df,
   varlist = colnames(df),
   pmat = NULL,
+  insig = "pch",
   sizer = 5,
   fontsize = 8,
   sizevar = 12
@@ -18,6 +19,7 @@ create_corr(
   df,
   varlist = colnames(df),
   pmat = NULL,
+  insig = "pch",
   sizer = 5,
   fontsize = 8,
   sizevar = 12
@@ -32,6 +34,10 @@ create_corr(
 \item{pmat}{Object of \code{corr.test} from \code{psych}. It is only the
 correlation values (\code{p}). Default is \code{cordf$p}, to work with
 Bayesian simple correlation matrizes.}
+
+\item{insig}{Indicator if insignificant correlations should be shown.
+Default is \code{pch}. To not show insignificant correlations change to
+\code{blank}.}
 
 \item{sizer}{Font size of correlation values in plot.}
 
@@ -51,6 +57,7 @@ This function just utilize \code{ggcorrplot} function to create a
 #   df,
 #   varlist,
 #   pmat,
+#   insig = 'pch',
 #   sizer = 5,
 #   fontsize = 8,
 #   sizevar = 12
