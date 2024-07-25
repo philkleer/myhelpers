@@ -14,6 +14,7 @@ lattes: '4785970328498860'
 researchgate: 'Philipp-Kleer'
 contactemail: 'philipp.kleer@sowi.uni-giessen.de'
 contactsite: 'https://bpkleer.github.io/en'
+qrcode: '{{< qrcode https://bpkleer.github.io qr-start colorDark="#5A5A5A" >}}'
 # Settings
 date: 'Report Last Run: `r Sys.time()`'
 date-format: long
@@ -80,6 +81,11 @@ This is the content level.
 
 [Please, shoot questions at me. {{< iconify ph person-simple-throw-fill >}}]{.greetings}
 [If you use citations, put \ before @ in usernames]{.greetings}
+
+::: {.qrcode-final}
+{{< fa regular person-chalkboard size=3x >}} 
+{{< qrcode https://bpkleer.github.io qr-end colorDark="#5A5A5A" >}}
+:::
 
 ::: {.social}
 **Contact:**
