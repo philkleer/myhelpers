@@ -9,6 +9,9 @@
 #' @param pmat Object of \code{corr.test} from \code{psych}. It is only the
 #'   correlation values (\code{p}). Default is \code{cordf$p}, to work with
 #'   Bayesian simple correlation matrizes.
+#' @param insig Indicator if insignificant correlations should be shown.
+#'   Default is \code{pch}. To not show insignificant correlations change to
+#'   \code{blank}.
 #' @param sizer Font size of correlation values in plot.
 #' @param fontsize General font size adjustion via \code{theme()}.
 #' @param sizevar Font size of variable name in plot.
@@ -20,6 +23,7 @@
 #' #   df,
 #' #   varlist,
 #' #   pmat,
+#' #   insig = 'pch',
 #' #   sizer = 5,
 #' #   fontsize = 8,
 #' #   sizevar = 12
@@ -35,7 +39,7 @@
 #' @export
 
 plot_corr <- function(
-    df, varlist = colnames(df), pmat = NULL, sizer = 5,
+    df, varlist = colnames(df), pmat = NULL, insig = 'pch', sizer = 5,
     fontsize = 8, sizevar = 12
 ){
   if(!requireNamespace('ggcorrplot')) install.packages('ggcorrplot')
@@ -49,12 +53,12 @@ plot_corr <- function(
 
   plot <- ggcorrplot::ggcorrplot(
     corrmat$r,
-    p.mat = corrmat$p,
+    p.mat = pmat,
     type = 'upper',
     tl.cex = sizevar,
-    insig = 'blank',
+    insig = insig,
     # outline.color = 'white',
-    colors = c('#543005', 'gray88', '#003C30'),
+    colors = c('#7D231F', '#E1F2FF', '#1F537D'),
     lab = TRUE,
     lab_size = sizer,
     lab_col = 'ghostwhite',
