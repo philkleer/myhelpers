@@ -1,21 +1,21 @@
 ---
-title: "Your title"
-subtitle: "Conference / Panel name"
-author: "Philipp Kleer"
-institute: "Department of Political Science | Justus-Liebig-University Giessen" 
+title: 'Your title'
+subtitle: 'Conference / Panel name'
+author: 'Philipp Kleer'
+institute: 'Department of Political Science | Justus-Liebig-University Giessen' 
 # User socials
-mastodon: "philk"
-mastodonurl: "https://polsci.social/@"
-bluesky: "phil-k"
-#twitterx: "_philk"
-git: "bpkleer"
-orcid: "0000-0003-1935-387X"
-lattes: "4785970328498860"
-researchgate: "Philipp-Kleer"
-contactemail: "philipp.kleer@sowi.uni-giessen.de"
-contactsite: "https://bpkleer.github.io/en"
+mastodon: 'philk'
+mastodonurl: 'https://polsci.social/@'
+bluesky: 'phil-k'
+#twitterx: '_philk'
+git: 'bpkleer'
+orcid: '0000-0003-1935-387X'
+lattes: '4785970328498860'
+researchgate: 'Philipp-Kleer'
+contactemail: 'philipp.kleer@sowi.uni-giessen.de'
+contactsite: 'https://bpkleer.github.io/en'
 # Settings
-date: "Report Last Run: `r Sys.time()`"
+date: 'Report Last Run: `r Sys.time()`'
 date-format: long
 bibliography: assets/lit.bib
 csl: assets/apa.csl
@@ -25,8 +25,8 @@ format:
     height: 900
     template-partials: 
       - ./assets/title-slide.html
-    theme: [default, "./assets/slides.scss"]
-    footer: "<a href='https://gitlab.com/bpkleer/' class='icon-corner'><svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'><path fill='currentColor' d='m21.663 9.987l-.028-.072l-2.719-7.094a.71.71 0 0 0-.706-.449a.711.711 0 0 0-.654.522L15.72 8.52H8.282L6.443 2.895a.711.711 0 0 0-.652-.524a.72.72 0 0 0-.707.45L2.362 9.925l-.028.07a5.057 5.057 0 0 0 1.674 5.838l.01.007l.024.019l4.147 3.104l2.05 1.553l1.247.944a.843.843 0 0 0 1.016 0l1.247-.944l2.05-1.553l4.172-3.123l.01-.008a5.055 5.055 0 0 0 1.682-5.845Z'></path></svg></a>"
+    theme: [default, './assets/slides.scss']
+    footer: '<a href='https://gitlab.com/bpkleer/' class='icon-corner'><svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'><path fill='currentColor' d='m21.663 9.987l-.028-.072l-2.719-7.094a.71.71 0 0 0-.706-.449a.711.711 0 0 0-.654.522L15.72 8.52H8.282L6.443 2.895a.711.711 0 0 0-.652-.524a.72.72 0 0 0-.707.45L2.362 9.925l-.028.07a5.057 5.057 0 0 0 1.674 5.838l.01.007l.024.019l4.147 3.104l2.05 1.553l1.247.944a.843.843 0 0 0 1.016 0l1.247-.944l2.05-1.553l4.172-3.123l.01-.008a5.055 5.055 0 0 0 1.682-5.845Z'></path></svg></a>'
     navigation-mode: vertical
     controls-layout: bottom-right
     controls-tutorial: true
@@ -36,7 +36,7 @@ format:
     transition: slide
     background-transition: fade
     code-fold: false
-    code-summary: "Click here for Code"  
+    code-summary: 'Click here for Code'  
     code-link: true
     code-overflow: wrap
     highlight-style: atom-one 
@@ -45,13 +45,13 @@ format:
       eval: false
       warning: false
     chalkboard:
-      src: "./assets/drawings.json"
+      src: './assets/drawings.json'
       buttons: false
     title-slide-attributes:
-      data-state: "hide-menubar"
+      data-state: 'hide-menubar'
     simplemenu:
         barhtml:
-            header: "<div class='menubar'><a href='#'></a><ul class='menu'></ul><div>"
+            header: '<div class='menubar'><a href='#'></a><ul class='menu'></ul><div>'
         scale: 0.8
 revealjs-plugins:
   - simplemenu
@@ -68,7 +68,7 @@ library(scales)
 library(beyonce)
 ```
 
-# Quarto {data-stack-name="Start"}
+# Quarto {data-stack-name='Start'}
 
 Remember this is the first level!
 
@@ -76,7 +76,7 @@ Remember this is the first level!
 
 This is the content level.
 
-# Goodbye{.goodbye data-state="hide-menubar"}
+# Goodbye{.goodbye data-state='hide-menubar'}
 
 [Please, shoot questions at me. {{< iconify ph person-simple-throw-fill >}}]{.greetings}
 [If you use citations, put \ before @ in usernames]{.greetings}
@@ -95,6 +95,6 @@ This is the content level.
  
 :::
 
-## References {visibility="uncounted"}
+## References {visibility='uncounted'}
 ::: {#refs}
 :::
