@@ -1,11 +1,11 @@
 ---
-title: "Your title"
-subtitle: "Conference / Panel name"
-author: "Philipp Kleer"
-institute: "Department of Political Science | Justus-Liebig-University Giessen" 
-date: 2023-05-12
-categories: ["cat1", "cat2", "cat3", "cat4"]
-summary: "Write a short description"
+title: 'Your title'
+subtitle: 'Conference / Panel name'
+author: 'Philipp Kleer'
+institute: 'Department of Political Science | Justus-Liebig-University Giessen' 
+date: last_modified
+categories: ['cat1', 'cat2', 'cat3', 'cat4']
+summary: 'Write a short description'
 bibliography: assets/lit.bib
 csl: assets/apa.csl
 # Settings
@@ -16,15 +16,15 @@ format:
     toc-title: Contents
     toc-location: left
     toc_depth: 3
-    css: [default, "assets/report.css"]
+    css: [default, 'assets/report.css']
     fontsize: 1.1em
     code-link: true
     anchor-sections: true
     fig-cap-location: margin
     reference-location: margin
     footnotes-hover: true
-    backgroundcolor: "#f8f8f8"
-    linkcolor: "#6d579d"
+    backgroundcolor: '#f8f8f8'
+    linkcolor: '#6d579d'
 ---
 
 ```{r setup, include=FALSE}
@@ -38,6 +38,11 @@ library(beyonce)
 ```
 
 ::: {.social}
+
+[Link to publication: {{< ai doi size=2x >}}](https://doi.org/)
+
+[Link to supplementary material: {{< ai osf size=2x >}}](https://osf.io/puqt7/?view_only=62834b9d29914bf3b50ae13916d9c78b)
+
 [{{< fa brands mastodon >}}](https://polsci.social/@philk){.mastodon} [{{< fa solid square >}}](https://bsky.app/profile/phil-k.bsky.social){.bluesky} [{{< iconify simple-icons gitlab >}}](https://gitlab.com/bpkleer){.gitlab} [{{< fa brands github >}}](https://github.com/bpkleer){.github} [{{< ai orcid >}}](https://orcid.org/0000-0003-1935-387X){.orcid} [{{< ai lattes >}}](http://lattes.cnpq.br/4785970328498860){.lattes} [{{< ai researchgate-square >}}](https://www.researchgate.net/profile/Philipp-Kleer){.researchgate} [{{< fa envelope >}}](mailto:philipp.kleer@sowi.uni-giessen.de){.email} [{{< fa id-card >}} ](https://bpkleer.github.io/en){.website}
 :::
 
