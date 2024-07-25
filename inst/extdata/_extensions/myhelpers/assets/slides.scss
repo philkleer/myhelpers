@@ -276,6 +276,17 @@ margin-right: 11rem;
 margin-left: 11rem;
 }
 
+#title-slide p.link-to-presentation {
+color:  $gray;
+text-shadow: none;
+text-align: center;
+font-weight: 350;
+font-size:  1.75rem !important;
+margin-bottom: -0.5rem;
+margin-right: 11rem;
+margin-left: 11rem;
+}
+
 #title-slide p {
 color:  $gray;
 text-shadow: none;
@@ -764,6 +775,23 @@ text-align: center;
 
 .slide.goodbye .social p a {
   color: $gray;
+}
+
+
+.slide.goodbye .qrcode-final p {
+  color: $gray;
+}
+
+.slide.goodbye .qrcode-final {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+
+.slide.goodbye .qrcode-final .qrcode{
+  position: absolute;
+  right: 0px;
 }
 
 /******************
