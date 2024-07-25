@@ -434,3 +434,11 @@ code {
 	 background: black !important;
 	 color: white !important;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  line-height: 1.2;
+  color: var(--bs-heading-color);
+}
