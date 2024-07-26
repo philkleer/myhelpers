@@ -235,7 +235,7 @@ color:  $gray;
 text-shadow: none;
 text-align: center;
 font-weight: 350;
-font-size: 3rem;
+font-size: 2rem;
 margin-bottom: 0.5rem;
 margin-top: 1.5rem;
 margin-right: 11rem;
@@ -247,7 +247,7 @@ color:  $gray;
 text-shadow: none;
 text-align: center;
 font-weight: 350;
-font-size: 1.75rem;
+font-size: 3rem;
 margin-top: 1.5rem;
 margin-bottom: 0.5rem;
 margin-right: 11rem;
@@ -796,33 +796,30 @@ text-align: center;
 
 /******************
 
-Gitlab icon
+  Git icon
 
 bottom left
 
 ********************/
 
-a.icon-corner {
-  line-height: 0;
-  color: $darkgray !important;
-  border-color: $darkgray !important;
+.reveal .footer a.github {
+  color: black !important;
+  background-color: $white !important;
+  border-color: black !important;
   border-radius: 25px;
-  padding-top: 0.45rem;
-  padding-bottom: 0.15rem;
-  padding-left: 0.45rem;
-  padding-right: 0.45rem;
-  background: rgba(235, 235, 235, 0.7);
+  padding: 0.15rem 0.25rem;
+  background: white;
   border: 2px solid transparent;
   transition: background ease 0.3s, color ease 0.3s;
+  margin-bottom: 0em;
   text-decoration: none;
-  vertical-align: middle;
-
 }
 
-a.icon-corner:hover {
-  color: rgba(235, 235, 235, 0.7) !important;
-  background: $darkgray;
+.reveal .footer a.github:hover {
+  background: black !important;
+  color: white !important;
 }
+
 
 /*******************
 
