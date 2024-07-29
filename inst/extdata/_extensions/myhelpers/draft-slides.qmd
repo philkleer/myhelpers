@@ -31,7 +31,6 @@ format:
     controls-layout: bottom-right
     controls-tutorial: true
     multiplex: true #Creates speaker and normal html
-    chalkboard: false
     touch: true
     menu: false
     preview-links: auto
