@@ -1,0 +1,230 @@
+---
+title: 'First data view'
+author: 'Philipp Kleer'
+format: 
+  dashboard:
+    nav-buttons: [github]
+    github: https://github.com/bpkleer
+theme: [sandstone, ./assets/dashboard.scss]
+execute: 
+  warning: false
+  message: false
+  cache: false
+---
+
+```{r}
+#| label: load-packages
+#| message: false
+
+library(tidyverse)
+
+theme_set(
+    theme(
+        base_size = 24, 
+        base_family = 'Fira Sans,'
+    )    
+) 
+
+
+data <- mtcars %>%
+  mutate(
+    fabric = stringr::str_split(
+      rownames(.), 
+      pattern = ' ', 
+      n = 2,
+      simplify = TRUE
+    )[, 1],
+    model = stringr::str_split(
+      rownames(.), 
+      pattern = ' ', 
+      n = 2,
+      simplify = TRUE
+    )[, 2],
+  )
+  
+n_fabrics <- length(unique(data$fabric))
+
+n_models <-  length(unique(data$model))
+
+perc <- data %>% 
+  group_by(fabric) %>%
+  reframe(
+    n = n(),
+    perc = n/nrow(.) *100
+  ) 
+
+top_fabric <- perc %>% 
+  arrange(desc(perc)) %>% 
+  slice(1)
+```
+
+# A Page
+
+## Row 
+
+### Column {.tabset width='33%'}
+
+```{r}
+#| label: first-tab
+#| title: A first Tab
+
+ggplot2::ggplot(
+  data,                                  
+  ggplot2::aes(
+    x = mpg,                                 
+    y = disp
+  )
+) +                               
+ggplot2::geom_point()
+```
+
+```{r}
+#| label: second-tab
+#| title: A second Tab
+
+ggplot2::ggplot(
+  data,                                 
+  ggplot2::aes(
+    x = hp,
+    color = as.factor(fabric),
+    fill = as.factor(fabric)
+  ) 
+) +                               
+ggplot2::geom_bar()
+```
+
+## Row
+
+### Column 
+```{r}
+#| label: column-2nd-row
+#| title: A column in a second row
+
+ggplot2::ggplot(
+  data,                             
+  ggplot2::aes(
+    x = gear,                                 
+    y = hp
+  ) 
+) +                               
+ggplot2::geom_point()
+
+```
+
+### Column
+```{r}
+#| label: column-two-plots
+#| title: A column with two plots
+
+ggplot2::ggplot(
+  data,
+  ggplot2::aes(
+    x = hp, 
+    y = mpg, 
+    color = as.factor(cyl), 
+    shape = as.factor(cyl)
+  )
+) +
+ggplot2::geom_point(size = 3)
+```
+
+
+```{r}
+#| label: column-two-plots-2nd
+#| title: second plot
+
+ggplot2::ggplot(
+  data,
+  ggplot2::aes(
+    x = hp, 
+    y = mpg, 
+    color = as.factor(gear), 
+    shape = as.factor(gear)
+  )
+) +
+ggplot2::geom_point(size = 3)
+```
+
+# A second page
+
+## Row 
+
+```{r}
+#| component: valuebox
+#| title: Unique fabrics
+
+# primary:	Blue
+# secondary	Gray
+# success	Green
+# info	Bright Blue
+# warning	Yellow/Orange
+# danger	Red
+# light	Light Gray
+# dark	Black
+
+list(
+  icon = 'badge-tm',
+  color = 'light',
+  value = as.numeric(n_fabrics)
+)
+```
+
+```{r}
+#| component: valuebox
+#| title: Unique models
+
+list(
+  icon = 'car-front',
+  color = 'warning',
+  value = as.numeric(n_fabrics)
+)
+```
+
+```{r}
+#| component: valuebox
+#| title: The top fabric is ...
+
+list(
+  icon = '1-circle',
+  color = 'info',
+  value = paste(top_fabric[1, 1], 'including', top_fabric[1, 2], 'cars')
+)
+```
+
+## Row 
+
+### Column 
+
+```{r}
+#| label: another-plot
+#| title: Just another plot
+
+ggplot2::ggplot(
+  data,
+  ggplot2::aes(
+    x = disp, 
+    y = drat, 
+    color = as.factor(fabric), 
+    shape = as.factor(fabric)
+  )
+) +
+ggplot2::geom_point(size = 3)
+```
+
+### Column
+
+```{r}
+#| label: another-plot2
+#| title: And another plot
+
+ggplot2::ggplot(
+  data,
+  ggplot2::aes(
+    x = qsec, 
+    y = wt, 
+    color = as.factor(fabric), 
+    shape = as.factor(fabric)
+  )
+) +
+ggplot2::geom_point(size = 3)
+```
