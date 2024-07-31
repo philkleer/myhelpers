@@ -13,6 +13,7 @@ $font-weight: 350;
 $style1: #579D90;
 $style2: #55AB6B;
 $style3: #558CAB;
+$style4: #40746A;
 $white: #F7F7F7;
 $gray: #F4F4F4;
 $gray2: #C4C4C4;
@@ -22,8 +23,8 @@ $darkgray2: #1C1C1C;
 $black: #272822;
 $blue: #5563AB;
 $red: #D15E65;
-$purple: #EB98EB;
-$yellow: #EBB46A;
+$purple: #B598EB;
+$yellow: #E2AC66;
 
 // definitions of slides
 $primary: $style1;
@@ -389,6 +390,12 @@ Highlight Styles
   color: $purple;
   font-weight: bold;
 }
+
+.highlight5{
+  color: $style4;
+  font-weight: bold;
+}
+
 .warning{
   color: $red;
   font-weight: bold;
