@@ -43,9 +43,10 @@ format:
     highlight-style: atom-one 
     footer: '[{{< fa brands github >}}](https://github.com/bpkleer){.github}'
     execute:
-      echo: true
-      eval: false
+      echo: false
+      eval: true
       warning: false
+      message: false
     chalkboard:
       src: './assets/drawings.json'
       buttons: false
@@ -60,14 +61,15 @@ revealjs-plugins:
 editor: source
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```{r}
+#| label: setup-libraries-data
+#| include: false
+
 library(tidyverse)
 library(knitr)
 library(kableExtra)
-library(RColorBrewer)
-library(scales)
-library(beyonce)
+
+myhelpers::load_slidecols()
 ```
 
 # Quarto {data-stack-name="Start"}
@@ -100,7 +102,7 @@ This is the content level.
 ::: social
 **Contact:**
 
-[{{< fa brands mastodon >}}](https://polsci.social/@philk){.mastodon} [\@philk](https://polsci.social/@philk) \| [{{< fa solid square >}}](https://bsky.app/profile/phil-k.bsky.social){.bluesky} [\@phil-k](https://bsky.app/profile/phil-k.bsky.social) \| [{{< fa brands github >}}](https://github.com/bpkleer){.github} [bpkleer](https://gitlab.com/bpkleer)
+[{{< fa brands mastodon >}}](https://polsci.social/@philk){.mastodon} [\@philk](https://polsci.social/@philk) \| [{{< fa solid square >}}](https://bsky.app/profile/phil-k.bsky.social){.bluesky} [\@phil-k](https://bsky.app/profile/phil-k.bsky.social) \| [{{< fa brands github >}}](https://github.com/bpkleer){.github} [bpkleer](https://github.com/bpkleer)
 
 [{{< ai orcid >}}](https://orcid.org/0000-0003-1935-387X){.orcid} [0000-0003-1935-387X](https://orcid.org/0000-0003-1935-387X) \| [{{< ai lattes >}}](http://lattes.cnpq.br/4785970328498860){.lattes} [4785970328498860](http://lattes.cnpq.br/4785970328498860) \| [{{< ai researchgate-square >}}](https://www.researchgate.net/profile/Philipp-Kleer){.researchgate} [Philipp-Kleer](https://www.researchgate.net/profile/Philipp-Kleer)
 
