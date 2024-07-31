@@ -113,6 +113,20 @@ Here explain what you did and why you did this
 
 {{< iconify solar danger-triangle-bold-duotone size=xl >}} restricted model due to comparability across data sets
 
+{{< iconify ph number-circle-one-duotone size=xl >}} Step 1
+
+. . .
+
+{{< iconify ph number-circle-two-duotone size=xl >}} Step 2
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a) HTML space for intendation
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b) HTML space for intendation
+
+. . .
+
+{{< iconify ph number-circle-three-duotone size=xl >}} Step 3
+
 ## Tricks and Ruses
 
 How we made it work {{< iconify majesticons settings-cog-check-line >}}.
