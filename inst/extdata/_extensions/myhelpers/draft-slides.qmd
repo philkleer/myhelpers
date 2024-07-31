@@ -12,7 +12,7 @@ git: 'bpkleer'
 orcid: '0000-0003-1935-387X'
 lattes: '4785970328498860'
 researchgate: 'Philipp-Kleer'
-contactemail: 'philipp.kleer@sowi.uni-giessen.de'
+contactemail: 'philipp.kleer+academia@posteo.com'
 contactsite: 'https://bpkleer.github.io/en'
 qrcode: '{{< qrcode https://bpkleer.github.io qr-start colorDark="#5A5A5A" >}}'
 # Settings
@@ -104,7 +104,7 @@ This is the content level.
 
 [{{< ai orcid >}}](https://orcid.org/0000-0003-1935-387X){.orcid} [0000-0003-1935-387X](https://orcid.org/0000-0003-1935-387X) \| [{{< ai lattes >}}](http://lattes.cnpq.br/4785970328498860){.lattes} [4785970328498860](http://lattes.cnpq.br/4785970328498860) \| [{{< ai researchgate-square >}}](https://www.researchgate.net/profile/Philipp-Kleer){.researchgate} [Philipp-Kleer](https://www.researchgate.net/profile/Philipp-Kleer)
 
-[{{< fa envelope >}}](mailto:philipp.kleer@sowi.uni-giessen.de){.email}[ philipp.kleer\@sowi.uni-gessen.de](mailto:philipp.kleer@sowi.uni-giessen.de) \| [{{< fa id-card >}}](https://bpkleer.github.io){.website}[ bpkleer.github.io](https://bpkleer.github.io)
+[{{< fa envelope >}}](mailto:philipp.kleer+academia@posteo.com){.email}[ philipp.kleer+academia@posteo.com](mailto:philipp.kleer+academia@posteo.com) \| [{{< fa globe >}}](https://bpkleer.github.io){.website}[ bpkleer.github.io](https://bpkleer.github.io)
 :::
 
 ::: footer
