@@ -72,11 +72,9 @@ library(kableExtra)
 myhelpers::load_slidecols()
 ```
 
-# Quarto {data-stack-name="Start"}
+# Quarto {data-stack-name='Preparations' }
 
-Remember this is the first level! 
-
-## In Positron
+## add extras in positron
 
 You need to add extensions manually (`rstudioapi` doesn't work there):
 
@@ -87,20 +85,67 @@ You need to add extensions manually (`rstudioapi` doesn't work there):
 - `quarto add quarto-ext/fontawesome`
 - `quarto install extension jmbuhr/quarto-qrcode`
 
-## Second level slide
+# Motivation {data-stack-name='Start'}
 
-This is the content level.
+... and what we already know {{< iconify emojione-monotone books size=2x >}} 
 
-# Goodbye {.goodbye data-state="hide-menubar"}
+## Why?
 
-[Please, shoot questions at me. {{< iconify ph person-simple-throw-fill >}}]{.greetings} [If you use citations, put  before \@ in usernames]{.greetings}
+Explain why it is interesting to research the problem (few references to theory, audience knows; 2-3 key pieces!)
+
+## Empirical evidence
+
+Reference briefly other research, if questions on this, you can come back on this in the discussion
+
+# Data & Methods {data-stack-name='Data'}
+
+What we used {{< iconify icon-park-twotone data-two size=2x >}} and how we did it {{< iconify fluent-mdl2 test-plan size=2x >}} 
+
+## Data
+Lorem ipsum
+
+## Analytical strategy
+Here explain what you did and why you did this
+
+{{< iconify mdi wrench-settings-outline size=xl >}} check and control differences/similarities
+
+{{< iconify material-symbols low-priority-rounded size=xl >}} using knowledge from general population
+
+{{< iconify solar danger-triangle-bold-duotone size=xl >}} restricted model due to comparability across data sets
+
+## Tricks and Ruses
+
+How we made it work {{< iconify majesticons settings-cog-check-line >}}.
+
+Probably not necessary, only use if you had to do something that is not really common. Explain why you did so and why it is a good approach (reference work others)
+
+## Operationalization
+
+I would skip this to the extras. 
+
+# Results {data-stack-name="Results"}
+
+... what we found in the data {{< iconify icon-park-twotone find size=2x >}}
+
+## First results
+
+{{< iconify icon-park-twotone difference-set size=xl >}} Differences
+
+{{< iconify pajamas search-results size=xl >}} global model fit
+
+{{< iconify pepicons-print equal-circle-filled size=xl >}} equal 
+
+{{< iconify pajamas comparison size=xl >}} similar
+
+# {{< iconify icon-park-outline bye >}} Goodbye {.goodbye data-state='hide-menubar'}
+
+[Please, shoot questions at me. {{< iconify ph person-simple-throw-fill size=xl >}}]{.greetings} [If you use citations, put  before \@ in usernames]{.greetings}
 
 ::: qrcode-final
-{{< fa regular person-chalkboard size=3x >}} {{< qrcode https://bpkleer.github.io qr-end colorDark="#5A5A5A" >}}
+{{< fa regular person-chalkboard size=Huge >}} {{< qrcode https://bpkleer.github.io qr-end colorDark='#5A5A5A' >}}
 :::
 
 ::: social
-**Contact:**
 
 [{{< fa brands mastodon >}}](https://polsci.social/@philk){.mastodon} [\@philk](https://polsci.social/@philk) \| [{{< fa solid square >}}](https://bsky.app/profile/phil-k.bsky.social){.bluesky} [\@phil-k](https://bsky.app/profile/phil-k.bsky.social) \| [{{< fa brands github >}}](https://github.com/bpkleer){.github} [bpkleer](https://github.com/bpkleer)
 
@@ -112,7 +157,13 @@ This is the content level.
 ::: footer
 :::
 
-## References {visibility="uncounted"}
+## References {visibility='uncounted'}
 
 ::: {#refs}
 :::
+
+# Extras {visibility='uncounted' data-state='hide-menubar'}
+
+What we couldn't fit into 12 minutes {{< iconify pepicons-print loop-plus size=xl >}}
+
+## Operationalization 
