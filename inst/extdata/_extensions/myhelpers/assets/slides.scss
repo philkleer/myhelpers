@@ -221,13 +221,13 @@ Headers & Font sizes
 
 #title-slide h1  {
 color:  $gray !important;
-font-size: 5rem !important;
+font-size: 4rem !important;
 text-shadow: none;
 font-weight: 400;
 margin-bottom: -1rem;
 margin-top: 2.5rem;
-margin-right: 11rem;
-margin-left: 11rem;
+margin-right: 2.5rem;
+margin-left: 2.5rem;
 }
 
 #title-slide .subtitle, div.reveal div.slides section.quarto-title-block .subtitle {
@@ -537,8 +537,8 @@ Social media class
   color: #558CAB !important;
   background-color: $white !important;
   border-color: #558CAB !important;
-  border-radius: 25px;
-  padding: 0.15rem 0.4rem;
+  border-radius: 50px;
+  padding: 0.20rem 0.25rem;
   background: white;
   border: 2px solid transparent;
   transition: background ease 0.3s, color ease 0.3s;
@@ -555,8 +555,8 @@ Social media class
   color: #558CAB !important;
   background-color: $white !important;
   border-color: #558CAB !important;
-  border-radius: 25px;
-  padding: 0.15rem 0.4rem;
+  border-radius: 50px;
+  padding: 0.20rem 0.25rem;
   background: white;
   border: 2px solid transparent;
   transition: background ease 0.3s, color ease 0.3s;
@@ -573,8 +573,8 @@ Social media class
   color: #1DA1F2 !important;
   background-color: $white !important;
   border-color: #1DA1F2 !important;
-  border-radius: 25px;
-  padding: 0.15rem 0.4rem;
+  border-radius: 50px;
+  padding: 0.20rem 0.25rem;
   background: white;
   border: 2px solid transparent;
   transition: background ease 0.3s, color ease 0.3s;
@@ -591,8 +591,8 @@ Social media class
   color: #000000 !important;
   background-color: $white !important;
   border-color: #000000 !important;
-  border-radius: 25px;
-  padding: 0.15rem 0.4rem;
+  border-radius: 50px;
+  padding: 0.20rem 0.25rem;
   background: white;
   border: 2px solid transparent;
   transition: background ease 0.3s, color ease 0.3s;
@@ -609,8 +609,8 @@ Social media class
   color: #6364FF !important;
   background-color: $white !important;
   border-color: #6364FF !important;
-  border-radius: 25px;
-  padding: 0.15rem 0.4rem;
+  border-radius: 50px;
+  padding: 0.15rem 0.25rem;
   background: white;
   border: 2px solid transparent;
   transition: background ease 0.3s, color ease 0.3s;
@@ -627,8 +627,8 @@ Social media class
   color: #4985CE !important;
   background-color: $white !important;
   border-color: #4985CE !important;
-  border-radius: 25px;
-  padding: 0.15rem 0.4rem;
+  border-radius: 50px;
+  padding: 0.15rem 0.25rem;
   background: white;
   border: 2px solid transparent;
   transition: background ease 0.3s, color ease 0.3s;
@@ -645,8 +645,8 @@ Social media class
   color: #00CCBB !important;
   background-color: $white !important;
   border-color: #00CCBB !important;
-  border-radius: 25px;
-  padding: 0.15rem 0.4rem;
+  border-radius: 50px;
+  padding: 0.15rem 0.25rem;
   background: white;
   border: 2px solid transparent;
   transition: background ease 0.3s, color ease 0.3s;
@@ -663,8 +663,8 @@ Social media class
   color: #538cc6 !important;
   background-color: $white !important;
   border-color: #538cc6 !important;
-  border-radius: 25px;
-  padding: 0.15rem 0.4rem;
+  border-radius: 50px;
+  padding: 0.15rem 0.25rem;
   background: white;
   border: 2px solid transparent;
   transition: background ease 0.3s, color ease 0.3s;
@@ -682,8 +682,8 @@ Social media class
   color: #A6CE39 !important;
   background-color: $white !important;
   border-color: #A6CE39 !important;
-  border-radius: 25px;
-  padding: 0.15rem 0.4rem;
+  border-radius: 50px;
+  padding: 0.20rem 0.25rem;
   background: white;
   border: 2px solid transparent;
   transition: background ease 0.3s, color ease 0.3s;
@@ -700,8 +700,8 @@ Social media class
   color: #fc6d27 !important;;
   background-color: $white !important;
   border-color: #fc6d27 !important;
-  border-radius: 25px;
-  padding: 0.15rem 0.4rem;
+  border-radius: 50px;
+  padding: 0.20rem 0.25rem;
   background: white;
   border: 2px solid transparent;
   transition: background ease 0.3s, color ease 0.3s;
@@ -718,8 +718,8 @@ Social media class
   color: black !important;
   background-color: $white !important;
   border-color: black !important;
-  border-radius: 25px;
-  padding: 0.15rem 0.4rem;
+  border-radius: 50px;
+  padding: 0.20rem 0.25rem;
   background: white;
   border: 2px solid transparent;
   transition: background ease 0.3s, color ease 0.3s;
@@ -758,13 +758,13 @@ text-align: center;
 }
 
 .slide.goodbye .social {
-  margin-top: 10rem !important;
+  margin-top: 5rem !important;
   line-height: 100%;
 }
 
 .slide.goodbye .social p {
   color:  $gray !important;
-  font-size: 2.5rem !important;
+  font-size: 1.5rem !important;
   text-align: left;
   margin-top: 0.2rem;
 }
