@@ -276,15 +276,11 @@ margin-right: 11rem;
 margin-left: 11rem;
 }
 
-#title-slide p.link-to-presentation {
-color:  $gray;
-text-shadow: none;
-text-align: center;
-font-weight: 350;
-font-size:  1.75rem !important;
-margin-bottom: -0.5rem;
-margin-right: 11rem;
-margin-left: 11rem;
+#title-slide th,
+td {
+  font-size: 1.25rem;
+  text-align: center;
+  vertical-align: top;
 }
 
 #title-slide p {
@@ -293,8 +289,8 @@ text-shadow: none;
 text-align: left;
 font-weight: 350;
 font-size: 1.25rem;
-margin-right: 11rem;
-margin-left: 11rem;
+margin-right: 5rem;
+margin-left: 5rem;
 }
 
 section.has-light-background .controls button {
