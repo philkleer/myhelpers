@@ -133,6 +133,15 @@ How we made it work {{< iconify majesticons settings-cog-check-line >}}.
 
 Probably not necessary, only use if you had to do something that is not really common. Explain why you did so and why it is a good approach (reference work others)
 
+### Include Tikz
+```{r, engine = 'tikz'}
+\begin{tikzpicture}
+ \draw (0,0) circle (1cm);
+ %\pause
+ \draw (0,0) circle (2cm);
+\end{tikzpicture}
+```
+
 ## Operationalization
 
 I would skip this to the extras. 
