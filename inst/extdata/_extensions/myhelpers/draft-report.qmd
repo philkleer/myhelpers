@@ -47,6 +47,14 @@ library(beyonce)
 :::
 
 # Section 1
+You need to add extensions manually (`rstudioapi` doesn't work there):
+
+- `quarto install extension sellorm/quarto-social-embeds`
+- `quarto install extension schochastics/academicons`
+- `quarto add martinomagnifico/quarto-simplemenu`
+- `quarto add mcanouil/quarto-iconify`
+- `quarto add quarto-ext/fontawesome`
+- `quarto install extension jmbuhr/quarto-qrcode`
 
 ## Subsection 1
 
