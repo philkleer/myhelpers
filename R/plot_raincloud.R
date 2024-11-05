@@ -1,8 +1,7 @@
 #' Plots a raincloud (metric variable)
 #'
 #' This function creates a simple raincloud of a single metric variable. It
-#'  utilizes \code{beyonce} for coloring, \code{ggdist} and \code{gghalves}
-#'  for additional plotting.
+#'  utilizes \code{ggdist} and \code{gghalves} for additional plotting.
 #'
 #' @param df A Data frame.
 #' @param metricvar A metric variable within that data frame.

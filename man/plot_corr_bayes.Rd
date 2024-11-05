@@ -5,9 +5,23 @@
 \alias{create_corr_bayes}
 \title{Creates a standard \code{ggcorrplot} with Bayesian data.}
 \usage{
-plot_corr_bayes(cor, varlist = NULL, sizer = 5, fontsize = 8, sizevar = 12)
+plot_corr_bayes(
+  cor,
+  varlist = NULL,
+  sizer = 5,
+  fontsize = 8,
+  sizevar = 12,
+  colorlist = c("#1E88E5", "#FFC107", "#D81B60")
+)
 
-create_corr_bayes(cor, varlist = NULL, sizer = 5, fontsize = 8, sizevar = 12)
+create_corr_bayes(
+  cor,
+  varlist = NULL,
+  sizer = 5,
+  fontsize = 8,
+  sizevar = 12,
+  colorlist = c("#1E88E5", "#FFC107", "#D81B60")
+)
 }
 \arguments{
 \item{cor}{Output of brms correlation calculation.}
@@ -20,6 +34,8 @@ correlations are plotted.}
 \item{fontsize}{General font size adjustion via \code{theme()}.}
 
 \item{sizevar}{Font size of variable name in plot.}
+
+\item{colorlist}{List of colors for values of -1, 0, 1}
 }
 \value{
 Creates correlation matrix and saves correlation plot.
@@ -34,7 +50,8 @@ This function just utilize \code{ggcorrplot} function to create a
 #   varlist,
 #   sizer = 5,
 #   fontsize = 8,
-#   sizevar = 12
+#   sizevar = 12,
+#   colorlist = c('#1E88E5', '#FFC107', '#D81B60')
 # )
 
 }

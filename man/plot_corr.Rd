@@ -12,7 +12,8 @@ plot_corr(
   insig = "pch",
   sizer = 5,
   fontsize = 8,
-  sizevar = 12
+  sizevar = 12,
+  colorlist = c("#1E88E5", "#FFC107", "#D81B60")
 )
 
 create_corr(
@@ -22,7 +23,8 @@ create_corr(
   insig = "pch",
   sizer = 5,
   fontsize = 8,
-  sizevar = 12
+  sizevar = 12,
+  colorlist = c("#1E88E5", "#FFC107", "#D81B60")
 )
 }
 \arguments{
@@ -44,6 +46,8 @@ Default is \code{pch}. To not show insignificant correlations change to
 \item{fontsize}{General font size adjustion via \code{theme()}.}
 
 \item{sizevar}{Font size of variable name in plot.}
+
+\item{colorlist}{List of colors for values of -1, 0, 1}
 }
 \value{
 Saves correlation plot.
@@ -60,7 +64,8 @@ This function just utilize \code{ggcorrplot} function to create a
 #   insig = 'pch',
 #   sizer = 5,
 #   fontsize = 8,
-#   sizevar = 12
+#   sizevar = 12,
+#   colorlist = c('#1E88E5', '#FFC107', '#D81B60')
 # )
 
 }

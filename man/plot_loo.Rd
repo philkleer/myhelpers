@@ -4,7 +4,12 @@
 \alias{plot_loo}
 \title{Plots \code{loo}-object after running Bayesian models.}
 \usage{
-plot_loo(loo, folder = "./", what = "regmodel")
+plot_loo(
+  loo,
+  folder = "./",
+  what = "regmodel",
+  colorlist = c("#1E88E5", "#FFC107", "#D81B60")
+)
 }
 \arguments{
 \item{loo}{\code{brms} object that has been calculated leave-one-out
@@ -13,6 +18,8 @@ criteria with function \code{loo()}.}
 \item{folder}{Indicating folder from working directory. Default is \code{./}.}
 
 \item{what}{Indicating model under inspection. Default is \code{regmodel}.}
+
+\item{colorlist}{colors for points, inner line (at 0.5) and outer line (at 0.7)}
 }
 \value{
 Saves LOO-diagnostics.
@@ -25,7 +32,8 @@ This function creates a diagnostic plot for the \code{loo} calculations
 # plot_loo(
 #   loo,
 #   folder = './',
-#   what = 'regmodel'
+#   what = 'regmodel',
+#   colorlist = c('#1E88E5', '#FFC107', '#D81B60')
 # )
 
 }

@@ -7,6 +7,7 @@
 #'  criteria with function \code{loo()}.
 #' @param folder Indicating folder from working directory. Default is \code{./}.
 #' @param what Indicating model under inspection. Default is \code{regmodel}.
+#' @param colorlist colors for points, inner line (at 0.5) and outer line (at 0.7)
 #'
 #' @returns Saves LOO-diagnostics.
 #'
@@ -14,14 +15,14 @@
 #' # plot_loo(
 #' #   loo,
 #' #   folder = './',
-#' #   what = 'regmodel'
+#' #   what = 'regmodel',
+#' #   colorlist = c('#1E88E5', '#FFC107', '#D81B60')
 #' # )
 #'
 #' @importFrom devtools install_github
 #' @importFrom cli cli_alert_success
 #' @importFrom ggplot2 ggplot aes geom_point geom_hline scale_x_continuous
 #'   scale_y_continuous labs theme element_text ggsave
-#' @importFrom beyonce beyonce_palette
 #' @importFrom utils install.packages
 #'
 #' @export
@@ -29,10 +30,10 @@
 plot_loo <- function(
     loo,
     folder = './',
-    what = 'regmodel'
+    what = 'regmodel',
+    colorlist = c('#1E88E5', '#FFC107', '#D81B60')
     ){
   if(!requireNamespace('devtools')) install.packages('devtools')
-  if(!requireNamespace('beyonce')) devtools::install_github('dill/beyonce')
   if(!requireNamespace('cli')) install.packages('cli')
 
   # initializing variable for use later on in functions
@@ -56,27 +57,27 @@ plot_loo <- function(
   ) +
     ggplot2::geom_point(
       shape = 3,
-      color = beyonce::beyonce_palette(18)[2]
+      color = colorlist[1]
     ) +
     ggplot2::geom_hline(
       yintercept = -0.5,
       lty = 'dashed',
-      color = beyonce::beyonce_palette(126)[6]
+      color = colorlist[2]
     ) +
     ggplot2::geom_hline(
       yintercept = 0.5,
       lty = 'dashed',
-      color = beyonce::beyonce_palette(126)[6]
+      color = colorlist[2]
     ) +
     ggplot2::geom_hline(
       yintercept = -0.7,
       lty = 'dotdash',
-      color = beyonce::beyonce_palette(101)[1]
+      color = colorlist[3]
     ) +
     ggplot2::geom_hline(
       yintercept = 0.7,
       lty = 'dotdash',
-      color = beyonce::beyonce_palette(101)[1]
+      color = colorlist[3]
     ) +
     ggplot2::scale_x_continuous(
       breaks = seq(0, 10000, 500)

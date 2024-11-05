@@ -15,6 +15,7 @@
 #' @param sizer Font size of correlation values in plot.
 #' @param fontsize General font size adjustion via \code{theme()}.
 #' @param sizevar Font size of variable name in plot.
+#' @param colorlist List of colors for values of -1, 0, 1
 #'
 #' @returns Saves correlation plot.
 #'
@@ -26,7 +27,8 @@
 #' #   insig = 'pch',
 #' #   sizer = 5,
 #' #   fontsize = 8,
-#' #   sizevar = 12
+#' #   sizevar = 12,
+#' #   colorlist = c('#1E88E5', '#FFC107', '#D81B60')
 #' # )
 #'
 #' @importFrom psych corr.test
@@ -40,7 +42,8 @@
 
 plot_corr <- function(
     df, varlist = colnames(df), pmat = NULL, insig = 'pch', sizer = 5,
-    fontsize = 8, sizevar = 12
+    fontsize = 8, sizevar = 12, colorlist = c('#1E88E5', '#FFC107', '#D81B60')
+    #c('#7D231F', '#E1F2FF', '#1F537D')
 ){
   if(!requireNamespace('ggcorrplot')) install.packages('ggcorrplot')
   if(!requireNamespace('cli')) install.packages('cli')
@@ -58,7 +61,7 @@ plot_corr <- function(
     tl.cex = sizevar,
     insig = insig,
     # outline.color = 'white',
-    colors = c('#7D231F', '#E1F2FF', '#1F537D'),
+    colors = colorlist,
     lab = TRUE,
     lab_size = sizer,
     lab_col = 'ghostwhite',

@@ -19,8 +19,7 @@ Returns a raincloud of the metric variable.
 }
 \description{
 This function creates a simple raincloud of a single metric variable. It
- utilizes \code{beyonce} for coloring, \code{ggdist} and \code{gghalves}
- for additional plotting.
+ utilizes \code{ggdist} and \code{gghalves} for additional plotting.
 }
 \examples{
 # plot_raincloud(

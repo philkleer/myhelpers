@@ -25,7 +25,7 @@ Returns a raincloud of the metric variable dependend on the two
 }
 \description{
 This function creates a simple raincloud of a single metric variable. It
- utilizes \code{beyonce} for coloring, \code{ggdist} and \code{gghalves}
+ utilizes \code{ggdist} and \code{gghalves}
  for additional plotting.
 }
 \examples{

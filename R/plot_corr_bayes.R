@@ -9,6 +9,7 @@
 #' @param sizer Font size of correlation values in plot.
 #' @param fontsize General font size adjustion via \code{theme()}.
 #' @param sizevar Font size of variable name in plot.
+#' @param colorlist List of colors for values of -1, 0, 1
 #'
 #' @returns Creates correlation matrix and saves correlation plot.
 #'
@@ -18,7 +19,8 @@
 #' #   varlist,
 #' #   sizer = 5,
 #' #   fontsize = 8,
-#' #   sizevar = 12
+#' #   sizevar = 12,
+#' #   colorlist = c('#1E88E5', '#FFC107', '#D81B60')
 #' # )
 #'
 #' @importFrom ggcorrplot ggcorrplot
@@ -32,7 +34,9 @@
 #' @export
 
 plot_corr_bayes <- function(
-    cor, varlist = NULL, sizer = 5, fontsize = 8, sizevar = 12
+    cor, varlist = NULL, sizer = 5, fontsize = 8, sizevar = 12,
+    colorlist = c('#1E88E5', '#FFC107', '#D81B60')
+    # c('#543005', 'gray88', '#003C30')
 ){
   if(!requireNamespace('ggcorrplot')) install.packages('ggcorrplot')
   if(!requireNamespace('cli')) install.packages('cli')
@@ -124,7 +128,7 @@ plot_corr_bayes <- function(
     tl.cex = sizevar,
     insig = 'blank',
     # outline.color = 'white',
-    colors = c('#543005', 'gray88', '#003C30'),
+    colors = colorlist,
     lab = TRUE,
     lab_size = sizer,
     lab_col = 'ghostwhite',
