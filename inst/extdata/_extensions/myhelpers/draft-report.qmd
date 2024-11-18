@@ -9,22 +9,14 @@ summary: 'Write a short description'
 bibliography: assets/lit.bib
 csl: assets/apa.csl
 # Settings
-format:
-  html:
-    theme: sandstone
-    toc: true
-    toc-title: Contents
-    toc-location: left
-    toc_depth: 3
-    css: [default, 'assets/report.css']
-    fontsize: 1.1em
-    code-link: true
-    anchor-sections: true
-    fig-cap-location: top
-    reference-location: margin
-    footnotes-hover: true
-    backgroundcolor: '#f8f8f8'
-    linkcolor: '#6d579d'
+format: 
+  html: default
+  typst: default
+format-links:
+  - html
+  - format: typst
+    text: PDF
+    icon: file-pdf
 ---
 
 ```{r setup, include=FALSE}
@@ -41,13 +33,13 @@ library(beyonce)
 
 [Link to publication: {{< ai doi size=2x >}}](https://doi.org/)
 
-[Link to supplementary material: {{< ai osf size=2x >}}](https://osf.io/puqt7/?view_only=62834b9d29914bf3b50ae13916d9c78b)
+[Link to supplementary material: {{< ai osf size=2x >}}](https://osf.io/)
 
-[{{< fa brands mastodon >}}](https://polsci.social/@philk){.mastodon} [{{< fa solid square >}}](https://bsky.app/profile/phil-k.bsky.social){.bluesky} [{{< iconify simple-icons gitlab >}}](https://gitlab.com/bpkleer){.gitlab} [{{< fa brands github >}}](https://github.com/bpkleer){.github} [{{< ai orcid >}}](https://orcid.org/0000-0003-1935-387X){.orcid} [{{< ai lattes >}}](http://lattes.cnpq.br/4785970328498860){.lattes} [{{< ai researchgate-square >}}](https://www.researchgate.net/profile/Philipp-Kleer){.researchgate} [{{< fa envelope >}}](mailto:philipp.kleer@sowi.uni-giessen.de){.email} [{{< fa id-card >}} ](https://bpkleer.github.io/en){.website}
+[{{< fa brands mastodon >}}](https://polsci.social/@philk){.mastodon} [{{< fa solid square >}}](https://bsky.app/profile/phil-k.bsky.social){.bluesky} [{{< iconify simple-icons gitlab >}}](https://gitlab.com/bpkleer){.gitlab} [{{< fa brands github >}}](https://github.com/bpkleer){.github} [{{< ai orcid >}}](https://orcid.org/0000-0003-1935-387X){.orcid} [{{< ai lattes >}}](http://lattes.cnpq.br/4785970328498860){.lattes} [{{< fa envelope >}}](mailto:philipp.kleer+contact@posteo.com){.email} [{{< fa id-card >}} ](https://bpkleer.github.io/en){.website}
 :::
 
 # Section 1
-You need to add extensions manually (`rstudioapi` doesn't work there):
+You need to add extensions manually (`rstudioapi` doesn't work there):asdasdka sdja;skdj lasjdkl;ajs; lkdjask l;dja; lksjdkl;asjlk;djak sljd;asjkdja;lsj dlasj;d
 
 - `quarto install extension sellorm/quarto-social-embeds`
 - `quarto install extension schochastics/academicons`
@@ -55,6 +47,11 @@ You need to add extensions manually (`rstudioapi` doesn't work there):
 - `quarto add mcanouil/quarto-iconify`
 - `quarto add quarto-ext/fontawesome`
 - `quarto install extension jmbuhr/quarto-qrcode`
+
+To create pdf and html in the same time, use bash:
+```bash
+quarto render <filename>.qmd
+```
 
 ## Subsection 1
 

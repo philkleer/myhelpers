@@ -11,8 +11,8 @@ bluesky: 'phil-k'
 git: 'bpkleer'
 orcid: '0000-0003-1935-387X'
 lattes: '4785970328498860'
-researchgate: 'Philipp-Kleer'
-contactemail: 'philipp.kleer+academia@posteo.com'
+# researchgate: 'Philipp-Kleer'
+contactemail: 'philipp.kleer+contact@posteo.com'
 contactsite: 'https://bpkleer.github.io/en'
 qrcode: '{{< qrcode https://bpkleer.github.io qr-start colorDark="#5A5A5A" >}}'
 # Settings
@@ -20,42 +20,8 @@ date: 'Report Last Run: `r Sys.time()`'
 date-format: long
 bibliography: assets/lit.bib
 csl: assets/apa.csl
-format:  
-  revealjs: 
-    width: 1600
-    height: 900
-    template-partials: 
-      - ./assets/title-slide.html
-    theme: [default, './assets/slides.scss']
-    navigation-mode: vertical
-    controls-layout: bottom-right
-    controls-tutorial: true
-    multiplex: true #Creates speaker and normal html
-    touch: true
-    menu: false
-    preview-links: auto
-    transition: slide
-    background-transition: fade
-    code-fold: false
-    code-summary: 'Click here for Code'  
-    code-link: true
-    code-overflow: wrap
-    highlight-style: atom-one 
-    footer: '[{{< fa brands github >}}](https://github.com/bpkleer){.github}'
-    execute:
-      echo: false
-      eval: true
-      warning: false
-      message: false
-    chalkboard:
-      src: './assets/drawings.json'
-      buttons: false
-    title-slide-attributes:
-      data-state: 'hide-menubar'
-    simplemenu:
-        barhtml:
-            header: '<div class="menubar"><a href="#"></a><ul class="menu"></ul><div>'
-        scale: 0.8
+format: 
+  revealjs: default
 revealjs-plugins:
   - simplemenu
 editor: source
@@ -74,7 +40,11 @@ myhelpers::load_slidecols()
 
 # Quarto {data-stack-name='Preparations' }
 
+{{< brand color.palette.style1 >}}
+
+
 ## add extras in positron
+
 
 You need to add extensions manually (`rstudioapi` doesn't work there):
 
@@ -172,9 +142,9 @@ I would skip this to the extras.
 
 [{{< fa brands mastodon >}}](https://polsci.social/@philk){.mastodon} [\@philk](https://polsci.social/@philk) \| [{{< fa solid square >}}](https://bsky.app/profile/phil-k.bsky.social){.bluesky} [\@phil-k](https://bsky.app/profile/phil-k.bsky.social) \| [{{< fa brands github >}}](https://github.com/bpkleer){.github} [bpkleer](https://github.com/bpkleer)
 
-[{{< ai orcid >}}](https://orcid.org/0000-0003-1935-387X){.orcid} [0000-0003-1935-387X](https://orcid.org/0000-0003-1935-387X) \| [{{< ai lattes >}}](http://lattes.cnpq.br/4785970328498860){.lattes} [4785970328498860](http://lattes.cnpq.br/4785970328498860) \| [{{< ai researchgate-square >}}](https://www.researchgate.net/profile/Philipp-Kleer){.researchgate} [Philipp-Kleer](https://www.researchgate.net/profile/Philipp-Kleer)
+[{{< ai orcid >}}](https://orcid.org/0000-0003-1935-387X){.orcid} [0000-0003-1935-387X](https://orcid.org/0000-0003-1935-387X) \| [{{< ai lattes >}}](http://lattes.cnpq.br/4785970328498860){.lattes} [4785970328498860](http://lattes.cnpq.br/4785970328498860) 
 
-[{{< fa envelope >}}](mailto:philipp.kleer+academia@posteo.com){.email}[ philipp.kleer+academia@posteo.com](mailto:philipp.kleer+academia@posteo.com) \| [{{< fa globe >}}](https://bpkleer.github.io){.website}[ bpkleer.github.io](https://bpkleer.github.io)
+[{{< fa envelope >}}](mailto:philipp.kleer+contact@posteo.com){.email}[ philipp.kleer+academia@posteo.com](mailto:philipp.kleer+contact@posteo.com) \| [{{< fa globe >}}](https://bpkleer.github.io){.website}[ bpkleer.github.io](https://bpkleer.github.io)
 :::
 
 ::: footer
