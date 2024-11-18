@@ -1,107 +1,111 @@
 /******* Color variables **********/
 :root {
-  --style1: #579D90;
+  /* --brand-style1: #579D90;
   --style2: #55AB6B;
-  --style3: #558CAB;
-  --style4: #C7EBE4;
-  --red: 157, 87, 100;
-  --white: #FFFFFF;
-  --white2: #F7F7F7;
-  --gray: #edeeed; /*#eaebea;*/
-  --gray2: #F4F4F4;
+  --brand-style3: #558CAB;
+  --brand-style4: #C7EBE4; */
+  /* --brand-red: 157, 87, 100;
+  --white: #FFFFFF; */
+  /* --white2: #F7F7F7; */
+  /* --brand-gray2: #edeeed; /*#eaebea;*/
+  /* --brand-gray3: #F4F4F4;
   --blue: #5563AB;
   --black: #272822;
-  --darkgray: #5A5A5A;
-  --red: #A94459;
-  --code-bg-gray: #f8f8f8;
-  --code-bg2-gray: #ebebeb;
-  --code-bg-inline: #D8D8D8;
+  --brand-darkgray: #5A5A5A;
+  --brand-red: #A94459; */ 
+  /* --code-bg-gray: #f8f8f8; */
+  /* --code-bg2-gray: var(--brand-gray3); */
+  /* --code-bg-inline: #D8D8D8;
   --search-match-current-background: rgba(157, 109, 87, 0.5);
-  --search-match-background: rgba(157, 109, 87, 0.2);
+  --search-match-background: rgba(157, 109, 87, 0.2); */
 }
 
 
 .navbar-dark {
-background-color: var(--style1);
+background-color: var(--brand-style1);
 }
 
 .navbar-light {
-background-color: var(--style1);
+background-color: var(--brand-style1);
 }
 
 .navbar-title {
-  color: var(--gray2) !important;
+  color: var(--brand-gray3) !important;
 }
 
 .nav-link .fa, .nav-link .fas, .nav-link .far, .nav-link .fal, .nav-link .fad, .nav-link .fab, .nav-link .ai, .nav-link .fa-solid, .nav-link .fa-brands, .navbar svg {
-  color: var(--gray2) !important;
+  color: var(--brand-gray3) !important;
 }
 
 .navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
-  color: var(--style4) !important;
+  color: var(--brand-style4) !important;
 }
 
 .navbar-dark .navbar-nav .nav-link .fa:hover, .navbar-dark .navbar-nav .nav-link .fa:focus, .navbar-dark .navbar-nav .nav-link .fas:hover, .navbar-dark .navbar-nav .nav-link .fas:focus, .navbar-dark .navbar-nav .nav-link .far:hover, .navbar-dark .navbar-nav .nav-link .far:focus, .navbar-dark .navbar-nav .nav-link .fal:hover, .navbar-dark .navbar-nav .nav-link .fal:focus, .navbar-dark .navbar-nav .nav-link .fad:hover, .navbar-dark .navbar-nav .nav-link .fad:focus, .navbar-dark .navbar-nav .nav-link .fab:hover, .navbar-dark .navbar-nav .nav-link .fab:focus, .navbar-dark .navbar-nav .nav-link .ai:hover, .navbar-dark .navbar-nav .nav-link .ai:focus, .navbar-dark .navbar-nav .nav-link .fa-solid:hover, .navbar-dark .navbar-nav .nav-link .fa-solid:focus, .navbar-dark .navbar-nav .nav-link .fa-brands:hover, .navbar-dark .navbar-nav .nav-link .fa-brands:focus, .navbar-dark .navbar-nav .nav-link svg:hover, .navbar-dark .navbar-nav .nav-link svg:focus {
-  color: var(--style4) !important;
+  color: var(--brand-style4) !important;
 }
 
 .navbar-dark .navbar-nav .nav-link {
-  color: var(--gray2) !important;
+  color: var(--brand-gray3) !important;
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: var(--gray2) !important;
+  color: var(--brand-gray3) !important;
 }
 
 .quarto-title-banner {
-  background-color: var(--darkgray);
-  color: var(--gray2);
+  background-color: var(--brand-darkgray);
+  color: var(--brand-gray3);
 }
 
 .quarto-title .quarto-categories .quarto-category a {
-  color: var(--darkgray) !important;
+  color: var(--brand-darkgray) !important;
 }
 
 .quarto-category {
-  background-color: var(--gray)!important;
+  background-color: var(--brand-gray)!important;
 }
 
 .sidebar nav[role=doc-toc] ul>li>a:hover, .sidebar nav[role=doc-toc] ul>li>ul>li>a:hover {
-  background-color: var(--style4) !important;
-  color: var(--darkgray) !important;
+  background-color: var(--brand-style4) !important;
+  color: var(--brand-darkgray) !important;
 }
 
 .sidebar nav[role=doc-toc] ul>li>a.active, .sidebar nav[role=doc-toc] ul>li>ul>li>a.active {
-  color: var(--style1) !important;
+  color: var(--brand-style1) !important;
 }
 
 .sidebar nav[role=doc-toc] ul>li>a.active, .sidebar nav[role=doc-toc] ul>li>ul>li>a.active {
-  border-left: 2px solid var(--style1) !important;
+  border-left: 2px solid var(--brand-style1) !important;
 }
 
 pre code {
- background-color: var(--code-bg2-gray)!important;
- border: 1px solid var(--darkgray) !important;
+ background-color: var(--brand-gray3)!important;
+ border: 1px solid var(--brand-darkgray) !important;
 }
 
 code {
-  color: ;
+  color: var(--brand-darkgray)!important;
+  background-color: var(--brand-gray3)!important;
+  border: 0.1px solid var(--brand-darkgray) !important;
+  line-height: 1.7rem;
 }
+
 .nav-footer {
-  color: var(--gray)!important;
-  background-color: var(--darkgray)!important;
+  color: var(--brand-gray)!important;
+  background-color: var(--brand-darkgray)!important;
 }
 
 .nav-footer a{
-  color: var(--gray)!important;
+  color: var(--brand-gray)!important;
 }
 
 .content a {
-  color: var(--style1);
+  color: var(--brand-style1);
 }
 
 .content a:hover {
-  color: var(--style3);
+  color: var(--brand-style3);
 }
 
 
@@ -178,12 +182,12 @@ code {
 }
 
 .social-share a.email {
-  border-color: var(--red);
-  color: var(--red);
+  border-color: var(--brand-red);
+  color: var(--brand-red);
 }
 
 .social-share a.email:hover {
-  background: var(--red);
+  background: var(--brand-red);
     color: white;
 }
 
@@ -231,15 +235,10 @@ pre.sourceCode {
   padding: 0em;
 }
 
-code {
-  background-color: var(--code-bg-inline) !important;
-  color: var(--style1);
-}
-
 /******* Social media class ********/
 .social a.email {
 	 color: #558cab !important;
-	 background-color: var(--white2) !important;
+	 background-color: var(--brand-white) !important;
 	 border-color: #558cab !important;
 	 border-radius: 25px;
 	 padding: 0.15rem 0.4rem;
@@ -257,7 +256,7 @@ code {
 
 .social a.website {
 	 color: #558cab !important;
-	 background-color: var(--white2) !important;
+	 background-color: var(--brand-white) !important;
 	 border-color: #558cab !important;
 	 border-radius: 25px;
 	 padding: 0.15rem 0.4rem;
@@ -275,7 +274,7 @@ code {
 
 .social a.twitter-old {
 	 color: #1da1f2 !important;
-	 background-color: var(--white2) !important;
+	 background-color: var(--brand-white) !important;
 	 border-color: #1da1f2 !important;
 	 border-radius: 25px;
 	 padding: 0.15rem 0.4rem;
@@ -293,7 +292,7 @@ code {
 
 .social a.twitter {
 	 color: #000 !important;
-	 background-color: var(--white2) !important;
+	 background-color: var(--brand-white) !important;
 	 border-color: #000 !important;
 	 border-radius: 25px;
 	 padding: 0.15rem 0.4rem;
@@ -311,7 +310,7 @@ code {
 
 .social a.mastodon {
 	 color: #6364ff !important;
-	 background-color: var(--white2) !important;
+	 background-color: var(--brand-white) !important;
 	 border-color: #6364ff !important;
 	 border-radius: 25px;
 	 padding: 0.15rem 0.4rem;
@@ -329,7 +328,7 @@ code {
 
 .social a.bluesky {
 	 color: #4985ce !important;
-	 background-color: var(--white2) !important;
+	 background-color: var(--brand-white) !important;
 	 border-color: #4985ce !important;
 	 border-radius: 25px;
 	 padding: 0.15rem 0.4rem;
@@ -347,7 +346,7 @@ code {
 
 .social a.researchgate {
 	 color: #00CCBB !important;
-	 background-color: var(--white2) !important;
+	 background-color: var(--brand-white) !important;
 	 border-color: #00CCBB !important;
 	 border-radius: 25px;
 	 padding: 0.15rem 0.4rem;
@@ -365,7 +364,7 @@ code {
 
 .social a.lattes {
 	 color: #538CC6 !important;
-	 background-color: var(--white2) !important;
+	 background-color: var(--brand-white) !important;
 	 border-color: #538CC6 !important;
 	 border-radius: 25px;
 	 padding: 0.15rem 0.4rem;
@@ -383,7 +382,7 @@ code {
 
 .social a.orcid {
 	 color: #A6CE39 !important;
-	 background-color: var(--white2) !important;
+	 background-color: var(--brand-white) !important;
 	 border-color: #A6CE39 !important;
 	 border-radius: 25px;
 	 padding: 0.15rem 0.4rem;
@@ -401,7 +400,7 @@ code {
 
 .social a.gitlab {
 	 color: #fc6d27 !important;
-	 background-color: var(--white2) !important;
+	 background-color: var(--brand-white) !important;
 	 border-color: #fc6d27 !important;
 	 border-radius: 25px;
 	 padding: 0.15rem 0.4rem;
@@ -419,7 +418,7 @@ code {
 
 .social a.github {
 	 color: black !important;
-	 background-color: var(--white2) !important;
+	 background-color: var(--brand-white) !important;
 	 border-color: black !important;
 	 border-radius: 25px;
 	 padding: 0.15rem 0.4rem;
@@ -438,7 +437,7 @@ code {
 h1, h2, h3, h4, h5, h6 {
   margin-top: 2.5rem;
   margin-bottom: 1rem;
-  font-weight: bold;
+  /* font-weight: bold; */
   line-height: 1.2;
   color: var(--bs-heading-color);
 }

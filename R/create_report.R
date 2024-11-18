@@ -61,6 +61,9 @@ create_report <- function(
     spinner = TRUE
   )
 
+  # Copying _brand.yml
+  file.copy('_extensions/myhelpers/_brand.yml', './')
+  
   # copy my template
   file.copy(
     from = system.file(

@@ -56,6 +56,9 @@ cli::cli_progress_step(
   spinner = TRUE
 )
 
+# Copying _brand.yml
+file.copy('_extensions/myhelpers/_brand.yml', './')
+
 # copy my template
 file.copy(
   from = system.file(

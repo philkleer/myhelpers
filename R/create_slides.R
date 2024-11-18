@@ -99,6 +99,9 @@ create_slides <- function(
 
     # Copying guide for using decktape
     file.copy('_extensions/myhelpers/README-print.md', './')
+
+    # Copying _brand.yml
+    file.copy('_extensions/myhelpers/_brand.yml', './')
   }
 
   # create new qmd report based on skeleton

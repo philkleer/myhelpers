@@ -1,44 +1,44 @@
 /*-- scss:defaults --*/
 
-// fonts
-@import "https://fonts.googleapis.com/css?family=Fira+Sans";
-@import "https://fonts.googleapis.com/css?family=Fira+Code";
-@import "https://fonts.googleapis.com/css?family=Montserrat";
+// // fonts
+// @import "https://fonts.googleapis.com/css?family=Fira+Sans";
+// @import "https://fonts.googleapis.com/css?family=Fira+Code";
+// @import "https://fonts.googleapis.com/css?family=Montserrat";
 
-$font-family-sans-serif: "Fira Sans", serif;
-$presentation-heading-font: "Montserrat", sans-serif;
-$font-weight: 350;
+// $font-family-sans-serif: "Fira Sans", serif;
+// $presentation-heading-font: "Montserrat", sans-serif;
+// $font-weight: 350;
 
 // colors
-$style1: #579D90;
-$style2: #55AB6B;
-$style3: #558CAB;
-$style4: #40746A;
-$white: #F7F7F7;
-$gray: #F4F4F4;
-$gray2: #C4C4C4;
-$gray3: #ebebeb;
-$darkgray: #5A5A5A;
-$darkgray2: #1C1C1C;
-$black: #272822;
-$blue: #5563AB;
-$red: #D15E65;
-$purple: #B598EB;
-$yellow: #E2AC66;
+// $style1: #579D90;
+// $style2: #55AB6B;
+// $style3: #558CAB;
+// $style4: #40746A;
+// $white: #F7F7F7;
+// $gray: #F4F4F4;
+// $gray2: #C4C4C4;
+// $gray3: #ebebeb;
+// $darkgray: #5A5A5A;
+// $darkgray2: #1C1C1C;
+// $black: #272822;
+// $blue: #5563AB;
+// $red: #D15E65;
+// $purple: #B598EB;
+// $yellow: #E2AC66;
 
 // definitions of slides
-$primary: $style1;
-$body-color: $gray;
-$body-bg: $style1;
-$background-color: $style1;
-$presentation-heading-color: $gray;
-$link-color: $darkgray;
-$main-color: $darkgray;
-$quarto-hl-fu-color: $red;
-$code-block-border-color: $darkgray;
-$code-bg: $white !important;
-$code-color: $darkgray;
-$btn-code-copy-color: $blue;
+// definitions of slides
+// $primary: #579D90;
+$body-color: #F4F4F4;
+$body-bg: #579D90;
+$background-color: #579D90;
+$presentation-heading-color: #F4F4F4;
+$main-color: #5A5A5A;
+$quarto-hl-fu-color: #D15E65;
+$code-block-border-color: #5A5A5A;
+$code-bg: #F7F7F7 !important;
+$code-color: #5A5A5A;
+$btn-code-copy-color: #5563AB;
 
 /*-- scss:rules --*/
 /*********
@@ -56,7 +56,7 @@ Slide Styles
 }
 
 .reveal .footer {
-  color: $darkgray2;
+  color: var(--brand-darkgray2);
   text-align: left !important;
   margin-left: 1rem !important;
 }
@@ -66,18 +66,18 @@ Slide Styles
 }
 
 .reveal ::selection {
-  color: $gray;
-  background: $darkgray;
+  color: var(--brand-gray);
+  background: var(--brand-darkgray);
   text-shadow: none;
 }
 
 /* style for vertical slides */
 .reveal .slide.level2 {
-  background-color: $gray3 !important;
+  background-color: var(--brand-gray3) !important;
 }
 
 .reveal .slide.level2 a {
-  color: $style3;
+  color: var(--brand-style3);
 }
 
 .reveal .slide.level2 .citation a{
@@ -90,29 +90,29 @@ Slide Styles
 
 /* special goodbye slide */
 .reveal .slide.goodbye {
-  color: $background-color !important;
-  background-color: $style1 !important;
+  color: var(--brand-style1) !important;
+  background-color: var(--brand-style1) !important;
 }
 
 /* Color settings for Panels on all slides */
 .panel-tabset {
-  background-color: $gray;
-  border-bottom: 0px solid $darkgray;
-  border-left: 0px solid $darkgray;
-  border-right: 0px solid $darkgray;
+  background-color: var(--brand-gray);
+  border-bottom: 0px solid var(--brand-darkgray);
+  border-left: 0px solid var(--brand-darkgray);
+  border-right: 0px solid var(--brand-darkgray);
   padding: 0.75rem;
 }
 
 .panel-tabset-tabby {
-  border-bottom: 0px solid $darkgray;
-  border-left: 0px solid $darkgray;
-  border-right: 0px solid $darkgray;
+  border-bottom: 0px solid var(--brand-darkgray);
+  border-left: 0px solid var(--brand-darkgray);
+  border-right: 0px solid var(--brand-darkgray);
 }
 
 .panel-tabset-tabby a {
-  color:  $gray2 !important;
-  border-top: 4px solid  $gray2 !important;
-  border-bottom: 4px solid  $gray2 !important;
+  color: var(--brand-gray2) !important;
+  border-top: 4px solid var(--brand-gray2) !important;
+  border-bottom: 4px solid var(--brand-gray2) !important;
 }
 
 .panel-tabset [role=tablist] {
@@ -120,25 +120,25 @@ Slide Styles
 }
 
 .panel-tabset [role=tab][aria-selected=true] {
-  color: $blue !important;
-  border-top: 4px solid $blue !important;
-  border-bottom: 4px solid $blue !important;
+  color: var(--brand-blue) !important;
+  border-top: 4px solid var(--brand-blue) !important;
+  border-bottom: 4px solid var(--brand-blue) !important;
   border-left: none !important;
   border-right: none !important;
 }
 
 .panel-tabset-tabby a:hover {
-  color: $yellow !important;
-  border-top: 4px solid $yellow !important;
-  border-bottom: 4px solid $yellow !important;
+  color: var(--brand-yellow) !important;
+  border-top: 4px solid var(--brand-yellow) !important;
+  border-bottom: 4px solid var(--brand-yellow) !important;
   border-left: none !important;
   border-right: none !important;
 }
 
 .panel-tabset-tabby a:focus {
-  color: $blue;
-  border-top: 4px solid $blue !important;
-  border-bottom: 4px solid $blue !important;
+  color: var(--brand-blue);
+  border-top: 4px solid var(--brand-blue) !important;
+  border-bottom: 4px solid var(--brand-blue) !important;
   border-left: none !important;
   border-right: none !important;
 }
@@ -148,12 +148,12 @@ Slide Styles
 }
 
 .tab-content p {
-  color: $darkgray;
+  color: var(--brand-darkgray);
 }
 
 /**** Simplemenu ****/
 .menubar {
-  color: $darkgray2 !important;
+  color: var(--brand-darkgray2) !important;
 }
 
 .menubar:before, .menubar:after {
@@ -167,61 +167,61 @@ Headers & Font sizes
 ***********/
 
 .reveal .slides h1 {
-  font-weight: 800 !important;
-  color: $yellow;
+  // font-weight: 800 !important;
+  color: var(--brand-yellow);
   font-size: 6rem;
 }
 
 .reveal .slides h2 {
   text-shadow: none;
-  font-weight: 800!important;
+  // font-weight: 800!important;
   font-size: 5.5rem;
   margin-top: -1rem;
 }
 
 .reveal .slides h3 {
   text-shadow: none;
-  font-weight: 800!important;
+  // font-weight: 800!important;
   font-size: 4.5rem!important;
   margin-top: 5rem;
 }
 
 .reveal .slides  h4 {
   text-shadow: none;
-  font-weight: 800!important;
+  // font-weight: 800!important;
   font-size: 3rem!important;
   margin-top: 5rem;
 }
 
 .slide h1 {
-  color: $darkgray;
+  color: var(--brand-darkgray);
 }
 
 .slide h2 {
-  color: $darkgray;
+  color: var(--brand-darkgray);
 }
 
 .slide h3 {
-  color: $blue;
+  color: var(--brand-blue);
 }
 
 .slide.goodbye h1{
-  color:  $gray !important;
+  color: var(--brand-gray) !important;
   margin-top: 12.5rem !important;
   text-align: left!important;
   font-size: 10rem!important;
 }
 
 .slide #references h2, h3, h4 {
-  color: $darkgray;
+  color: var(--brand-darkgray);
   text-shadow: none;
-  font-weight: 800!important;
+  font-weight: 500!important;
   font-size: 5.5rem;
   margin-top: -1rem!important;
 }
 
 #title-slide h1  {
-color:  $gray !important;
+color: var(--brand-gray) !important;
 font-size: 4rem !important;
 text-shadow: none;
 font-weight: 400;
@@ -232,7 +232,7 @@ margin-left: 2.5rem;
 }
 
 #title-slide .subtitle, div.reveal div.slides section.quarto-title-block .subtitle {
-color:  $gray;
+color: var(--brand-gray);
 text-shadow: none;
 text-align: center;
 font-weight: 350;
@@ -244,7 +244,7 @@ margin-left: 11rem;
 }
 
 #title-slide p.author {
-color:  $gray;
+color: var(--brand-gray);
 text-shadow: none;
 text-align: center;
 font-weight: 350;
@@ -256,7 +256,7 @@ margin-left: 11rem;
 }
 
 #title-slide p.institute {
-color:  $gray;
+color: var(--brand-gray);
 text-shadow: none;
 text-align: center;
 font-weight: 350;
@@ -267,7 +267,7 @@ margin-left: 11rem;
 }
 
 #title-slide p.date {
-color:  $gray;
+color: var(--brand-gray);
 text-shadow: none;
 text-align: center;
 font-weight: 350;
@@ -284,7 +284,7 @@ margin-left: 11rem;
 }
 
 #title-slide p {
-color:  $gray;
+color: var(--brand-gray);
 text-shadow: none;
 text-align: left;
 font-weight: 350;
@@ -294,27 +294,27 @@ margin-left: 5rem;
 }
 
 section.has-light-background .controls button {
-  color: $style1 !important;
+  color: var(--brand-style1) !important;
 }
 
 section.has-light-background h1, section.has-light-background h2, section.has-light-background h3, section.has-light-background h4, section.has-light-background h5, section.has-light-background h6 {
-  color: $style1 !important;
+  color: var(--brand-style1) !important;
 }
 
 section.has-dark-background, section.has-dark-background h1, section.has-dark-background h2, section.has-dark-background h3, section.has-dark-background h4, section.has-dark-background h5, section.has-dark-background h6 {
-  color: $darkgray !important;
+  color: var(--brand-darkgray) !important;
 }
 
 .slide.inverse h2, .slide.inverse h3{
-  color: $background-color;
+  color: var(--brand-background-style1);
 }
 
 .reveal dt {
-  color: $style3;
+  color: var(--brand-style3);
 }
 
 .reveal dd {
-  color: $darkgray;
+  color: var(--brand-darkgray);
 }
 
 
@@ -371,50 +371,50 @@ Highlight Styles
 ***************/
 
 .highlight1{
-  color: $blue;
+  color: var(--brand-blue);
   font-weight: bold;
 }
 
 .highlight2{
-  color: $yellow;
+  color: var(--brand-yellow);
   font-weight: bold;
 }
 
 .highlight3{
-  color: $red;
+  color: var(--brand-red);
   font-weight: bold;
 }
 
 .highlight4{
-  color: $purple;
+  color: var(--brand-purple);
   font-weight: bold;
 }
 
 .highlight5{
-  color: $style4;
+  color: var(--brand-style4);
   font-weight: bold;
 }
 
 .warning{
-  color: $red;
+  color: var(--brand-red);
   font-weight: bold;
 }
 
 .contrast{
-  color: $yellow;
+  color: var(--brand-yellow);
   font-weight: bold;
 }
 
 .blue{
-  color: $blue;
+  color: var(--brand-blue);
 }
 
 .red{
-  color: $red;
+  color: var(--brand-red);
 }
 
 .purple{
-  color: $purple;
+  color: var(--brand-purple);
 }
 
 /**********
@@ -426,7 +426,7 @@ Code chunks
 /**** General setting for all codes ****/
 .reveal .sourceCode {
   padding: 0.0rem;
-  background-color: $gray3 !important;
+  background-color: var(--brand-gray3) !important;
   border: none!important;
   margin-bottom: 1rem !important;
 }
@@ -437,21 +437,21 @@ Code chunks
 
 .reveal pre {
   padding: 0rem !important;
-  background-color: $gray3 !important;
+  background-color: var(--brand-gray3) !important;
 }
 
 .reveal .sourceCode pre code {
   padding: 1.5rem;
-  background-color: $white !important;
-  border: 4px solid $darkgray !important;
+  background-color: var(--brand-white) !important;
+  border: 4px solid var(--brand-darkgray) !important;
   border-radius: 25px !important;
 }
 
 .reveal pre code {
-  color: $code-color!important;
+  color: var(--brand-darkgray)!important;
   padding: 1.5rem;
-  background-color: $white !important;
-  border: 4px solid $darkgray !important;
+  background-color: var(--brand-white) !important;
+  border: 4px solid var(--brand-darkgray) !important;
   border-radius: 25px !important;
 }
 
@@ -464,10 +464,10 @@ Code chunks
 
 /* Inline Code */
 .reveal p code {
-  color: $blue;
+  color: var(--brand-blue);
   font-size: 0.75em;
   border-radius: 0.5rem;
-  border: 2px solid $darkgray !important;
+  border: 2px solid var(--brand-darkgray) !important;
   padding: 0rem 0.2rem;
   vertical-align: middle!important;
   line-height: 130%;
@@ -475,34 +475,34 @@ Code chunks
 
 /**** code in headline ****/
 .reveal h2 code {
-  color: $blue;
+  color: var(--brand-blue);
   border-radius: 1.5rem;
-  border: 2px solid $darkgray !important;
+  border: 2px solid var(--brand-darkgray) !important;
   padding: 0.25rem 1.5rem;
 }
 
 /***** code hidden in summary ****/
 .reveal summary {
-  color: $style1 !important;
+  color: var(--brand-style1) !important;
 }
 
 .reveal details {
-  background-color: $white!important;
+  background-color: var(--brand-white)!important;
   border-radius: 1.5rem;
-  border: 4px solid $style1 !important;
+  border: 4px solid var(--brand-style1) !important;
   padding: 0.25rem 1.5rem;
 }
 
 .reveal details .sourceCode pre code {
-  color: $code-color!important;
+  color: var(--brand-darkgray)!important;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-color: $white !important;
-  border: 2px solid $code-color!important;
+  background-color: var(--brand-white) !important;
+  border: 2px solid var(--brand-darkgray)!important;
 }
 
 .reveal details .sourceCode {
-  background-color: $white!important;
+  background-color: var(--brand-white)!important;
 }
 
 .code-copy-button {
@@ -512,15 +512,15 @@ Code chunks
   border: 10;
   margin-top: 1.5rem;
   margin-right: 1.5rem;
-  background-color: $code-bg;
+  background-color: var(--brand-white);
   z-index: 3;
   scale: 2;
-  color: $style3;
+  color: var(--brand-style3);
 }
 
 /******* Footnotes and aside ********/
 .reveal aside p, .reveal aside li {
-  color: $style3!important;
+  color: var(--brand-style3)!important;
   font-size: 1.25rem;
   line-height: 100%!important;
 }
@@ -541,7 +541,7 @@ Social media class
 
 .reveal .social a.email {
   color: #558CAB !important;
-  background-color: $white !important;
+  background-color: var(--brand-white) !important;
   border-color: #558CAB !important;
   border-radius: 50px;
   padding: 0.20rem 0.25rem;
@@ -559,7 +559,7 @@ Social media class
 
 .reveal .social a.website {
   color: #558CAB !important;
-  background-color: $white !important;
+  background-color: var(--brand-white) !important;
   border-color: #558CAB !important;
   border-radius: 50px;
   padding: 0.20rem 0.25rem;
@@ -577,7 +577,7 @@ Social media class
 
 .reveal .social a.twitter-old {
   color: #1DA1F2 !important;
-  background-color: $white !important;
+  background-color: var(--brand-white, #F7F7F7) !important;
   border-color: #1DA1F2 !important;
   border-radius: 50px;
   padding: 0.20rem 0.25rem;
@@ -595,7 +595,7 @@ Social media class
 
 .reveal .social a.twitter {
   color: #000000 !important;
-  background-color: $white !important;
+  background-color: var(--brand-white) !important;
   border-color: #000000 !important;
   border-radius: 50px;
   padding: 0.20rem 0.25rem;
@@ -613,7 +613,7 @@ Social media class
 
 .reveal .social a.mastodon {
   color: #6364FF !important;
-  background-color: $white !important;
+  background-color: var(--brand-white) !important;
   border-color: #6364FF !important;
   border-radius: 50px;
   padding: 0.15rem 0.25rem;
@@ -631,7 +631,7 @@ Social media class
 
 .reveal .social a.bluesky {
   color: #4985CE !important;
-  background-color: $white !important;
+  background-color: var(--brand-white) !important;
   border-color: #4985CE !important;
   border-radius: 50px;
   padding: 0.15rem 0.25rem;
@@ -649,7 +649,7 @@ Social media class
 
 .reveal .social a.researchgate {
   color: #00CCBB !important;
-  background-color: $white !important;
+  background-color: var(--brand-white) !important;
   border-color: #00CCBB !important;
   border-radius: 50px;
   padding: 0.15rem 0.25rem;
@@ -667,7 +667,7 @@ Social media class
 
 .reveal .social a.lattes {
   color: #538cc6 !important;
-  background-color: $white !important;
+  background-color: var(--brand-white) !important;
   border-color: #538cc6 !important;
   border-radius: 50px;
   padding: 0.15rem 0.25rem;
@@ -683,10 +683,9 @@ Social media class
   color: white !important;
 }
 
-
 .reveal .social a.orcid {
   color: #A6CE39 !important;
-  background-color: $white !important;
+  background-color: var(--brand-white) !important;
   border-color: #A6CE39 !important;
   border-radius: 50px;
   padding: 0.20rem 0.25rem;
@@ -704,7 +703,7 @@ Social media class
 
 .reveal .social a.gitlab {
   color: #fc6d27 !important;;
-  background-color: $white !important;
+  background-color: var(--brand-white) !important;
   border-color: #fc6d27 !important;
   border-radius: 50px;
   padding: 0.20rem 0.25rem;
@@ -722,7 +721,7 @@ Social media class
 
 .reveal .social a.github {
   color: black !important;
-  background-color: $white !important;
+  background-color: var(--brand-white) !important;
   border-color: black !important;
   border-radius: 50px;
   padding: 0.20rem 0.25rem;
@@ -748,19 +747,19 @@ Custom title and goodbye
 
 
 #title-slide .social p {
-color: $gray!important;
+color: var(--brand-gray)!important;
 font-size: 1.5rem!important;
 text-align: center;
 }
 
 #title-slide .social p a {
-  color: $gray
+  color: var(--brand-gray)
 }
 
 /**** social media class (goodbye slide) ***/
 .slide.goodbye .greetings {
   font-size: 3.5rem;
-  color: $gray !important;
+  color: var(--brand-gray) !important;
 }
 
 .slide.goodbye .social {
@@ -769,19 +768,19 @@ text-align: center;
 }
 
 .slide.goodbye .social p {
-  color:  $gray !important;
+  color:  var(--brand-gray) !important;
   font-size: 1.5rem !important;
   text-align: left;
   margin-top: 0.2rem;
 }
 
 .slide.goodbye .social p a {
-  color: $gray;
+  color: var(--brand-gray);
 }
 
 
 .slide.goodbye .qrcode-final p {
-  color: $gray;
+  color: var(--brand-gray);
 }
 
 .slide.goodbye .qrcode-final {
@@ -806,7 +805,7 @@ bottom left
 
 .reveal .footer a.github {
   color: black !important;
-  background-color: $white !important;
+  background-color: white !important;
   border-color: black !important;
   border-radius: 25px;
   padding: 0.15rem 0.25rem;
