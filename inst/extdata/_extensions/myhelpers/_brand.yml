@@ -77,6 +77,7 @@ defaults:
         fig-cap-location: top
         reference-location: margin
         footnotes-hover: true
+        mermaid-format: png
         lightbox: # clickable images
           match: auto
           effect: fade
@@ -119,6 +120,12 @@ defaults:
         code-link: true
         code-overflow: wrap
         highlight-style: atom-one
+        mermaid-format: png
+        lightbox: # clickable images
+          match: auto
+          effect: fade
+          desc-position: bottom
+          loop: true
         footer: '[{{< fa brands github >}}](https://github.com/bpkleer){.github}'
         execute:
           echo: false
