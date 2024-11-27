@@ -39,7 +39,7 @@ library(beyonce)
 :::
 
 # Section 1
-You need to add extensions manually (`rstudioapi` doesn't work there):asdasdka sdja;skdj lasjdkl;ajs; lkdjask l;dja; lksjdkl;asjlk;djak sljd;asjkdja;lsj dlasj;d
+You need to add extensions manually (`rstudioapi` doesn't work there)
 
 - `quarto install extension sellorm/quarto-social-embeds`
 - `quarto install extension schochastics/academicons`
@@ -53,8 +53,37 @@ To create pdf and html in the same time, use bash:
 quarto render <filename>.qmd
 ```
 
-## Subsection 1
+::: {.landscape}
 
-### Subsubsection 1
+### Subsection 1
+
+This will appear in landscape.
+
+:::
+
+### Sub Tables
+
+```{{r}}
+#| label: tbl-example
+#| tbl-cap: I want these images to be interpreted as Tables.
+#| tbl-subcap:
+#|   - This is the subcaption for the first subtable
+#|   - This is the subcaption for the second subtable
+plot(1:10)
+plot(11:20)
+```
 
 ### Subsubsection 2
+```{python}
+#| echo: false
+#| label: a-cell
+import matplotlib.pyplot as plt
+plt.plot([1,2,3])
+```
+
+::: callout-note
+## Note the following plot
+
+{{< contents a-cell >}}
+
+:::
