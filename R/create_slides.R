@@ -35,7 +35,6 @@
 #'
 #' @importFrom cli cli_alert_success cli_progress_step cli_alert_info
 #'  cli_alert_danger
-#' @importFrom rstudioapi terminalExecute terminalExitCode terminalKill
 #' @importFrom utils install.packages
 #' @export
 create_slides <- function(
@@ -117,101 +116,101 @@ create_slides <- function(
     spinner = TRUE
   )
 
-  if (!dir.exists('./_extensions/jmbuhr/qrcode')) {
-    install <- rstudioapi::terminalExecute(
-      'quarto install extension jmbuhr/quarto-qrcode'
-    )
-
-    while (is.null(rstudioapi::terminalExitCode(install))) {
-      Sys.sleep(2)
-    }
-
-    rstudioapi::terminalKill(install)
-
-    cli::cli_alert_success('Extension `qrcode` has been created.')
-  } else {
-    cli::cli_alert_info('Extension `qrcode` already exists.')
-  }
-
-  if (!dir.exists('./_extensions/martinomagnifico/simplemenu')) {
-    install2 <- rstudioapi::terminalExecute(
-      'quarto add martinomagnifico/quarto-simplemenu'
-    )
-
-    while (is.null(rstudioapi::terminalExitCode(install2))) {
-      Sys.sleep(2)
-    }
-
-    rstudioapi::terminalKill(install2)
-
-    cli::cli_alert_success('Extension `simplemenu` has been created.')
-  } else {
-    cli::cli_alert_info('Extension `simplemenu` already exists.')
-  }
-
-  if (!dir.exists('./_extensions/mcanouil/iconify')) {
-
-    install3 <- rstudioapi::terminalExecute(
-      'quarto add mcanouil/quarto-iconify'
-    )
-
-    while (is.null(rstudioapi::terminalExitCode(install3))) {
-      Sys.sleep(2)
-    }
-
-    rstudioapi::terminalKill(install3)
-
-    cli::cli_alert_success('Extension `iconify` has been created.')
-  } else {
-    cli::cli_alert_info('Extension `iconify` already exists.')
-  }
-
-  if (!dir.exists('./_extensions/quarto-ext/fontawesome')) {
-
-    install4 <- rstudioapi::terminalExecute('quarto add quarto-ext/fontawesome')
-
-    while (is.null(rstudioapi::terminalExitCode(install4))) {
-      Sys.sleep(2)
-    }
-
-    rstudioapi::terminalKill(install4)
-
-    cli::cli_alert_success('Extension `fontawesome` has been created.')
-  } else {
-    cli::cli_alert_info('Extension `fontawesome` already exists.')
-  }
-
-  if (!dir.exists('./_extensions/schochastics/academicons')) {
-    install5 <- rstudioapi::terminalExecute(
-      'quarto install extension schochastics/academicons'
-    )
-
-    while (is.null(rstudioapi::terminalExitCode(install5))) {
-      Sys.sleep(2)
-    }
-
-    rstudioapi::terminalKill(install5)
-
-    cli::cli_alert_success('Extension `academicons` has been created.')
-  } else {
-    cli::cli_alert_info('Extension `academicons` already exists.')
-  }
-
-  if (!dir.exists('./_extensions/sellorm/social-embeds')) {
-    install6 <- rstudioapi::terminalExecute(
-      'quarto install extension sellorm/quarto-social-embeds'
-    )
-
-    while (is.null(rstudioapi::terminalExitCode(install6))) {
-      Sys.sleep(2)
-    }
-
-    rstudioapi::terminalKill(install6)
-
-    cli::cli_alert_success('Extension `social-embeds` has been created.')
-  } else {
-    cli::cli_alert_success('Extension `social-embeds` already exists.')
-  }
+  # if (!dir.exists('./_extensions/jmbuhr/qrcode')) {
+  #   install <- rstudioapi::terminalExecute(
+  #     'quarto install extension jmbuhr/quarto-qrcode'
+  #   )
+  #
+  #   while (is.null(rstudioapi::terminalExitCode(install))) {
+  #     Sys.sleep(2)
+  #   }
+  #
+  #   rstudioapi::terminalKill(install)
+  #
+  #   cli::cli_alert_success('Extension `qrcode` has been created.')
+  # } else {
+  #   cli::cli_alert_info('Extension `qrcode` already exists.')
+  # }
+  #
+  # if (!dir.exists('./_extensions/martinomagnifico/simplemenu')) {
+  #   install2 <- rstudioapi::terminalExecute(
+  #     'quarto add martinomagnifico/quarto-simplemenu'
+  #   )
+  #
+  #   while (is.null(rstudioapi::terminalExitCode(install2))) {
+  #     Sys.sleep(2)
+  #   }
+  #
+  #   rstudioapi::terminalKill(install2)
+  #
+  #   cli::cli_alert_success('Extension `simplemenu` has been created.')
+  # } else {
+  #   cli::cli_alert_info('Extension `simplemenu` already exists.')
+  # }
+  #
+  # if (!dir.exists('./_extensions/mcanouil/iconify')) {
+  #
+  #   install3 <- rstudioapi::terminalExecute(
+  #     'quarto add mcanouil/quarto-iconify'
+  #   )
+  #
+  #   while (is.null(rstudioapi::terminalExitCode(install3))) {
+  #     Sys.sleep(2)
+  #   }
+  #
+  #   rstudioapi::terminalKill(install3)
+  #
+  #   cli::cli_alert_success('Extension `iconify` has been created.')
+  # } else {
+  #   cli::cli_alert_info('Extension `iconify` already exists.')
+  # }
+  #
+  # if (!dir.exists('./_extensions/quarto-ext/fontawesome')) {
+  #
+  #   install4 <- rstudioapi::terminalExecute('quarto add quarto-ext/fontawesome')
+  #
+  #   while (is.null(rstudioapi::terminalExitCode(install4))) {
+  #     Sys.sleep(2)
+  #   }
+  #
+  #   rstudioapi::terminalKill(install4)
+  #
+  #   cli::cli_alert_success('Extension `fontawesome` has been created.')
+  # } else {
+  #   cli::cli_alert_info('Extension `fontawesome` already exists.')
+  # }
+  #
+  # if (!dir.exists('./_extensions/schochastics/academicons')) {
+  #   install5 <- rstudioapi::terminalExecute(
+  #     'quarto install extension schochastics/academicons'
+  #   )
+  #
+  #   while (is.null(rstudioapi::terminalExitCode(install5))) {
+  #     Sys.sleep(2)
+  #   }
+  #
+  #   rstudioapi::terminalKill(install5)
+  #
+  #   cli::cli_alert_success('Extension `academicons` has been created.')
+  # } else {
+  #   cli::cli_alert_info('Extension `academicons` already exists.')
+  # }
+  #
+  # if (!dir.exists('./_extensions/sellorm/social-embeds')) {
+  #   install6 <- rstudioapi::terminalExecute(
+  #     'quarto install extension sellorm/quarto-social-embeds'
+  #   )
+  #
+  #   while (is.null(rstudioapi::terminalExitCode(install6))) {
+  #     Sys.sleep(2)
+  #   }
+  #
+  #   rstudioapi::terminalKill(install6)
+  #
+  #   cli::cli_alert_success('Extension `social-embeds` has been created.')
+  # } else {
+  #   cli::cli_alert_success('Extension `social-embeds` already exists.')
+  # }
 
   # Kopieren von puppeteer, damit decktape funktioniert für PDF Ausgabe
   cli::cli_progress_step(
@@ -237,7 +236,7 @@ create_slides <- function(
       ' $(pwd)/.cache/puppeteer/chrome/mac_arm-119.0.6045.105/'
     )
 
-    install7 <- rstudioapi::terminalExecute(string)
+    # install7 <- rstudioapi::terminalExecute(string)
 
     cli::cli_alert_success('Puppeteer Chrome installation has been copied.')
   } else {
