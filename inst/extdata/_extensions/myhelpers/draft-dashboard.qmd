@@ -15,6 +15,7 @@ execute:
 ```{r}
 #| label: load-packages
 #| message: false
+#| include: false
 
 library(tidyverse)
 

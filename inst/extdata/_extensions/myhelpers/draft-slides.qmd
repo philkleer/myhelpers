@@ -30,6 +30,7 @@ editor: source
 ```{r}
 #| label: setup-libraries-data
 #| include: false
+#| message: false
 
 library(tidyverse)
 library(knitr)
@@ -46,7 +47,7 @@ myhelpers::load_slidecols()
 ## add extras in positron
 
 
-You need to add extensions manually (`rstudioapi` doesn't work there):
+You need to add extensions manually:
 
 - `quarto install extension sellorm/quarto-social-embeds`
 - `quarto install extension schochastics/academicons`
@@ -54,6 +55,16 @@ You need to add extensions manually (`rstudioapi` doesn't work there):
 - `quarto add mcanouil/quarto-iconify`
 - `quarto add quarto-ext/fontawesome`
 - `quarto install extension jmbuhr/quarto-qrcode`
+
+## Create variables
+You can upfront create variables that can be used in the following
+
+```{python}
+#| tags: [parameters]
+
+name = 'Philipp'
+data_filte = '2012'
+```
 
 # Motivation {data-stack-name='Start'}
 
