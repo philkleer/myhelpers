@@ -17,8 +17,6 @@
   // The document content.
   body
 ) = {
-  // initiliaze fa pro
-  // fa-use-pro()
 
   // Set document metadata.
   set document(title: title)
@@ -46,6 +44,9 @@
           ), 
           stroke: none,
           width: 100%, { 
+            // initiliaze fa pro
+            fa-use-pro()
+
             set text(fill: rgb("#579d90"), size: 16pt)
             [ 
               #if doi == true [
@@ -66,8 +67,8 @@
               ] | #link("https://polsci.social/@philk")[
                 #fa-icon("mastodon", fill: rgb("#579D90"))
               ] | #link("https://bsky.app/profile/phil-k.bsky.social")[
-                #fa-icon("square", solid: true, fill: rgb("#579D90"))
-              ] |
+                #fa-icon("square", solid:true, fill: rgb("#579D90"))
+              ]
             ]
            }
         ),
