@@ -75,8 +75,14 @@ defaults:
         code-link: true
         anchor-sections: true
         fig-cap-location: top
+        fig-align: center
         reference-location: margin
         footnotes-hover: true
+        execute:
+          echo: true
+          eval: true
+          warning: false
+          message: false
         mermaid-format: png
         lightbox: # clickable images
           match: auto
@@ -99,7 +105,13 @@ defaults:
         code-link: true
         anchor-sections: true
         fig-cap-location: top
+        fig-align: center
         reference-location: margin
+        execute:
+          echo: true
+          eval: true
+          warning: false
+          message: false
       revealjs:
         width: 1600
         height: 900
@@ -115,6 +127,8 @@ defaults:
         preview-links: auto
         transition: slide
         background-transition: fade
+        fig-cap-location: top
+        fig-align: center
         code-fold: false
         code-summary: 'Click here for Code'
         code-link: true
@@ -128,8 +142,8 @@ defaults:
           loop: true
         footer: '[{{< fa brands github >}}](https://github.com/bpkleer){.github}'
         execute:
-          echo: false
-          eval: true
+          echo: true
+          eval: false
           warning: false
           message: false
         chalkboard:
