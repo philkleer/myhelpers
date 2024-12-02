@@ -1,33 +1,9 @@
 /******* Color variables **********/
 :root {
-  /* --brand-style1: #579D90;
-  --style2: #55AB6B;
-  --brand-style3: #558CAB;
-  --brand-style4: #C7EBE4; */
-  /* --brand-red: 157, 87, 100;
-  --white: #FFFFFF; */
-  /* --white2: #F7F7F7; */
-  /* --brand-gray2: #edeeed; /*#eaebea;*/
-  /*--brand-gray3: #F4F4F4;
-  --blue: #5563AB;
-  --black: #272822;
-  --brand-darkgray: #5A5A5A;
-  --brand-red: #A94459; */
-  /* --code-bg-gray: #f8f8f8; */
-  /* --code-bg2-gray: var(--brand-gray3); */
-  /* --code-bg-inline: #D8D8D8;
-  --search-match-current-background: rgba(157, 109, 87, 0.5);
-  --search-match-background: rgba(157, 109, 87, 0.2); */
   --mermaid-edge-color: var(--style3); /* text */
   --mermaid-node-fg-color: var(--style3);
   --mermaid-label-bg-color: var(--style4);
   --mermaid-label-fg-color: var(--style3);
-  /* --mermaid-bg-color: var(--white); */
-  /* --mermaid-fg-color: var(--red); */
-  /* --mermaid-fg-color--lighter: var(--white); */
-  /* --mermaid-fg-color--lightest: #{$mermaid-fg-color--lightest}; */
-  /* --mermaid-font-family: #{$mermaid-font-family}; */
-  /* --mermaid-node-bg-color: var(--red); */
 }
 
 
