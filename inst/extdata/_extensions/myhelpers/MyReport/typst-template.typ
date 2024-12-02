@@ -67,7 +67,7 @@
               ] | #link("https://polsci.social/@philk")[
                 #fa-icon("mastodon", fill: rgb("#579D90"))
               ] | #link("https://bsky.app/profile/phil-k.bsky.social")[
-                #fa-icon("square", solid:true, fill: rgb("#579D90"))
+                #fa-icon("bluesky", fill: rgb("#579D90"))
               ]
             ]
            }
