@@ -28,7 +28,14 @@ Default 'myhelpers'.}
  Installs necessary extensions to render the \code{qmd}-file.
 }
 \description{
-Creates personal quarto template for a report in working directory.
+Creates personal quarto template for a report in working directory. If you want full functionality you need to install
+ manually the following quarto extensions:
+   - jmbuhr/quarto-qrcode
+   - martinomagnifico/quarto-simplemenu
+   - mcanouil/quarto-iconify
+   - quarto-ext/fontawesome
+   - schochastics/academicons
+   - quarto-social-embeds
 }
 \examples{
 # create_report(
