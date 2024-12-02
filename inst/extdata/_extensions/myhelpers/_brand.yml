@@ -90,6 +90,9 @@ defaults:
           desc-position: bottom
           loop: true
       typst:
+        template-partials:
+          - _extensions/MyReport/typst-template.typ
+          - _extensions/MyReport/typst-show.typ
         toc: true
         toc-title: Contents
         section-numbering: 1.1.a
