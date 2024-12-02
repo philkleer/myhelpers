@@ -28,6 +28,7 @@
 #' @export
 create_report <- function(
     filename = NULL,
+    # draftname = './assets/draft-report.qmd',
     draftname = '_extensions/myhelpers/draft-report.qmd',
     ext_name = 'myhelpers',
     path_to_chrome = '/Users/phil/.cache/puppeteer/chrome/mac_arm-119.0.6045.105/'
@@ -42,16 +43,19 @@ create_report <- function(
   out_dir <- getwd()
 
   # check for available extensions
-  stopifnot('Extension not in package' = ext_name %in% c('myhelpers'))
+  # stopifnot('Extension not in package' = ext_name %in% c('myhelpers'))
 
   # check for existing _extensions directory
   if(!file.exists('_extensions')) dir.create('_extensions')
   cli::cli_alert_success('Created `_extensions` folder')
 
+  if(!file.exists('assets')) dir.create('assets')
+  cli::cli_alert_success('Created `assets` folder')
+
   # Create folder for recursive copying into ahead of time
-  if(!file.exists(paste0('_extensions/', ext_name)))
-    dir.create(paste0('_extensions/', ext_name))
-  cli::cli_alert_success('Created `_extensions/myhelpers` folder')
+  # if(!file.exists(paste0('_extensions/', ext_name)))
+  #   dir.create(paste0('_extensions/', ext_name))
+  # cli::cli_alert_success('Created `_extensions/myhelpers` folder')
 
   # Create folder for recursive copying into ahead of time
   if(!file.exists(paste0('_extensions/MyReport')))
@@ -64,52 +68,99 @@ create_report <- function(
     spinner = TRUE
   )
 
-  # Copying _brand.yml
-  file.copy('_extensions/myhelpers/_brand.yml', './')
-
-  # copy my template
-  file.copy(
-    from = system.file(
-      paste0(
-        'extdata/_extensions/',
-        ext_name
-      ),
-      package = 'myhelpers'
-    ),
-    to = paste0('_extensions/'),
-    overwrite = TRUE,
-    recursive = TRUE,
-    copy.mode = TRUE
-  )
-
-  # copy MyReport typst template
-  # DOES NOT WORK
-  # file.copy(
-  #   from = '_extensions/MyReport',
-  #   to = './_extensions/',
-  #   recursive = TRUE
-  # )
-
-  # Create folder for recursive copying into ahead of time
+ # Create folder for recursive copying into ahead of time
   if (draftname == '_extensions/myhelpers/draft-report.qmd') {
     file.copy(
-      from = '_extensions/myhelpers/assets/',
+      from = system.file(
+        paste0(
+          'extdata/_extensions/',
+          ext_name,
+          '/assets'
+        ),
+        package = 'myhelpers'
+      ),
       to = './',
-      recursive = TRUE
+      overwrite = TRUE,
+      recursive = TRUE,
+      copy.mode = TRUE
     )
+
+    file.copy(
+      from = system.file(
+        paste0(
+          'extdata/_extensions/',
+          ext_name,
+          '/MyReport'
+        ),
+        package = 'myhelpers'
+      ),
+      to = './_extensions/',
+      overwrite = TRUE,
+      recursive = TRUE,
+      copy.mode = TRUE
+    )
+
+    # create new qmd report based on skeleton
+    readLines(
+      system.file(
+        paste0(
+          'extdata/_extensions/',
+          ext_name,
+          '/draft-report.qmd'
+        ),
+        package = 'myhelpers'
+      )
+    ) |>
+      writeLines(
+        text = _,
+        con = paste0(filename, '.qmd', collapse = '')
+      )
+  } else {
+    readLines(draftname) |>
+      writeLines(
+        text = _,
+        con = paste0(filename, '.qmd', collapse = '')
+      )
   }
 
-  # create new qmd report based on skeleton
-  readLines(draftname) |>
+  readLines(
+    system.file(
+      paste0(
+        'extdata/_extensions/',
+        ext_name,
+        '/_brand.yml'
+      ),
+      package = 'myhelpers'
+    )
+  ) |>
     writeLines(
       text = _,
-      con = paste0(filename, '.qmd', collapse = '')
+      con = paste0('_brand.yml', collapse = '')
     )
 
-  cli::cli_progress_step(
-    'Installing quarto extensions ...',
-    spinner = TRUE
-  )
+  cli::cli_alert_success('Created `_brand.yml` file')
+
+  readLines(
+    system.file(
+      paste0(
+        'extdata/_extensions/',
+        ext_name,
+        '/_quarto.yml'
+      ),
+      package = 'myhelpers'
+    )
+  ) |>
+    writeLines(
+      text = _,
+      con = paste0('_quarto.yml', collapse = '')
+    )
+
+  cli::cli_alert_success('Created `_quarto.yml` file')
+
+    # cli::cli_progress_step(
+  #   'Installing quarto extensions ...',
+  #   spinner = TRUE
+  # )
 
   # Copying extensions and puppeteer
   # Since usage of Positron right now more
@@ -236,7 +287,7 @@ create_report <- function(
 
     cli::cli_alert_success('Puppeteer Chrome installation has been copied.')
   } else {
-    cli::cli_alert_danger(
+    cli::cli_alert_info(
       paste0(
         'There is already a .cache-Folder. Please check if you have a ',
         'puppeteer/chrome/mac_arm-119.0.6045.105/ folder. If not, copy it ',

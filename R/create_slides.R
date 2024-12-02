@@ -104,17 +104,61 @@ create_slides <- function(
   }
 
   # create new qmd report based on skeleton
-  readLines(draftname) |>
+  readLines(
+    system.file(
+      paste0(
+        'extdata/_extensions/',
+        ext_name,
+        '/draft-slides.qmd'
+      ),
+      package = 'myhelpers'
+    )
+  ) |>
     writeLines(
       text = _,
       con = paste0(filename, '.qmd', collapse = '')
     )
 
+  readLines(
+    system.file(
+      paste0(
+        'extdata/_extensions/',
+        ext_name,
+        '/_brand.yml'
+      ),
+      package = 'myhelpers'
+    )
+  ) |>
+    writeLines(
+      text = _,
+      con = paste0('_brand.yml', collapse = '')
+    )
+
+  cli::cli_alert_success('Created `_brand.yml` file')
+
+  readLines(
+    system.file(
+      paste0(
+        'extdata/_extensions/',
+        ext_name,
+        '/_quarto.yml'
+      ),
+      package = 'myhelpers'
+    )
+  ) |>
+    writeLines(
+      text = _,
+      con = paste0('_quarto.yml', collapse = '')
+    )
+
+  cli::cli_alert_success('Created `_quarto.yml` file')
+
+  # Not relevant anymore, since I mainly use positron
   # Copying extensions and puppeteer
-  cli::cli_progress_step(
-    'Installing quarto extensions ...',
-    spinner = TRUE
-  )
+  # cli::cli_progress_step(
+  #   'Installing quarto extensions ...',
+  #   spinner = TRUE
+  # )
 
   # if (!dir.exists('./_extensions/jmbuhr/qrcode')) {
   #   install <- rstudioapi::terminalExecute(
@@ -240,7 +284,7 @@ create_slides <- function(
 
     cli::cli_alert_success('Puppeteer Chrome installation has been copied.')
   } else {
-    cli::cli_alert_danger(
+    cli::cli_alert_info(
       paste0(
         'There is already a .cache-Folder. Please check if you have a ',
         'puppeteer/chrome/mac_arm-119.0.6045.105/ folder. If not, copy it ',
