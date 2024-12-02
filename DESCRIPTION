@@ -27,7 +27,6 @@ Imports:
     ggplot2, 
     grid,
     psych,
-    rstudioapi,
     scales,
     stringr, 
     tibble, 
