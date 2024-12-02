@@ -3,8 +3,8 @@
 #' Creating a new quarto file for presentation own defined template.
 #'
 #' This function just creates a quarto file based on the saved template as draft
-#'  in the package folder. It installs also the following useful quarto
-#'  extensions:
+#'  in the package folder. If you want full functionality you need to install
+#'  manually the following quarto extensions:
 #'    - jmbuhr/quarto-qrcode
 #'    - martinomagnifico/quarto-simplemenu
 #'    - mcanouil/quarto-iconify
