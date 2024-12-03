@@ -6,13 +6,16 @@
 \usage{
 create_script(
   filename = NULL,
-  draftname = "template.R",
+  kind = "r",
+  draftname = "template",
   path_to_templates = "/Users/phil/Documents/templates"
 )
 }
 \arguments{
 \item{filename}{The name of the created file. You don't have to
 add \code{.R}.}
+
+\item{kind}{indicate if you want to create R (`r`) or Python (`py`) file.}
 
 \item{draftname}{The path to the draft file. Default name is \code{template.R}.}
 
@@ -29,7 +32,8 @@ This function just creates a R script file based on the saved template as
 \examples{
 # create_script(
 #   filename = NULL,
-#   draftname = 'template.R',
+#   kind = 'r',
+#   draftname = 'template',
 #   path_to_templates = '/my_path_to_templates'
 # )
 
