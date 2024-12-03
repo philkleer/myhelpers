@@ -6,19 +6,18 @@
 \usage{
 create_script(
   filename = NULL,
-  draftname = "_extensions/myhelpers/template.R",
-  ext_name = "myhelpers"
+  draftname = "template.R",
+  path_to_templates = "/Users/phil/Documents/templates"
 )
 }
 \arguments{
 \item{filename}{The name of the created file. You don't have to
 add \code{.R}.}
 
-\item{draftname}{The path to the draft file. If not indicated, the package
-included draft file will be used.}
+\item{draftname}{The path to the draft file. Default name is \code{template.R}.}
 
-\item{ext_name}{The name of extension to get the files from. Default
-'myhelpers'.}
+\item{path_to_templates}{The path to the location of the template, css, and
+other files.}
 }
 \value{
 R script based on the template.
@@ -30,8 +29,8 @@ This function just creates a R script file based on the saved template as
 \examples{
 # create_script(
 #   filename = NULL,
-#   draftname = '_extensions/myhelpers/template.R',
-#   ext_name = 'myhelpers'
+#   draftname = 'template.R',
+#   path_to_templates = '/my_path_to_templates'
 # )
 
 }

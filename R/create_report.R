@@ -11,10 +11,11 @@
 #'
 #' @param filename The name of the created file. You don't have
 #'  to add \code{.qmd}.
-#' @param draftname The path to the draft file. If not indicated, the package
-#'  included draft file will be used.
-#' @param ext_name The name of extension to get the files from.
-#'  Default 'myhelpers'.
+#' @param draftname The name of the draft file. Default value is
+#'  \code{draft-report.qmd}. With default name it will automatically search for
+#'  an \code{assets} folder and copy the complete folder to the project path.
+#' @param path_to_templates The path to the location of the template, css, and
+#'  other files.
 #' @param path_to_chrome The path to location of puppeteer chrome distribution.
 #'
 #' @returns \code{qmd}-file for a \code{html}-report based on the template.
@@ -23,8 +24,8 @@
 #' @examples
 #' # create_report(
 #' #   filename = NULL,
-#' #   draftname = '_extensions/myhelpers/draft-report.qmd',
-#' #   ext_name = 'myhelpers',
+#' #   draftname = 'draft-report.qmd',
+#' #   path_to_templates = '/my_path_to_templates',
 #' #   path_to_chrome = '/Users/phil/.cache/puppeteer/chrome/mac_arm-119.0.6045.105/'
 #' # )
 #'
@@ -35,9 +36,8 @@
 #' @export
 create_report <- function(
     filename = NULL,
-    # draftname = './assets/draft-report.qmd',
-    draftname = '_extensions/myhelpers/draft-report.qmd',
-    ext_name = 'myhelpers',
+    draftname = 'draft-report.qmd',
+    path_to_templates = '/Users/phil/Documents/templates/quarto',
     path_to_chrome = '/Users/phil/.cache/puppeteer/chrome/mac_arm-119.0.6045.105/'
 ) {
 
@@ -49,25 +49,9 @@ create_report <- function(
 
   out_dir <- getwd()
 
-  # check for available extensions
-  # stopifnot('Extension not in package' = ext_name %in% c('myhelpers'))
-
-  # check for existing _extensions directory
-  if(!file.exists('_extensions')) dir.create('_extensions')
-  cli::cli_alert_success('Created `_extensions` folder')
-
+  # create assets folder
   if(!file.exists('assets')) dir.create('assets')
   cli::cli_alert_success('Created `assets` folder')
-
-  # Create folder for recursive copying into ahead of time
-  # if(!file.exists(paste0('_extensions/', ext_name)))
-  #   dir.create(paste0('_extensions/', ext_name))
-  # cli::cli_alert_success('Created `_extensions/myhelpers` folder')
-
-  # Create folder for recursive copying into ahead of time
-  if(!file.exists(paste0('_extensions/MyReport')))
-    dir.create(paste0('_extensions/MyReport'))
-  cli::cli_alert_success('Created `_extensions/MyReport` folder')
 
   # copy from internals
   cli::cli_progress_step(
@@ -76,95 +60,86 @@ create_report <- function(
   )
 
  # Create folder for recursive copying into ahead of time
-  if (draftname == '_extensions/myhelpers/draft-report.qmd') {
-    file.copy(
-      from = system.file(
-        paste0(
-          'extdata/_extensions/',
-          ext_name,
-          '/assets'
-        ),
-        package = 'myhelpers'
-      ),
-      to = './',
-      overwrite = TRUE,
-      recursive = TRUE,
-      copy.mode = TRUE
-    )
+  if (draftname == 'draft-report.qmd') {
 
-    file.copy(
-      from = system.file(
-        paste0(
-          'extdata/_extensions/',
-          ext_name,
-          '/MyReport'
-        ),
-        package = 'myhelpers'
-      ),
-      to = './_extensions/',
-      overwrite = TRUE,
-      recursive = TRUE,
-      copy.mode = TRUE
-    )
+    if (dir.exists(paste0(path_to_templates, '/assets'))) {
+      # copying all assets
+      file.copy(
+        from = paste0(path_to_templates, '/assets'),
+        to = './',
+        overwrite = TRUE,
+        recursive = TRUE,
+        copy.mode = TRUE
+      )
 
-    # create new qmd report based on skeleton
-    readLines(
-      system.file(
-        paste0(
-          'extdata/_extensions/',
-          ext_name,
-          '/draft-report.qmd'
-        ),
-        package = 'myhelpers'
-      )
-    ) |>
-      writeLines(
-        text = _,
-        con = paste0(filename, '.qmd', collapse = '')
-      )
+      cli::cli_alert_success('Copied all assets into project directory.')
+    }
+
+    # create new qmd report based on draft or blank
+    if (file.exists(paste0(path_to_templates, '/draft-report.qmd'))) {
+      readLines(paste0(path_to_templates, '/draft-report.qmd')) |>
+        writeLines(
+          text = _,
+          con = paste0(filename, '.qmd', collapse = '')
+        )
+
+      cli::cli_alert_success('Created qmd-file based on `draft-report.qmd`.')
+
+    } else {
+      cli::cli_alert_info('`draft-report.qmd` does not exist in `path_to_templates`.')
+
+      readLines(draftname) |>
+        writeLines(
+          text = _,
+          con = paste0(filename, '.qmd', collapse = '')
+        )
+
+      cli::cli_alert_info('A blank qmd-file was created.')
+    }
   } else {
     readLines(draftname) |>
       writeLines(
         text = _,
         con = paste0(filename, '.qmd', collapse = '')
       )
+    cli::cli_alert_info('A blank qmd-file was created.')
   }
 
-  readLines(
-    system.file(
-      paste0(
-        'extdata/_extensions/',
-        ext_name,
-        '/_brand.yml'
-      ),
-      package = 'myhelpers'
-    )
-  ) |>
-    writeLines(
-      text = _,
-      con = paste0('_brand.yml', collapse = '')
+  # copying _brand.yml
+  if (file.exists(paste0(path_to_templates, '/_brand.yml'))) {
+    file.copy(
+      from = paste0(path_to_templates, '/_brand.yml'),
+      to = './_brand.yml',
+      overwrite = FALSE,
+      copy.mode = TRUE,
+      copy.date = FALSE
     )
 
-  cli::cli_alert_success('Created `_brand.yml` file')
-
-  readLines(
-    system.file(
-      paste0(
-        'extdata/_extensions/',
-        ext_name,
-        '/_quarto.yml'
-      ),
-      package = 'myhelpers'
+    cli::cli_alert_success('Created `_brand.yml` file')
+  } else {
+    cli::cli_alert_info(
+      'The file `_brand.yml` does not exist at `path_to_templates`!'
     )
-  ) |>
-    writeLines(
-      text = _,
-      con = paste0('_quarto.yml', collapse = '')
+  }
+
+  # copying _quarto.yml
+  if (file.exists(paste0(path_to_templates, '/_quarto.yml'))) {
+    file.copy(
+      from = paste0(path_to_templates, '/_quarto.yml'),
+      to = './_quarto.yml',
+      overwrite = FALSE,
+      copy.mode = TRUE,
+      copy.date = FALSE
     )
 
-  cli::cli_alert_success('Created `_quarto.yml` file')
+    cli::cli_alert_success('Created `_quarto.yml` file')
+  } else {
+    cli::cli_alert_info(
+      'The file `_brand.yml` does not exist at `path_to_templates`!'
+    )
+  }
 
-    # cli::cli_progress_step(
+  # cli::cli_progress_step(
   #   'Installing quarto extensions ...',
   #   spinner = TRUE
   # )
@@ -304,6 +279,4 @@ create_report <- function(
   }
 
   cli::cli_alert_success('Report created.')
-  # open the new file in the editor
-  # file.edit(paste0(filename, '.qmd'))
 }
