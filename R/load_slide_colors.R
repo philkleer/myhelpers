@@ -6,7 +6,7 @@
 #'  function.
 #'
 #' @examples
-#' # load_slidecols()
+#' # load_slide_colors()
 #'
 #' @importFrom ggplot2 theme_set theme_grey theme element_text element_line
 #'  element_blank element_rect
@@ -15,7 +15,7 @@
 #'
 #' @export
 
-load_slidecols <- function() {
+load_slide_colors <- function() {
   # check for packages that are needed
   if(!requireNamespace('cli')) install.packages('cli')
 
