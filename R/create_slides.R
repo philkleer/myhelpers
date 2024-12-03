@@ -16,10 +16,11 @@
 #'
 #' @param filename The name of the created file. You don't have to add
 #'  \code{.qmd}.
-#' @param draftname The path to the draft file. If not indicated, the package
-#'  included draft file will be used.
-#' @param ext_name The name of extension to get the files from. Default
-#'  'myhelpers'.
+#' @param draftname The name of the draft file. Default value is
+#'  \code{draft-report.qmd}. With default name it will automatically search for
+#'  an \code{assets} folder and copy the complete folder to the project path.
+#' @param path_to_templates The path to the location of the template, css, and
+#'  other files.
 #' @param path_to_chrome The path to location of puppeteer chrome distribution.
 #'
 #' @returns \code{qmd}-Files for slides based on template. Installs necessary
@@ -28,8 +29,8 @@
 #' @examples
 #' # create_slides(
 #' #   filename = NULL,
-#' #   draftname = '_extensions/myhelpers/draft-slides.qmd',
-#' #   ext_name = 'myhelpers',
+#' #   draftname = 'draft-slides.qmd',
+#' #   path_to_templates = '/my_path_to_templates',
 #' #   path_to_chrome = '/Users/phil/.cache/puppeteer/chrome/mac_arm-119.0.6045.105/'
 #' # )
 #'
@@ -39,8 +40,8 @@
 #' @export
 create_slides <- function(
     filename = NULL,
-    draftname = '_extensions/myhelpers/draft-slides.qmd',
-    ext_name = 'myhelpers',
+    draftname = 'draft-slides.qmd',
+    path_to_templates = '/Users/phil/Documents/templates/quarto',
     path_to_chrome = '/Users/phil/.cache/puppeteer/chrome/mac_arm-119.0.6045.105/'
 ) {
 
@@ -52,106 +53,91 @@ create_slides <- function(
 
   out_dir <- getwd()
 
-  # check for available extensions
-  stopifnot('Extension not in package' = ext_name %in% c('myhelpers'))
-
-  # check for existing _extensions directory
-  if(!file.exists('_extensions')) dir.create('_extensions')
-  cli::cli_alert_success('Created `_extensions` folder')
-
-  # Create folder for recursive copying into ahead of time
-  if(!file.exists(paste0('_extensions/', ext_name)))
-    dir.create(paste0('_extensions/', ext_name))
-  cli::cli_alert_success('Created `_extensions/myhelpers` folder')
-
   # copy from internals
   cli::cli_progress_step(
     'Copying template files and style files ...',
     spinner = TRUE
   )
 
-  # copy my template
-  file.copy(
-    from = system.file(
-      paste0(
-        'extdata/_extensions/',
-        ext_name
-      ),
-      package = 'myhelpers'
-    ),
-    to = paste0('_extensions/'),
-    overwrite = TRUE,
-    recursive = TRUE,
-    copy.mode = TRUE
-  )
-
   # Create folder for recursive copying into ahead of time
-  if (draftname == '_extensions/myhelpers/draft-slides.qmd') {
-    if (!dir.exists(paste0('assets/'))) dir.create(paste0('assets/'))
-    cli::cli_alert_success('Created `assets` folder')
+  if (draftname == 'draft-slides.qmd') {
 
-    file.copy('_extensions/myhelpers/assets/', './', recursive = TRUE)
+    if (dir.exists(paste0(path_to_templates, '/assets'))) {
+      # copying all assets
+      file.copy(
+        from = paste0(path_to_templates, '/assets'),
+        to = './',
+        overwrite = TRUE,
+        recursive = TRUE,
+        copy.mode = TRUE
+      )
 
-    # # Copying puppeteer cache for decktape to print PDF
-    # not needed anymore
-    # file.copy('_extensions/myhelpers/.puppeteerrc.cjs/', './')
+      cli::cli_alert_success('Copied all assets into project directory.')
+    }
 
-    # Copying guide for using decktape
-    file.copy('_extensions/myhelpers/README-print.md', './')
+    # create new qmd report based on draft or blank
+    if (file.exists(paste0(path_to_templates, '/draft-slides.qmd'))) {
+      readLines(paste0(path_to_templates, '/draft-slides.qmd')) |>
+        writeLines(
+          text = _,
+          con = paste0(filename, '.qmd', collapse = '')
+        )
 
-    # Copying _brand.yml
-    file.copy('_extensions/myhelpers/_brand.yml', './')
+      cli::cli_alert_success('Created qmd-file based on `draft-slides.qmd`.')
+
+    } else {
+      cli::cli_alert_info('`draft-slides.qmd` does not exist in `path_to_templates`.')
+
+      readLines(draftname) |>
+        writeLines(
+          text = _,
+          con = paste0(filename, '.qmd', collapse = '')
+        )
+
+      cli::cli_alert_info('A blank qmd-file was created.')
+    }
+  } else {
+    readLines(draftname) |>
+      writeLines(
+        text = _,
+        con = paste0(filename, '.qmd', collapse = '')
+      )
+    cli::cli_alert_info('A blank qmd-file was created.')
   }
 
-  # create new qmd report based on skeleton
-  readLines(
-    system.file(
-      paste0(
-        'extdata/_extensions/',
-        ext_name,
-        '/draft-slides.qmd'
-      ),
-      package = 'myhelpers'
-    )
-  ) |>
-    writeLines(
-      text = _,
-      con = paste0(filename, '.qmd', collapse = '')
+  # copying _brand.yml
+  if (file.exists(paste0(path_to_templates, '/_brand.yml'))) {
+    file.copy(
+      from = paste0(path_to_templates, '/_brand.yml'),
+      to = './_brand.yml',
+      overwrite = FALSE,
+      copy.mode = TRUE,
+      copy.date = FALSE
     )
 
-  readLines(
-    system.file(
-      paste0(
-        'extdata/_extensions/',
-        ext_name,
-        '/_brand.yml'
-      ),
-      package = 'myhelpers'
+    cli::cli_alert_success('Created `_brand.yml` file')
+  } else {
+    cli::cli_alert_info(
+      'The file `_brand.yml` does not exist at `path_to_templates`!'
     )
-  ) |>
-    writeLines(
-      text = _,
-      con = paste0('_brand.yml', collapse = '')
+  }
+
+  # copying _quarto.yml
+  if (file.exists(paste0(path_to_templates, '/_quarto.yml'))) {
+    file.copy(
+      from = paste0(path_to_templates, '/_quarto.yml'),
+      to = './_quarto.yml',
+      overwrite = FALSE,
+      copy.mode = TRUE,
+      copy.date = FALSE
     )
 
-  cli::cli_alert_success('Created `_brand.yml` file')
-
-  readLines(
-    system.file(
-      paste0(
-        'extdata/_extensions/',
-        ext_name,
-        '/_quarto.yml'
-      ),
-      package = 'myhelpers'
+    cli::cli_alert_success('Created `_quarto.yml` file')
+  } else {
+    cli::cli_alert_info(
+      'The file `_brand.yml` does not exist at `path_to_templates`!'
     )
-  ) |>
-    writeLines(
-      text = _,
-      con = paste0('_quarto.yml', collapse = '')
-    )
-
-  cli::cli_alert_success('Created `_quarto.yml` file')
+  }
 
   # Not relevant anymore, since I mainly use positron
   # Copying extensions and puppeteer

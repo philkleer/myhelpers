@@ -6,8 +6,8 @@
 \usage{
 create_slides(
   filename = NULL,
-  draftname = "_extensions/myhelpers/draft-slides.qmd",
-  ext_name = "myhelpers",
+  draftname = "draft-slides.qmd",
+  path_to_templates = "/Users/phil/Documents/templates/quarto",
   path_to_chrome = "/Users/phil/.cache/puppeteer/chrome/mac_arm-119.0.6045.105/"
 )
 }
@@ -15,11 +15,12 @@ create_slides(
 \item{filename}{The name of the created file. You don't have to add
 \code{.qmd}.}
 
-\item{draftname}{The path to the draft file. If not indicated, the package
-included draft file will be used.}
+\item{draftname}{The name of the draft file. Default value is
+\code{draft-report.qmd}. With default name it will automatically search for
+an \code{assets} folder and copy the complete folder to the project path.}
 
-\item{ext_name}{The name of extension to get the files from. Default
-'myhelpers'.}
+\item{path_to_templates}{The path to the location of the template, css, and
+other files.}
 
 \item{path_to_chrome}{The path to location of puppeteer chrome distribution.}
 }
@@ -46,8 +47,8 @@ This function just creates a quarto file based on the saved template as draft
 \examples{
 # create_slides(
 #   filename = NULL,
-#   draftname = '_extensions/myhelpers/draft-slides.qmd',
-#   ext_name = 'myhelpers',
+#   draftname = 'draft-slides.qmd',
+#   path_to_templates = '/my_path_to_templates',
 #   path_to_chrome = '/Users/phil/.cache/puppeteer/chrome/mac_arm-119.0.6045.105/'
 # )
 
