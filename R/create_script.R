@@ -6,6 +6,8 @@
 #' @param filename The name of the created file. You don't have to
 #'  add \code{.R}.
 #' @param kind indicate if you want to create R (`r`) or Python (`py`) file.
+#' @param path The path were to store and build everything. Default is working
+#'  directory
 #' @param draftname The path to the draft file. Default name is \code{template.R}.
 #' @param path_to_templates The path to the location of the template, css, and
 #'  other files.
@@ -16,6 +18,7 @@
 #' # create_script(
 #' #   filename = NULL,
 #' #   kind = 'r',
+#' #   path = './',
 #' #   draftname = 'template',
 #' #   path_to_templates = '/my_path_to_templates'
 #' # )
@@ -27,6 +30,7 @@
 create_script <- function(
     filename = NULL,
     kind = 'r',
+    path = './',
     draftname = 'template',
     path_to_templates = '/Users/phil/Documents/templates'
 ) {
@@ -45,7 +49,7 @@ create_script <- function(
     ending = '.py.'
   }
 
-  new_file <- file.path(paste0(filename, ending))
+  new_file <- file.path(paste0(path, filename, ending))
 
   if (!file.exists(new_file)) {
     file.create(new_file)

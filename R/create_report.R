@@ -11,6 +11,8 @@
 #'
 #' @param filename The name of the created file. You don't have
 #'  to add \code{.qmd}.
+#' @param path The path were to store and build everything. Default is working
+#'  directory
 #' @param draftname The name of the draft file. Default value is
 #'  \code{draft-report.qmd}. With default name it will automatically search for
 #'  an \code{assets} folder and copy the complete folder to the project path.
@@ -24,6 +26,7 @@
 #' @examples
 #' # create_report(
 #' #   filename = NULL,
+#' #   path = './',
 #' #   draftname = 'draft-report.qmd',
 #' #   path_to_templates = '/my_path_to_templates',
 #' #   path_to_chrome = '/Users/phil/.cache/puppeteer/chrome/mac_arm-119.0.6045.105/'
@@ -36,6 +39,7 @@
 #' @export
 create_report <- function(
     filename = NULL,
+    path = './',
     draftname = 'draft-report.qmd',
     path_to_templates = '/Users/phil/Documents/templates/quarto',
     path_to_chrome = '/Users/phil/.cache/puppeteer/chrome/mac_arm-119.0.6045.105/'
@@ -66,7 +70,7 @@ create_report <- function(
       # copying all assets
       file.copy(
         from = paste0(path_to_templates, '/assets'),
-        to = './',
+        to = path,
         overwrite = TRUE,
         recursive = TRUE,
         copy.mode = TRUE
@@ -80,7 +84,7 @@ create_report <- function(
       readLines(paste0(path_to_templates, '/draft-report.qmd')) |>
         writeLines(
           text = _,
-          con = paste0(filename, '.qmd', collapse = '')
+          con = paste0(path, filename, '.qmd', collapse = '')
         )
 
       cli::cli_alert_success('Created qmd-file based on `draft-report.qmd`.')
@@ -109,7 +113,7 @@ create_report <- function(
   if (file.exists(paste0(path_to_templates, '/_brand.yml'))) {
     file.copy(
       from = paste0(path_to_templates, '/_brand.yml'),
-      to = './_brand.yml',
+      to = paste0(path, '_brand.yml'),
       overwrite = FALSE,
       copy.mode = TRUE,
       copy.date = FALSE
@@ -126,7 +130,7 @@ create_report <- function(
   if (file.exists(paste0(path_to_templates, '/_quarto.yml'))) {
     file.copy(
       from = paste0(path_to_templates, '/_quarto.yml'),
-      to = './_quarto.yml',
+      to = paste0(path, '_quarto.yml'),
       overwrite = FALSE,
       copy.mode = TRUE,
       copy.date = FALSE

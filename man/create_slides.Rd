@@ -6,6 +6,7 @@
 \usage{
 create_slides(
   filename = NULL,
+  path = "./",
   draftname = "draft-slides.qmd",
   path_to_templates = "/Users/phil/Documents/templates/quarto",
   path_to_chrome = "/Users/phil/.cache/puppeteer/chrome/mac_arm-119.0.6045.105/"
@@ -14,6 +15,9 @@ create_slides(
 \arguments{
 \item{filename}{The name of the created file. You don't have to add
 \code{.qmd}.}
+
+\item{path}{The path were to store and build everything. Default is working
+directory}
 
 \item{draftname}{The name of the draft file. Default value is
 \code{draft-report.qmd}. With default name it will automatically search for
@@ -47,6 +51,7 @@ This function just creates a quarto file based on the saved template as draft
 \examples{
 # create_slides(
 #   filename = NULL,
+#   path = './',
 #   draftname = 'draft-slides.qmd',
 #   path_to_templates = '/my_path_to_templates',
 #   path_to_chrome = '/Users/phil/.cache/puppeteer/chrome/mac_arm-119.0.6045.105/'

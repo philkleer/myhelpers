@@ -7,6 +7,7 @@
 create_script(
   filename = NULL,
   kind = "r",
+  path = "./",
   draftname = "template",
   path_to_templates = "/Users/phil/Documents/templates"
 )
@@ -16,6 +17,9 @@ create_script(
 add \code{.R}.}
 
 \item{kind}{indicate if you want to create R (`r`) or Python (`py`) file.}
+
+\item{path}{The path were to store and build everything. Default is working
+directory}
 
 \item{draftname}{The path to the draft file. Default name is \code{template.R}.}
 
@@ -33,6 +37,7 @@ This function just creates a R script file based on the saved template as
 # create_script(
 #   filename = NULL,
 #   kind = 'r',
+#   path = './',
 #   draftname = 'template',
 #   path_to_templates = '/my_path_to_templates'
 # )
