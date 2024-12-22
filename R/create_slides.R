@@ -33,7 +33,7 @@
 #' #   filename = NULL,
 #' #   path = './',
 #' #   draftname = 'draft-slides.qmd',
-#' #   path_to_templates = '/my_path_to_templates',
+#' #   path_to_templates = '/my_path_to_templates/',
 #' #   path_to_chrome = '/Users/phil/.cache/puppeteer/chrome/mac_arm-119.0.6045.105/'
 #' # )
 #'
@@ -45,7 +45,7 @@ create_slides <- function(
     filename = NULL,
     path = './',
     draftname = 'draft-slides.qmd',
-    path_to_templates = '/Users/phil/Documents/templates/quarto',
+    path_to_templates = '/Users/phil/Documents/templates/quarto/',
     path_to_chrome = '/Users/phil/.cache/puppeteer/chrome/mac_arm-119.0.6045.105/'
 ) {
 
@@ -66,10 +66,10 @@ create_slides <- function(
   # Create folder for recursive copying into ahead of time
   if (draftname == 'draft-slides.qmd') {
 
-    if (dir.exists(paste0(path_to_templates, '/assets'))) {
+    if (dir.exists(paste0(path_to_templates, 'assets'))) {
       # copying all assets
       file.copy(
-        from = paste0(path_to_templates, '/assets'),
+        from = paste0(path_to_templates, 'assets'),
         to = path,
         overwrite = TRUE,
         recursive = TRUE,
@@ -80,8 +80,8 @@ create_slides <- function(
     }
 
     # create new qmd report based on draft or blank
-    if (file.exists(paste0(path_to_templates, '/draft-slides.qmd'))) {
-      readLines(paste0(path_to_templates, '/draft-slides.qmd')) |>
+    if (file.exists(paste0(path_to_templates, 'draft-slides.qmd'))) {
+      readLines(paste0(path_to_templates, 'draft-slides.qmd')) |>
         writeLines(
           text = _,
           con = paste0(path, filename, '.qmd', collapse = '')
@@ -110,9 +110,9 @@ create_slides <- function(
   }
 
   # copying _brand.yml
-  if (file.exists(paste0(path_to_templates, '/_brand.yml'))) {
+  if (file.exists(paste0(path_to_templates, '_brand.yml'))) {
     file.copy(
-      from = paste0(path_to_templates, '/_brand.yml'),
+      from = paste0(path_to_templates, '_brand.yml'),
       to = paste0(path, '_brand.yml'),
       overwrite = FALSE,
       copy.mode = TRUE,
@@ -127,9 +127,9 @@ create_slides <- function(
   }
 
   # copying _quarto.yml
-  if (file.exists(paste0(path_to_templates, '/_quarto.yml'))) {
+  if (file.exists(paste0(path_to_templates, '_quarto.yml'))) {
     file.copy(
-      from = paste0(path_to_templates, '/_quarto.yml'),
+      from = paste0(path_to_templates, '_quarto.yml'),
       to = paste0(path, '_quarto.yml'),
       overwrite = FALSE,
       copy.mode = TRUE,

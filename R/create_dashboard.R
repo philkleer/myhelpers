@@ -18,7 +18,7 @@
 #' #   filename = NULL,
 #' #   path = './',
 #' #   draftname = 'draft-dashboard.qmd',
-#' #   path_to_templates = '/my_path_to_templates',
+#' #   path_to_templates = '/my_path_to_templates/',
 #' # )
 #'
 #' @importFrom cli cli_alert_success cli_progress_step cli_alert_info
@@ -30,7 +30,7 @@ create_dashboard <- function(
   filename = NULL,
   path = './',
   draftname = 'draft-dashboard.qmd',
-  path_to_templates = '/Users/phil/Documents/templates/quarto'
+  path_to_templates = '/Users/phil/Documents/templates/quarto/'
 ) {
 
   if(!requireNamespace('cli')) install.packages('cli')
@@ -50,10 +50,10 @@ create_dashboard <- function(
   # Create folder for recursive copying into ahead of time
   if (draftname == 'draft-dashboard.qmd') {
 
-    if (dir.exists(paste0(path_to_templates, '/assets'))) {
+    if (dir.exists(paste0(path_to_templates, 'assets'))) {
       # copying all assets
       file.copy(
-        from = paste0(path_to_templates, '/assets'),
+        from = paste0(path_to_templates, 'assets'),
         to = path,
         overwrite = TRUE,
         recursive = TRUE,
@@ -64,8 +64,8 @@ create_dashboard <- function(
     }
 
     # create new qmd report based on draft or blank
-    if (file.exists(paste0(path_to_templates, '/draft-dashboard.qmd'))) {
-      readLines(paste0(path_to_templates, '/draft-dashboard.qmd')) |>
+    if (file.exists(paste0(path_to_templates, 'draft-dashboard.qmd'))) {
+      readLines(paste0(path_to_templates, 'draft-dashboard.qmd')) |>
         writeLines(
           text = _,
           con = paste0(path, filename, '.qmd', collapse = '')
@@ -94,9 +94,9 @@ create_dashboard <- function(
   }
 
   # copying _brand.yml
-  if (file.exists(paste0(path_to_templates, '/_brand.yml'))) {
+  if (file.exists(paste0(path_to_templates, '_brand.yml'))) {
     file.copy(
-      from = paste0(path_to_templates, '/_brand.yml'),
+      from = paste0(path_to_templates, '_brand.yml'),
       to = paste0(path, '_brand.yml'),
       overwrite = FALSE,
       copy.mode = TRUE,
@@ -111,9 +111,9 @@ create_dashboard <- function(
   }
 
   # copying _quarto.yml
-  if (file.exists(paste0(path_to_templates, '/_quarto.yml'))) {
+  if (file.exists(paste0(path_to_templates, '_quarto.yml'))) {
     file.copy(
-      from = paste0(path_to_templates, '/_quarto.yml'),
+      from = paste0(path_to_templates, '_quarto.yml'),
       to = paste0(path, '_quarto.yml'),
       overwrite = FALSE,
       copy.mode = TRUE,

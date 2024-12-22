@@ -8,7 +8,7 @@ create_slides(
   filename = NULL,
   path = "./",
   draftname = "draft-slides.qmd",
-  path_to_templates = "/Users/phil/Documents/templates/quarto",
+  path_to_templates = "/Users/phil/Documents/templates/quarto/",
   path_to_chrome = "/Users/phil/.cache/puppeteer/chrome/mac_arm-119.0.6045.105/"
 )
 }
@@ -53,7 +53,7 @@ This function just creates a quarto file based on the saved template as draft
 #   filename = NULL,
 #   path = './',
 #   draftname = 'draft-slides.qmd',
-#   path_to_templates = '/my_path_to_templates',
+#   path_to_templates = '/my_path_to_templates/',
 #   path_to_chrome = '/Users/phil/.cache/puppeteer/chrome/mac_arm-119.0.6045.105/'
 # )
 

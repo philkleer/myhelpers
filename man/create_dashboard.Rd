@@ -8,7 +8,7 @@ create_dashboard(
   filename = NULL,
   path = "./",
   draftname = "draft-dashboard.qmd",
-  path_to_templates = "/Users/phil/Documents/templates/quarto"
+  path_to_templates = "/Users/phil/Documents/templates/quarto/"
 )
 }
 \arguments{
@@ -21,8 +21,8 @@ directory}
 \item{draftname}{The path to the draft file. If not indicated, the package
 included draft file will be used.}
 
-\item{ext_name}{The name of extension to get the files from.
-Default 'myhelpers'.}
+\item{path_to_templates}{The path to the location of the template, css, and
+other files.}
 }
 \value{
 \code{qmd}-file for a \code{dashboard} based on the template.
@@ -35,7 +35,7 @@ Creates personal quarto template for a dashboard in working directory.
 #   filename = NULL,
 #   path = './',
 #   draftname = 'draft-dashboard.qmd',
-#   path_to_templates = '/my_path_to_templates',
+#   path_to_templates = '/my_path_to_templates/',
 # )
 
 }
