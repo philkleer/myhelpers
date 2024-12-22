@@ -72,19 +72,27 @@ create_project <- function(
     # write data import
     writeLines(r_txt, con = '01-data-import.py')
 
-    # write data manipulation
-    writeLines(r_txt, con = '02-data-manipulation.py')
+    # write data cleaning
+    writeLines(r_txt, con = '02-data-cleaning.py')
 
-    # write analyses
-    writeLines(r_txt, con = '03-analyses.py')
+    # write feature engineering
+    writeLines(r_txt, con = '03-feature-engineering.py')
+
+    # write feature selection
+    writeLines(r_txt, con = '04-feature-selection.py')
+
+    # write base models
+    writeLines(r_txt, con = '05-base-models.py')
+
+    # write optimization
+    writeLines(r_txt, con = '06-optimization.py')
 
     # write visualization
-    writeLines(r_txt, con = '04-visualization.py')
+    writeLines(r_txt, con = '07-visualization.py')
 
     cli::cli_alert_success(
       paste0(
-        'Created files: 01-data-import.py, 02-data-manipulation.py, 03-analyses.py, ',
-        '04-visualization.py'
+        'Created 7 files for a standard ML project flow.'
       )
     )
 
