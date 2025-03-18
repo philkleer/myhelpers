@@ -45,7 +45,17 @@ create_project <- function(
       paste0(path_to_templates, '/template.R')
     )
 
+    r_txt_env <- readLines(
+      paste0(path_to_templates, '/environment.R')
+    )
+
+    r_txt_profile <- readLines(
+      paste0(path_to_templates, '/.Rprofile')
+    )
+
     # write data import
+    writeLines(r_txt_env, con = '00-env-setting.R')
+
     writeLines(r_txt, con = '01-data-import.R')
 
     # write data manipulation
@@ -57,10 +67,13 @@ create_project <- function(
     # write visualization
     writeLines(r_txt, con = '04-visualization.R')
 
+    # write visualization
+    writeLines(r_txt_profile, con = '.Rprofile')
+
     cli::cli_alert_success(
       paste0(
-        'Created files: 01-data-import.R, 02-data-manipulation.R, 03-analyses.R, ',
-        '04-visualization.R'
+        'Created files: 00-env-setting.R, 01-data-import.R, 02-data-manipulation.R, 03-analyses.R, ',
+        '04-visualization.R', '.Rprofile'
       )
     )
   } else if (kind == 'py') {

@@ -2,6 +2,7 @@
 
 export(create_bayesreg_table)
 export(create_dashboard)
+export(create_note)
 export(create_project)
 export(create_report)
 export(create_script)

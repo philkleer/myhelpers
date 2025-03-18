@@ -16,6 +16,7 @@ devtools::install_github("bpkleer/myhelpers")
 |-----------|---------------------------------|
 | `create_bayesreg_table()` | creates a standard regression table from `bayesPostEst::mcmcReg()` to LaTeX | 
 | `create_dashboard()` | initializes the use of dashboard | 
+| `create_note()` | creates a `.md`-note with timestampe as filename in subfolder `notes/` |
 | `create_project()` | initializes folder with basic directories and files (option kind indicate R (`r`) or Python (`py`)) |
 | `create_report()` | template for html-report | 
 | `create_script()` | template for script (option kind indicate R (`r`) or Python (`py`)) | 
